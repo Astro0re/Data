@@ -20,6 +20,14 @@ GABA_anl <- data.frame(GABA_cntrl,GABA_alcl,GABA_alcl_fla,GABA_alcl_fla_2,GABA_a
 NO2_anl <- data.frame(NO2_cntrl,NO2_alcl,NO2_alcl_fla,NO2_alcl_fla_2,NO2_alcl_Don)
 MDA_anl <- data.frame(MDA_cntrl,MDA_alcl,MDA_alcl_fla,MDA_alcl_fla_2,MDA_alcl_Don)
 
+GABA_means <-cbind(mean(GABA_cntrl),mean(GABA_alcl),mean(GABA_alcl_fla),
+                   mean(GABA_alcl_fla_2),mean(GABA_alcl_Don))
+MDA_means <-cbind(mean(MDA_cntrl),mean(MDA_alcl),mean(MDA_alcl_fla),
+                  mean(MDA_alcl_fla_2),mean(MDA_alcl_Don))
+NO2_means <-cbind(mean(NO2_cntrl),mean(NO2_alcl),mean(NO2_alcl_fla),
+                  mean(NO2_alcl_fla_2),mean(NO2_alcl_Don))
+
+
 #Summary of Biochemical analysis data 
 summary(GABA_anl)
 summary(NO2_anl)
@@ -42,3 +50,9 @@ barplot.default (MDA_alcl,ylim = c(0.0,0.05),names.arg = c("A","B","C"),main = "
 barplot.default (MDA_alcl_fla,ylim = c(0.0,0.05),names.arg = c("A","B","C"),main = "MDA-ALCL/FLA")
 barplot.default (MDA_alcl_fla_2,ylim = c(0.0,0.05),names.arg = c("A","B","C"),main = "MDA-ALCL/FLA-2")
 barplot.default (MDA_alcl_Don,ylim = c(0.0,0.05),names.arg = c("A","B","C"),main = "MDA-ALCL/DON")
+
+#Biochemical analysis Comparison 
+barplot.default (GABA_means,ylim = c(0.0,0.30),names.arg = c("Control","AlCl3","AlCl3_Fla_100","AlCl3_Fla_200","AlCl3_Don"),main = "GABA")
+barplot.default (MDA_means,ylim = c(0.0,0.04),names.arg = c("Control","AlCl3","AlCl3_Fla_100","AlCl3_Fla_200","AlCl3_Don"),main = "MDA")
+barplot.default (NO2_means,ylim = c(0.0,0.30),names.arg = c("Control","AlCl3","AlCl3_Fla_100","AlCl3_Fla_200","AlCl3_Don"),main = "NO2")
+
