@@ -1,3 +1,9 @@
+#Load Data gotten from https://catalog.ourworldindata.org
+M_Pox <- read.csv("C:/Users/USER/Downloads/monkeypox.csv")
+
+#Load R Studio Packages
+library(tidyverse)
+
 #Grouped into locations of the world(Continents)
 Afri <- M_Pox%>%
   filter(location %in% c("Africa", "Benin","Cameroon","Central African Republic",
@@ -101,7 +107,7 @@ Death_Rates <- c(Afri_dr,Asia_dr,Euro_dr,Isl_dr,Nt_Ame_dr,Ocea_dr,St_Ame_dr,Un_S
 
 #AFRICA WHEN COMPARED TO EUROPE HAS LESS TOTAL CASES BUT A HIGHER DEATH RATE 
 #(ACCORDING TO THIS DATASET)
-#This may be due to lack of proper epuipment /other missing 
+#This may be due to lack of proper equipment /other missing infrastructure 
 
 #Average Suspected cases(Undocumented)
 Afri_sc <- mean(Afri$suspected_cases_cumulative, na.rm = TRUE)
