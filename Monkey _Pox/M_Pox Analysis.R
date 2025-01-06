@@ -81,7 +81,7 @@ Total_Death <- c(Afri_td,Asia_td,Euro_td,Isl_td,Nt_Ame_td,Ocea_td,St_Ame_td,Un_S
 #Large number of death recorded in North America, South America and Africa 
 
 #Death rate is Total Cases/Total Death 
-Death_R <-mutate(MPox,death_rate = MPox$total_deaths/MPox$total_cases*100)
+Death_R <-mutate(M_Pox,death_rate = M_Pox$total_deaths/M_Pox$total_cases*100)
 Afri<- mutate(Afri,death_rate = Afri$total_deaths/Afri$total_cases*100)
 Asia<- mutate(Asia,death_rate = Asia$total_deaths/Asia$total_cases*100)
 Euro<- mutate(Euro,death_rate = Euro$total_deaths/Euro$total_cases*100)
@@ -121,9 +121,21 @@ Un_Spe_sc <- mean(Un_Spe$suspected_cases_cumulative, na.rm = TRUE)
 
 Suspected_Cases <- c(Afri_sc,Asia_sc,Euro_sc,Isl_sc,Nt_Ame_sc,Ocea_sc,St_Ame_sc,Un_Spe_sc)
 
-#Africa has the largest amount og suspected cases, reported in the data set
+#Africa has the largest amount of suspected cases, reported in the data set
 
 M_Stat<- cbind(Death_Rates,Suspected_Cases,Total_Cases,Total_Death)
 M_Stat<- data.frame(M_Stat)
-Regions <- c('Afri','Asia','Euro','Isl','Nt_Ame','Ocea','St_Ame','Un-Spe')
-M_Stat <- mutate(M_Stat,Regions = Regions)
+
+#Data Visualization
+barplot.default (M_Stat$Death_Rates,ylim = c(0.0,8.5),names.arg = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"),main = "Death Rate")
+
+pie(x = M_Stat$Death_Rates, labels = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"), col = colors(), main = "Death Rate" )
+
+
+pie_chart <- ggplot(M_Stat, aes(x = "", y = M_Stat$Death_Rates, fill = )) +
+  geom_bar(stat = "identity", width = 1) + 
+  coord_polar("y", start = 0) + 
+  labs(title = "Death Rates") +
+  theme_void()  
+
+barplot(height = M_Stat, )
