@@ -131,6 +131,11 @@ barplot.default (M_Stat$Death_Rates,ylim = c(0.0,8.5),names.arg = c("Afri","Asia
 
 pie(x = M_Stat$Death_Rates, labels = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"), col = colors(), main = "Death Rate" )
 
+pie(x = M_Stat$Suspected_Cases, labels = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"), col = colors(), main = "Death Rate" )
+
+pie(x = M_Stat$Total_Cases, labels = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"), col = colors(), main = "Death Rate" )
+
+pie(x = M_Stat$Total_Death, labels = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"), col = colors(), main = "Death Rate" )
 
 pie_chart <- ggplot(M_Stat, aes(x = "", y = M_Stat$Death_Rates, fill = )) +
   geom_bar(stat = "identity", width = 1) + 
