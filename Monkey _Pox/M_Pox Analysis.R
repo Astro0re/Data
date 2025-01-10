@@ -144,3 +144,14 @@ pie_chart <- ggplot(M_Stat, aes(x = "", y = M_Stat$Death_Rates, fill = )) +
   theme_void()  
 
 barplot(height = M_Stat, )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = p )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = l )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = b )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = c )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = o )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = s )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = S )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = h )
+
+
+
