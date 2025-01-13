@@ -144,14 +144,27 @@ pie_chart <- ggplot(M_Stat, aes(x = "", y = M_Stat$Death_Rates, fill = )) +
   theme_void()  
 
 barplot(height = M_Stat, )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = p )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = l )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = b )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = c )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = o )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = s )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = S )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = h )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "p" )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "l" )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "b" )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "c" )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "o" )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "s" )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "S" )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "h", xlab = c("Af","As","Eu","Isl","Oc","Nt_Am","St_Am","Un_Spe") )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "h", xlab = "Regions"  )
+
+plot(x = M_Stat$Death_Rates,y = NULL, ylim = c(0.0,8.5), main = "Death Rate", type = "p")
+
+plot.default(x =M_Stat$Suspected_Cases, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "o" )
+
+plot.default(x =M_Stat$Regions, y = M_Stat$Death_Rates, main = "Death Rate" , type = "o" )
 
 
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "o" )
+help("ggplot2")
+
+ggplot(data = M_Stat, mapping =aes(x = M_Stat$Regions, y = M_Stat$Death_Rates))+
+  geom_bar(mapping = NULL,data =M_Stat$Death_Rates )
+  
 
