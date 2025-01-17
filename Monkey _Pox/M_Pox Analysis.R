@@ -167,7 +167,9 @@ plot.default(x =M_Stat$Regions, y = M_Stat$Death_Rates, main = "Death Rate" , ty
 plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "o" )
 help("ggplot2")
 
-ggplot(data = M_Stat, mapping =aes(x = M_Stat$Regions, y = M_Stat$Death_Rates))+
-  geom_bar(mapping = NULL,data =M_Stat$Death_Rates )
-  
+ggplot(data = M_Stat, aes(x = Regions, y = M_Stat$Death_Rates))+
+  geom_bar(stat = M_Stat$Death_Rates)
+
+ggplot(M_Stat, aes(x = Regions,y = NULL))+
+  geom_bar()
 
