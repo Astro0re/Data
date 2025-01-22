@@ -8,6 +8,8 @@ print(Hrt_A.head())
 
 print(Hrt_A.shape)
 
-print(Hrt_A.info)
+print(Hrt_A.info())
 
-print(Hrt_A.describe)
+print(Hrt_A.describe())
+
+print(Hrt_A['Age'].max())
