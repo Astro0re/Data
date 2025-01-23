@@ -8,6 +8,6 @@ print(Hrt.head())
 
 print(Hrt.shape)
 
-print(Hrt.info)
+print(Hrt.info())
 
-print(Hrt.describe)
+print(Hrt.describe())
