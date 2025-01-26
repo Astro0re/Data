@@ -175,8 +175,14 @@ ggplot(M_Stat, aes(x = Regions,y = NULL))+
   geom_bar()
 
 
-plot.default(x =M_Stat$Death_Rates, y = M_Stat$Total_Cases, main = "Death Rate" , type = "p", xlab ="Death Rates",ylab ="Total Cases" )
+plot.default(x =M_Stat$Death_Rates, y = M_Stat$Total_Cases, main = "" , type = "p", xlab ="Death Rates",ylab ="Total Cases" )
 
-plot.default(x =M_Stat$Death_Rates, y = M_Stat$Total_Cases, main = "Death Rate" , type = "h" )
+plot.default(x =M_Stat$Suspected_Cases, y = M_Stat$Total_Cases, main = "" , type = "p", xlab ="Suspected Cases",ylab ="Total Cases" )
+
+plot.default(x =M_Stat$Total_Death, y = M_Stat$Total_Cases, main = "" , type = "p", xlab ="Total Death",ylab ="Total Cases" )
+
+plot.default(x =M_Stat$, y = M_Stat$Total_Cases, main = "" , type = "h", xlab ="Regions",ylab ="Total Cases" )
+
+plot.default(x =M_Stat$Death_Rates, y = M_Stat$Total_Cases, main = "" , type = "h" )
 
 plot.default(xlab =,ylab = ,... = )
