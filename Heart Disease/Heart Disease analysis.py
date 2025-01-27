@@ -9,3 +9,5 @@ print(Hrt.shape)
 Hrt.info()
 
 view_data_details = Hrt.describe()
+
+Hrt.index
