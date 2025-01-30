@@ -130,6 +130,7 @@ rownames(M_Stat) <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Sp
 #This data set lacks values which may provide a better outlook on the cases of 
 #M-pox around the world 
 
+
 #Data Visualization
 barplot.default (M_Stat$Death_Rates,ylim = c(0.0,8.5),names.arg = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"),main = "Death Rate")
 
@@ -141,12 +142,6 @@ pie(x = M_Stat$Total_Cases, labels = c("Af","As","Eu","Isl","Oc","Nt_Am","St_Am"
 
 pie(x = M_Stat$Total_Death, labels = c("Af","As","Eu","Isl","Oc","Nt_Am","St_Am","Un_Spe"), col = colors(), main = "Death Rate" )
 
-pie_chart <- ggplot(M_Stat, aes(x = M_Stat$, y = M_Stat$Death_Rates, fill = )) +
-  geom_bar(stat = "identity", width = 1) + 
-  coord_polar("y", start = 0) + 
-  labs(title = "Death Rates") +
-  theme_void()  
-
 barplot(height = M_Stat, )
 plot.default(x =NULL, y = Stat$Death_Rates, ylim = c(0.0,8.5), main = "Death Rate" , type = "p" )
 plot.default(x =NULL, y = M_Stat$Death_Rates, ylim = c(0.0,8.5), main = "Death Rate" , type = "l" )
@@ -155,25 +150,14 @@ plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death R
 plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "o" )
 plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "s" )
 plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "S" )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "h", xlab = c("Af","As","Eu","Isl","Oc","Nt_Am","St_Am","Un_Spe") )
+plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "h" )
 plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "h", xlab = "Regions"  )
 
-plot(x = M_Stat$Death_Rates,y = NULL, ylim = c(0.0,8.5), main = "Death Rate", type = "p")
 
-plot.default(x =M_Stat$Suspected_Cases, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "o" )
-
-plot.default(x =M_Stat$Regions, y = M_Stat$Death_Rates, main = "Death Rate" , type = "o" )
+plot(x = M_Stat$Death_Rates,y = NULL, ylim = c(0.0,8.5), main = "Death Rate", type = "b")
 
 
 plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "o" )
-help("ggplot2")
-
-death_bar <- ggplot(data = M_Stat, aes(x =Death_Rates, y =Total_Cases))+
-  geom_bar(y =M_Stat$Death_Rates ,x = M_Stat$Regions )
-
-ggplot(M_Stat, aes(x = Regions,y = NULL))+
-  geom_bar()
-
 
 plot.default(x =M_Stat$Death_Rates, y = M_Stat$Total_Cases, main = "" , type = "p", xlab ="Death Rates",ylab ="Total Cases" )
 
@@ -181,7 +165,7 @@ plot.default(x =M_Stat$Suspected_Cases, y = M_Stat$Total_Cases, main = "" , type
 
 plot.default(x =M_Stat$Total_Death, y = M_Stat$Total_Cases, main = "" , type = "p", xlab ="Total Death",ylab ="Total Cases" )
 
-plot.default(x =M_Stat$, y = M_Stat$Total_Cases, main = "" , type = "h", xlab ="Regions",ylab ="Total Cases" )
+plot.default(x =M_Stat$Total_Cases, y = NULL, main = "" , type = "h", xlab ="Regions",ylab ="Total Cases" )
 
 plot.default(x =M_Stat$Death_Rates, y = M_Stat$Total_Cases, main = "" , type = "h" )
 
