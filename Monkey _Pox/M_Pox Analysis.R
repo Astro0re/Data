@@ -1,6 +1,9 @@
 #Load Data gotten from https://catalog.ourworldindata.org
 M_Pox <- read.csv("C:/Users/USER/Downloads/monkeypox.csv")
 
+#Convert nan to 0
+M_Pox[is.nan(M_Pox)] <- 0
+
 #Load R Studio Packages
 library(tidyverse)
 
