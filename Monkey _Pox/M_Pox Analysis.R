@@ -139,6 +139,19 @@ rownames(M_Stat) <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Sp
 #M-pox around the world 
 
 
+#Date Ranges
+2022<- M_Pox%>%
+  filter(Date < 2023)
+
+2023<- M_Pox%>%
+  filter(Date > 2022 & Date < 2024)
+
+2024<- M_Pox%>%
+  filter(Date > 2023)
+
+
+
+
 #Data Visualization
 barplot.default (M_Stat$Death_Rates,ylim = c(0.0,8.5),names.arg = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"),main = "Death Rate")
 
