@@ -6,6 +6,11 @@ M_Pox[is.nan(M_Pox)] <- 0
 
 #Load R Studio Packages
 library(tidyverse)
+library(Hmisc)
+
+#Convert date (character) variable to a date data type
+Dates<- as.Date(M_Pox$date)
+M_Pox <- mutate(M_Pox,Date = Dates)
 
 #Grouped into locations of the world(Continents)
 Afri <- M_Pox%>%
