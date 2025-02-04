@@ -141,13 +141,13 @@ rownames(M_Stat) <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Sp
 
 #Date Ranges
 2022<- M_Pox%>%
-  filter(Date < 2023)
+  filter(Date < 2023-01-01)
 
 2023<- M_Pox%>%
-  filter(Date > 2022 & Date < 2024)
+  filter(Date > 2022-12-31 & Date < 2024-01-01)
 
 2024<- M_Pox%>%
-  filter(Date > 2023)
+  filter(Date > 2023-12-31)
 
 
 
