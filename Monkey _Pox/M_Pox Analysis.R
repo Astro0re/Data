@@ -2,7 +2,7 @@
 M_Pox <- read.csv("C:/Users/USER/Downloads/monkeypox.csv")
 
 #Convert nan to 0
-M_Pox[is.nan(M_Pox)] <- 0
+#M_Pox[is.nan(M_Pox)] <- 0
 
 #Load R Studio Packages
 library(tidyverse)
@@ -150,8 +150,6 @@ rownames(M_Stat) <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Sp
   filter(Date > 2023-12-31)
 
 
-
-
 #Data Visualization
 barplot.default (M_Stat$Death_Rates,ylim = c(0.0,8.5),names.arg = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"),main = "Death Rate")
 
@@ -191,3 +189,10 @@ plot.default(x =M_Stat$Total_Cases, y = NULL, main = "" , type = "h", xlab ="Reg
 plot.default(x =M_Stat$Death_Rates, y = M_Stat$Total_Cases, main = "" , type = "h" )
 
 plot.default(xlab =,ylab = ,... = )
+
+#2022 Afri
+t2 <- view(Afri$Date < 2023-01-01)
+#2023 Afri
+t3 <- view(Afri$Date > 2022-12-31 & Afri$Date < 2024-01-01)
+#2024 Afri
+t4<- view(Afri$Date > 2023-12-31)
