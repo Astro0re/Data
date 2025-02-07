@@ -197,3 +197,11 @@ plot.default(x =Afri$Date , y =Afri$total_cases, main = "" , type = "o" )
 
 plot.default(x =Afri$Date , y =Afri$total_cases, main = "" , type = "o" )
 
+
+ggplot( data = Afri, mapping = aes(x = Date, y = total_deaths))+
+  geom_point()+
+  facet_wrap(~location)
+
+ggplot( data = Afri, mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
