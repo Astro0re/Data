@@ -189,4 +189,11 @@ t3 <- view(Afri$Date > 2022-12-31 & Afri$Date < 2024-01-01)
 t4<- view(Afri$Date > 2023-12-31)
 
 
-plot.default(x =Afri$total_cases, y = Afri$Date, main = "" , type = "o" )
+plot.default(x =Afri$Date , y =Afri$total_cases, main = "" , type = "" )
+
+plot.default(x =Euro$Date , y =Euro$total_cases, main = "" , type = "p" )
+
+plot.default(x =Afri$Date , y =Afri$total_cases, main = "" , type = "o" )
+
+plot.default(x =Afri$Date , y =Afri$total_cases, main = "" , type = "o" )
+
