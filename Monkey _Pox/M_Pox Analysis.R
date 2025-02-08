@@ -202,22 +202,27 @@ ggplot( data = Afri, mapping = aes(x = Date, y = total_deaths))+
   geom_point()+
   facet_wrap(~location)
 
+Afri %>% 
 ggplot( data = Afri, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
+Euro %>% 
 ggplot( data = Euro, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
+Asia %>% 
 ggplot( data = Asia, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
+Isl %>% 
 ggplot( data = Isl, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
+Nt_Ame %>% 
 ggplot( data = Nt_Ame, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
