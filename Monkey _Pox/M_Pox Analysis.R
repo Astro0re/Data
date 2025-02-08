@@ -205,3 +205,11 @@ ggplot( data = Afri, mapping = aes(x = Date, y = total_deaths))+
 ggplot( data = Afri, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
+
+ggplot( data = Euro, mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
+
+ggplot( data = Asia, mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
