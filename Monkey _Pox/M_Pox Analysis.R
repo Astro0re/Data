@@ -213,3 +213,19 @@ ggplot( data = Euro, mapping = aes(x = Date, y = total_cases))+
 ggplot( data = Asia, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
+
+ggplot( data = Isl, mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
+
+ggplot( data = Nt_Ame, mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
+
+ggplot( data = St_Ame, mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
+
+ggplot( data = Un_Spe, mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
