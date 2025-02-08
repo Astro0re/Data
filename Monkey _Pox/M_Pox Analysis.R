@@ -222,10 +222,13 @@ ggplot( data = Nt_Ame, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
-ggplot( data = St_Ame, mapping = aes(x = Date, y = total_cases))+
+Un_Spe %>%
+  filter(total_cases > 5000 ) %>%
+  ggplot( data = St_Ame, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
-ggplot( data = Un_Spe, mapping = aes(x = Date, y = total_cases))+
+Un_Spe %>%
+  ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
