@@ -188,6 +188,9 @@ t3 <- view(Afri$Date > 2022-12-31 & Afri$Date < 2024-01-01)
 #2024 Afri
 t4<- view(Afri$Date > 2023-12-31)
 
+ggplot(M_Stat, aes(Death_Rates, Total_Death))+
+  geom_point(col(rname))
+  
 
 plot.default(x =Afri$Date , y =Afri$total_cases, main = "" , type = "" )
 
@@ -203,32 +206,38 @@ ggplot( data = Afri, mapping = aes(x = Date, y = total_deaths))+
   facet_wrap(~location)
 
 Afri %>% 
-ggplot( data = Afri, mapping = aes(x = Date, y = total_cases))+
+  ggplot( data = Afri, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
 Euro %>% 
-ggplot( data = Euro, mapping = aes(x = Date, y = total_cases))+
+  ggplot( data = Euro, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
 Asia %>% 
-ggplot( data = Asia, mapping = aes(x = Date, y = total_cases))+
+  Case <- ggplot(mapping = aes(Date, total_cases))+
+  geom_point()+
+  facet_wrap(~location) %>% 
+  Deaths <- ggplot( mapping = aes(x = Date, y = total_deaths))+
   geom_point()+
   facet_wrap(~location)
 
 Isl %>% 
-ggplot( data = Isl, mapping = aes(x = Date, y = total_cases))+
+  ggplot( data = Isl, mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location) %>% 
+  ggplot( mapping = aes(x = Date, y = total_deaths))+
   geom_point()+
   facet_wrap(~location)
 
 Nt_Ame %>% 
-ggplot( data = Nt_Ame, mapping = aes(x = Date, y = total_cases))+
+  ggplot( data = Nt_Ame, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
 Un_Spe %>%
-  filter(total_cases > 5000 ) %>%
+  filter(total_cases > 10000 ) %>%
   ggplot( data = St_Ame, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
