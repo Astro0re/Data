@@ -142,6 +142,16 @@ M_Stat$Regions <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Spe"
 
 
 #Data Visualization
+
+ggplot(M_Stat, aes(Regions, Total_Death))+
+  geom_point()
+
+ggplot(M_Stat, aes(Regions, Total_Cases))+
+  geom_point()
+
+ggplot(M_Stat, aes(Regions, Total_Death))+
+  geom_point()
+
 barplot.default (M_Stat$Death_Rates,ylim = c(0.0,8.5),names.arg = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"),main = "Death Rate")
 
 pie(x = M_Stat$Death_Rates, labels = c("Af","As","Eu","Isl","Oc","Nt_Am","St_Am","Un_Spe"), col = colors(), main = "Death Rate" )
