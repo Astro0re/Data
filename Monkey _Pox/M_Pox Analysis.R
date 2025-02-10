@@ -133,7 +133,7 @@ Suspected_Cases <- c(Afri_sc,Asia_sc,Euro_sc,Isl_sc,Nt_Ame_sc,Ocea_sc,St_Ame_sc,
 
 M_Stat<- cbind(Death_Rates,Suspected_Cases,Total_Cases,Total_Death)
 M_Stat<- data.frame(M_Stat)
-rownames(M_Stat) <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Spe")
+M_Stat$Regions <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Spe")
 
 #This data set lacks values which may provide a better outlook on the cases of 
 #M-pox around the world 
@@ -189,7 +189,7 @@ t3 <- view(Afri$Date > 2022-12-31 & Afri$Date < 2024-01-01)
 t4<- view(Afri$Date > 2023-12-31)
 
 ggplot(M_Stat, aes(Death_Rates, Total_Death))+
-  geom_point(col(rname))
+  geom_point()
   
 
 plot.default(x =Afri$Date , y =Afri$total_cases, main = "" , type = "" )
