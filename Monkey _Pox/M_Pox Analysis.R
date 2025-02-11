@@ -143,6 +143,7 @@ M_Stat$Regions <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Spe"
 
 #Data Visualization
 
+#Complied Statistics Visualization
 ggplot(M_Stat, aes(Regions, Total_Death))+
   geom_point()
 
@@ -152,69 +153,17 @@ ggplot(M_Stat, aes(Regions, Total_Cases))+
 ggplot(M_Stat, aes(Regions, Total_Death))+
   geom_point()
 
-barplot.default (M_Stat$Death_Rates,ylim = c(0.0,8.5),names.arg = c("Afri","Asia","Euro","Isl","Ocea","Nt_Ame","St_Ame","Un_Spe"),main = "Death Rate")
-
-pie(x = M_Stat$Death_Rates, labels = c("Af","As","Eu","Isl","Oc","Nt_Am","St_Am","Un_Spe"), col = colors(), main = "Death Rate" )
-
-pie(x = M_Stat$Suspected_Cases, labels = c("Af","As","Eu","Isl","Oc","Nt_Am","St_Am","Un_Spe"), col = colors(), main = "Death Rate" )
-
-pie(x = M_Stat$Total_Cases, labels = c("Af","As","Eu","Isl","Oc","Nt_Am","St_Am","Un_Spe"), col = colors(), main = "Death Rate" )
-
-pie(x = M_Stat$Total_Death, labels = c("Af","As","Eu","Isl","Oc","Nt_Am","St_Am","Un_Spe"), col = colors(), main = "Death Rate" )
-
-barplot(height = M_Stat, )
-plot.default(x =NULL, y = Stat$Death_Rates, ylim = c(0.0,8.5), main = "Death Rate" , type = "p" )
-plot.default(x =NULL, y = M_Stat$Death_Rates, ylim = c(0.0,8.5), main = "Death Rate" , type = "l" )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "b" )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "c" )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "o" )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "s" )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "S" )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "h" )
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "h", xlab = "Regions"  )
-
-
-plot(x = M_Stat$Death_Rates,y = NULL, ylim = c(0.0,8.5), main = "Death Rate", type = "b")
-
-
-plot.default(x =M_Stat$Death_Rates, y = NULL, ylim = c(0.0,8.5), main = "Death Rate" , type = "o" )
-
-plot.default(x =M_Stat$Death_Rates, y = M_Stat$Total_Cases, main = "" , type = "p", xlab ="Death Rates",ylab ="Total Cases" )
-
-plot.default(x =M_Stat$Suspected_Cases, y = M_Stat$Total_Cases, main = "" , type = "p", xlab ="Suspected Cases",ylab ="Total Cases" )
-
-plot.default(x =M_Stat$Total_Death, y = M_Stat$Total_Cases, main = "" , type = "p", xlab ="Total Death",ylab ="Total Cases" )
-
-plot.default(x =M_Stat$Total_Cases, y = NULL, main = "" , type = "h", xlab ="Regions",ylab ="Total Cases" )
-
-plot.default(x =M_Stat$Death_Rates, y = M_Stat$Total_Cases, main = "" , type = "h" )
-
-plot.default(xlab =,ylab = ,... = )
-
-#2022 Afri
-t2 <- view(Afri$Date < 2023-01-01)
-#2023 Afri
-t3 <- view(Afri$Date > 2022-12-31 & Afri$Date < 2024-01-01)
-#2024 Afri
-t4<- view(Afri$Date > 2023-12-31)
 
 ggplot(M_Stat, aes(Death_Rates, Total_Death))+
-  geom_point()
-  
-
-plot.default(x =Afri$Date , y =Afri$total_cases, main = "" , type = "" )
-
-plot.default(x =Euro$Date , y =Euro$total_cases, main = "" , type = "p" )
-
-plot.default(x =Afri$Date , y =Afri$total_cases, main = "" , type = "o" )
-
-plot.default(x =Afri$Date , y =Afri$total_cases, main = "" , type = "o" )
-
+  geom_point(size = 5, col= Total_Cases)+
+  label()
 
 ggplot( data = Afri, mapping = aes(x = Date, y = total_deaths))+
   geom_point()+
   facet_wrap(~location)
 
+
+#General Regional Data Set Visualization.
 Afri %>% 
   ggplot( data = Afri, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
