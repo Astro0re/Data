@@ -153,10 +153,9 @@ ggplot(M_Stat, aes(Regions, Total_Cases))+
 ggplot(M_Stat, aes(Regions, Total_Death))+
   geom_point()
 
-
 ggplot(M_Stat, aes(Death_Rates, Total_Death))+
-  geom_point(size = 5, col= Total_Cases)+
-  label()
+  geom_point(size = 5, col= Total_Cases)
+
 
 ggplot( data = Afri, mapping = aes(x = Date, y = total_deaths))+
   geom_point()+
@@ -165,19 +164,46 @@ ggplot( data = Afri, mapping = aes(x = Date, y = total_deaths))+
 
 #General Regional Data Set Visualization.
 Afri %>% 
-  ggplot( data = Afri, mapping = aes(x = Date, y = total_cases))+
+  ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
+
+Afri %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()
+
+Afri %>% 
+  ggplot(aes(date, new_cases))+
+  geom_point()
+
+Afri %>% 
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)
+
 
 Euro %>% 
   ggplot( data = Euro, mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
+Euro %>% 
+  ggplot(aes(Date,total_deaths))+
+  geom_point()
+
 Asia %>% 
-  Case <- ggplot(mapping = aes(Date, total_cases))+
+  filter(total_cases > mean(total_cases)) %>% 
+  ggplot(mapping = aes(Date, total_cases))+
   geom_point()+
-  facet_wrap(~location) %>% 
+  facet_wrap(~location) 
+
+Asia%>% 
+  filter(total_deaths > mean(total_deaths)) %>% 
+  ggplot( mapping = aes(x = Date, y = total_deaths))+
+  geom_point()+
+  facet_wrap(~location)
+
+
   Deaths <- ggplot( mapping = aes(x = Date, y = total_deaths))+
   geom_point()+
   facet_wrap(~location)
