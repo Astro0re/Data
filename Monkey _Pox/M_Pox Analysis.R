@@ -140,7 +140,6 @@ M_Stat$Regions <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Spe"
 
 
 
-
 #Data Visualization
 
 #Complied Statistics Visualization
@@ -163,6 +162,7 @@ ggplot( data = Afri, mapping = aes(x = Date, y = total_deaths))+
 
 
 #General Regional Data Set Visualization.
+#Africa
 Afri %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
@@ -181,53 +181,139 @@ Afri %>%
   geom_point()+
   facet_wrap(~location)
 
-
+# Europe
 Euro %>% 
-  ggplot( data = Euro, mapping = aes(x = Date, y = total_cases))+
+  ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
 Euro %>% 
-  ggplot(aes(Date,total_deaths))+
+  ggplot(aes(Date, total_deaths))+
+  geom_point()
+
+Euro %>% 
+  ggplot(aes(date, new_cases))+
+  geom_point()
+
+Euro %>% 
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)
+
+
+#Asia
+Asia %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
+
+Asia %>% 
+  ggplot(aes(Date, total_deaths))+
   geom_point()
 
 Asia %>% 
-  filter(total_cases > mean(total_cases)) %>% 
-  ggplot(mapping = aes(Date, total_cases))+
-  geom_point()+
-  facet_wrap(~location) 
+  ggplot(aes(date, new_cases))+
+  geom_point()
 
-Asia%>% 
-  filter(total_deaths > mean(total_deaths)) %>% 
-  ggplot( mapping = aes(x = Date, y = total_deaths))+
+Asia %>% 
+  ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   facet_wrap(~location)
 
 
-  Deaths <- ggplot( mapping = aes(x = Date, y = total_deaths))+
+#Island Nations
+Isl %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
 Isl %>% 
-  ggplot( data = Isl, mapping = aes(x = Date, y = total_cases))+
+  ggplot(aes(Date, total_deaths))+
+  geom_point()
+
+Isl %>% 
+  ggplot(aes(date, new_cases))+
+  geom_point()
+
+Isl %>% 
+  ggplot(aes(total_cases, total_deaths))+
   geom_point()+
-  facet_wrap(~location) %>% 
-  ggplot( mapping = aes(x = Date, y = total_deaths))+
+  facet_wrap(~location)
+
+
+#Oceiana
+Ocea %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
+
+Ocea %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()
+
+Ocea %>% 
+  ggplot(aes(date, new_cases))+
+  geom_point()
+
+Ocea %>% 
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)
+
+
+#North_America
+Nt_Ame %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)
 
 Nt_Ame %>% 
-  ggplot( data = Nt_Ame, mapping = aes(x = Date, y = total_cases))+
+  ggplot(aes(Date, total_deaths))+
+  geom_point()
+
+Nt_Ame %>% 
+  ggplot(aes(date, new_cases))+
+  geom_point()
+
+Nt_Ame %>% 
+  ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   facet_wrap(~location)
 
-Un_Spe %>%
-  filter(total_cases > 10000 ) %>%
-  ggplot( data = St_Ame, mapping = aes(x = Date, y = total_cases))+
-  geom_point()+
-  facet_wrap(~location)
-
-Un_Spe %>%
+#South_America
+St_Ame %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
+
+St_Ame %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()
+
+St_Ame %>% 
+  ggplot(aes(date, new_cases))+
+  geom_point()
+
+St_Ame %>% 
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)
+
+#Unspecified
+Un_Spe %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)
+
+Un_Spe %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()
+
+Un_Spe %>% 
+  ggplot(aes(date, new_cases))+
+  geom_point()
+
+Un_Spe %>% 
+  ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   facet_wrap(~location)
