@@ -170,11 +170,13 @@ Afri %>%
 
 Afri %>% 
   ggplot(aes(Date, total_deaths))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Afri %>% 
   ggplot(aes(date, new_cases))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Afri %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -189,11 +191,13 @@ Euro %>%
 
 Euro %>% 
   ggplot(aes(Date, total_deaths))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Euro %>% 
   ggplot(aes(date, new_cases))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Euro %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -209,11 +213,13 @@ Asia %>%
 
 Asia %>% 
   ggplot(aes(Date, total_deaths))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Asia %>% 
   ggplot(aes(date, new_cases))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Asia %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -229,11 +235,13 @@ Isl %>%
 
 Isl %>% 
   ggplot(aes(Date, total_deaths))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Isl %>% 
   ggplot(aes(date, new_cases))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Isl %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -249,11 +257,13 @@ Ocea %>%
 
 Ocea %>% 
   ggplot(aes(Date, total_deaths))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Ocea %>% 
   ggplot(aes(date, new_cases))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Ocea %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -269,11 +279,13 @@ Nt_Ame %>%
 
 Nt_Ame %>% 
   ggplot(aes(Date, total_deaths))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Nt_Ame %>% 
   ggplot(aes(date, new_cases))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Nt_Ame %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -288,11 +300,13 @@ St_Ame %>%
 
 St_Ame %>% 
   ggplot(aes(Date, total_deaths))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 St_Ame %>% 
   ggplot(aes(date, new_cases))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 St_Ame %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -307,11 +321,13 @@ Un_Spe %>%
 
 Un_Spe %>% 
   ggplot(aes(Date, total_deaths))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Un_Spe %>% 
   ggplot(aes(date, new_cases))+
-  geom_point()
+  geom_point()+
+  facet_wrap(~location)
 
 Un_Spe %>% 
   ggplot(aes(total_cases, total_deaths))+
