@@ -173,7 +173,8 @@ Afri %>%
   geom_point()+
   facet_wrap(~location)
 
-Afri %>% 
+Afri %>%
+  filter(new_cases > 10) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
@@ -195,6 +196,7 @@ Euro %>%
   facet_wrap(~location)
 
 Euro %>% 
+  filter(new_cases > 10) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
@@ -217,6 +219,7 @@ Asia %>%
   facet_wrap(~location)
 
 Asia %>% 
+  filter(new_cases > 10) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
@@ -239,6 +242,7 @@ Isl %>%
   facet_wrap(~location)
 
 Isl %>% 
+  filter(new_cases > 10) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
@@ -261,6 +265,7 @@ Ocea %>%
   facet_wrap(~location)
 
 Ocea %>% 
+  filter(new_cases > 10) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
@@ -283,6 +288,7 @@ Nt_Ame %>%
   facet_wrap(~location)
 
 Nt_Ame %>% 
+  filter(new_cases > 10) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
@@ -304,6 +310,7 @@ St_Ame %>%
   facet_wrap(~location)
 
 St_Ame %>% 
+  filter(new_cases > 10) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
@@ -315,18 +322,19 @@ St_Ame %>%
 
 #Unspecified
 Un_Spe %>% 
-  ggplot(mapping = aes(x = Date, y = total_cases))+
+  ggplot(mapping = aes(Date,total_cases))+
   geom_point()
 
 Un_Spe %>% 
   ggplot(aes(Date, total_deaths))+
     geom_point()
 
-Un_Spe %>% 
+Un_Spe %>%
+  filter(new_cases > 10) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
 
-Un_Spe %>% 
+Un_Spe %>%
   ggplot(aes(total_cases, total_deaths))+
   geom_point()
