@@ -174,7 +174,7 @@ Afri %>%
   facet_wrap(~location)
 
 Afri %>%
-  filter(new_cases > 10) %>% 
+  filter(new_cases > 10)%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
@@ -196,7 +196,7 @@ Euro %>%
   facet_wrap(~location)
 
 Euro %>% 
-  filter(new_cases > 10) %>% 
+  filter(new_cases > 10)%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
@@ -219,7 +219,7 @@ Asia %>%
   facet_wrap(~location)
 
 Asia %>% 
-  filter(new_cases > 10) %>% 
+  filter(new_cases > 10)%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
@@ -242,7 +242,7 @@ Isl %>%
   facet_wrap(~location)
 
 Isl %>% 
-  filter(new_cases > 10) %>% 
+  filter(new_cases > 10)%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)
