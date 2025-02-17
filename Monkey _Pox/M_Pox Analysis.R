@@ -166,174 +166,275 @@ ggplot( data = Afri, mapping = aes(x = Date, y = total_deaths))+
 Afri %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')
 
 Afri %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')
+
 
 Afri %>%
   filter(new_cases > mean(new_cases))%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')
+
 
 Afri %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')
+
 
 # Europe
 Euro %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')
+
 
 Euro %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')
+
 
 Euro %>% 
   filter(new_cases > mean(new_cases))%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')
+
 
 Euro %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')
+
 
 
 #Asia
 Asia %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')
+
 
 Asia %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')
+
 
 Asia %>% 
   filter(new_cases > mean(new_cases))%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')
+
 
 Asia %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')
+
 
 
 #Island Nations
 Isl %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')
+
 
 Isl %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')
+
 
 Isl %>% 
   filter(new_cases > mean(new_cases))%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')
+
 
 Isl %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases0')
+
 
 
 #Oceiana
 Ocea %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')
+
 
 Ocea %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')
+
 
 Ocea %>% 
   filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')
+
 
 Ocea %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  theme_dark()+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')
+
 
 
 #North_America
 Nt_Ame %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases', x = 'Date', y ='Total Cases')
 
 Nt_Ame %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title ='Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')
+
 
 Nt_Ame %>% 
   filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title ='Progression of New Cases'  , y= 'New Cases' , x= 'Date')
+
 
 Nt_Ame %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')
+
 
 #South_America
 St_Ame %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')
+
 
 St_Ame %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Cases' , x= 'Date')
+
 
 St_Ame %>% 
   filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')
+
 
 St_Ame %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
-  facet_wrap(~location)
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')
+
 
 #Unspecified
 Un_Spe %>% 
   ggplot(mapping = aes(Date,total_cases))+
-  geom_point()
+  geom_point()+
+  labs(main ='Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')
+
 
 Un_Spe %>% 
   ggplot(aes(Date, total_deaths))+
-    geom_point()
+  geom_point()+
+  labs(main ='Date-Total Deaths'  , y= 'Total Deaths' , x= 'Date')
+
 
 Un_Spe %>%
   filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
-  geom_point()
+  geom_point()+
+  labs(main ='Progression of New Cases'  , y= 'New Cases' , x= 'Date')
+
 
 Un_Spe %>%
   ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  theme_minimal()+
+  labs(main ='Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')
+
+
+
+
+#visualization Test
+#class  
+Un_Spe %>%
+  ggplot(aes(Date, total_deaths))+
+  geom_bin_2d()
+
+Un_Spe %>%
+  ggplot(aes(total_deaths))+
+  geom_bar()
+
+Un_Spe %>%
+  ggplot(aes(total_cases, total_deaths), color = iso_code )+
+  geom_point()+
+  geom_smooth()+
+  theme_minimal()
+
+St_Ame %>% 
+  ggplot(aes(total_cases, total_deaths), color = Date)+
+  geom_point()+
+  theme_minimal()+
+  facet_wrap(~location)
+
+#yet to figure out 
+Un_Spe %>%
+  ggplot(aes(Date, total_deaths))+
   geom_point()
+
+Un_Spe %>%
+  ggplot(aes(Date, total_deaths))+
+  geom_pointrange()
+
+Un_Spe %>%
+  ggplot(aes(total_cases, total_deaths))+
+  geom_errorbar()
