@@ -12,7 +12,7 @@ library(Hmisc)
 Dates<- as.Date(M_Pox$date)
 M_Pox <- mutate(M_Pox,Date = Dates)
 
-#Grouped into locations of the world(Continents)
+#For better data exploration the data set has been Grouped into locations of the world(Continents)
 Afri <- M_Pox%>%
   filter(location %in% c("Africa", "Benin","Cameroon","Central African Republic",
                          "Congo","Cote d'Ivoire","Democratic Republic of Congo",
@@ -178,7 +178,6 @@ Afri %>%
 
 
 Afri %>%
-  filter(new_cases > mean(new_cases))%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -188,7 +187,7 @@ Afri %>%
 
 Afri %>% 
   ggplot(aes(total_cases, total_deaths))+
-  geom_point()+
+  geom_point( size = 1)+
   facet_wrap(~location)+
   labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')+
   theme_minimal()
@@ -282,7 +281,7 @@ Isl %>%
 
 
 Isl %>% 
-  filter(new_cases > mean(new_cases))%>% 
+  filter(new_cases > 10)%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -299,7 +298,7 @@ Isl %>%
 
 
 
-#Oceiana
+#Oceania
 Ocea %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
@@ -350,9 +349,9 @@ Nt_Ame %>%
   labs(title ='Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
   theme_minimal()
 
-
+#These Countries registered over a 100 new cases 
 Nt_Ame %>% 
-  filter(new_cases > mean(new_cases)) %>% 
+  filter(new_cases > 100) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -386,7 +385,7 @@ St_Ame %>%
 
 
 St_Ame %>% 
-  filter(new_cases > mean(new_cases)) %>% 
+  filter(new_cases > 100) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -406,22 +405,22 @@ St_Ame %>%
 Un_Spe %>% 
   ggplot(mapping = aes(Date,total_cases))+
   geom_point()+
-  labs(main ='Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')+
   theme_minimal()
 
 
 Un_Spe %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
-  labs(main ='Date-Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
+  labs(title = 'Date-Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
   theme_minimal()
 
 
 Un_Spe %>%
-  filter(new_cases > mean(new_cases)) %>% 
+  filter(new_cases > 1000) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
-  labs(main ='Progression of New Cases'  , y= 'New Cases' , x= 'Date')+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')+
   theme_minimal()
 
 
@@ -429,7 +428,7 @@ Un_Spe %>%
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   theme_minimal()+
-  labs(main ='Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')+
   theme_minimal()
 
 
