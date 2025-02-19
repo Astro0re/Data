@@ -16,7 +16,7 @@ M_Pox <- mutate(M_Pox,Date = Dates)
 Afri <- M_Pox%>%
   filter(location %in% c("Africa", "Benin","Cameroon","Central African Republic",
                          "Congo","Cote d'Ivoire","Democratic Republic of Congo",
-                         'Egypt','France','Ghana','Guinea','Kenya','Liberia','Morocco',
+                         'Egypt','Ghana','Guinea','Kenya','Liberia','Morocco',
                          'Mozambique','Nigeria','Rwanda','South Africa','Sudan','Uganda',
                          'Zambia','Zimbabwe'))
 Euro <- M_Pox%>%
@@ -143,21 +143,22 @@ M_Stat$Regions <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Spe"
 #Data Visualization
 
 #Complied Statistics Visualization
-ggplot(M_Stat, aes(Total_Death))+
-  geom_bar()+
-  theme_minimal()
+ggplot(M_Stat, aes(Regions,Total_Death))+
+  geom_col()+
+  theme_minimal()+
+  labs(title = 'Total Death', x = '', y = '')
 
-ggplot(M_Stat, aes(Total_Cases))+
-  geom_bar()+
-  theme_minimal()
 
-ggplot(M_Stat, aes(Total_Death))+
-  geom_bar()+
-  theme_minimal()
+ggplot(M_Stat, aes(Regions,Total_Cases))+
+  geom_col()+
+  theme_minimal()+
+  labs(title = 'Total Cases', x = '', y = '')
+
 
 ggplot(M_Stat, aes(Death_Rates, Total_Death))+
-  geom_point(size = 5, col= Total_Cases)+
-  theme_minimal()
+  geom_point(size = 4, col= Total_Cases)+
+  theme_minimal()+
+  labs(title = 'Total Death-Death Rate', x = 'Death Rates', y = 'Total Deaths')
 
 
 #General Regional Data Set Visualization.
@@ -178,6 +179,7 @@ Afri %>%
 
 
 Afri %>%
+  filter(new_cases > 100) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -211,7 +213,7 @@ Euro %>%
 
 
 Euro %>% 
-  filter(new_cases > mean(new_cases))%>% 
+  filter(new_cases > 10)%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -316,7 +318,7 @@ Ocea %>%
 
 
 Ocea %>% 
-  filter(new_cases > mean(new_cases)) %>% 
+  filter(new_cases > 20) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -350,6 +352,7 @@ Nt_Ame %>%
   theme_minimal()
 
 #These Countries registered over a 100 new cases 
+#Periods With significant rise in cases of M-Pox
 Nt_Ame %>% 
   filter(new_cases > 100) %>% 
   ggplot(aes(Date, new_cases))+
