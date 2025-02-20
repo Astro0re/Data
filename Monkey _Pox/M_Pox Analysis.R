@@ -430,7 +430,7 @@ Un_Spe %>%
 Un_Spe %>%
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
-  theme_minimal()+
+  geom_smooth()+
   labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')+
   theme_minimal()
 
@@ -443,31 +443,3 @@ Un_Spe %>%
   ggplot(aes(Date, total_deaths))+
   geom_bin_2d()
 
-Un_Spe %>%
-  ggplot(aes(total_deaths))+
-  geom_bar()
-
-Un_Spe %>%
-  ggplot(aes(total_cases, total_deaths), color = iso_code )+
-  geom_point()+
-  geom_smooth()+
-  theme_minimal()
-
-St_Ame %>% 
-  ggplot(aes(total_cases, total_deaths), color = Date)+
-  geom_point()+
-  theme_minimal()+
-  facet_wrap(~location)
-
-#yet to figure out 
-Un_Spe %>%
-  ggplot(aes(Date, total_deaths))+
-  geom_point()
-
-Un_Spe %>%
-  ggplot(aes(Date, total_deaths))+
-  geom_pointrange()
-
-Un_Spe %>%
-  ggplot(aes(total_cases, total_deaths))+
-  geom_errorbar()
