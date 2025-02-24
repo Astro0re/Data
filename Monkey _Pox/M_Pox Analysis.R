@@ -441,5 +441,5 @@ Un_Spe %>%
 #class  
 Un_Spe %>%
   ggplot(aes(Date, total_deaths))+
-  geom_bin_2d()
+  geom_bin_2d(col= Total_Cases)
 

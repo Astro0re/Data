@@ -11,13 +11,13 @@ library(tidyverse)
 library(Hmisc)
 ```
 
-## R Markdown
+## M_Pox Data Analysis
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-#Data Set-up
+# Data Set-up
 
 ```{r}
 M_Pox <- read.csv("C:/Users/USER/Downloads/monkeypox.csv")
@@ -29,7 +29,7 @@ Dates<- as.Date(M_Pox$date)
 M_Pox <- mutate(M_Pox,Date = Dates)
 ```
 
-#Data Filtering
+# Data Filtering
 For better data exploration the data set has been Grouped into locations of the world(Continents)
 
 ```{r}
@@ -183,10 +183,10 @@ M_Stat$Regions <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Spe"
 ```
 
 
-##Plots
+## Plots
 
 You can also embed plots, for example:
-
+## Grouped Statistics
 ```{r, echo=FALSE}
 ggplot(M_Stat, aes(Regions,Total_Death))+
   geom_col()+
@@ -208,7 +208,7 @@ ggplot(M_Stat, aes(Death_Rates, Total_Death))+
   labs(title = 'Total Death-Death Rate', x = 'Death Rates', y = 'Total Deaths')
 ```
 
-#Africa
+## Africa
 ```{r}
 #Africa
 Afri %>% 
@@ -242,8 +242,6 @@ Afri %>%
 ```
 
 
-
-
 ```{r}
 Afri %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -253,9 +251,299 @@ Afri %>%
   theme_minimal()
 ```
 
+## Europe
+```{r}
+Euro %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')+
+  theme_minimal()
+```
+
 
 ```{r}
+Euro %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
+  theme_minimal()
 ```
+
+
+```{r}
+Euro %>% 
+  filter(new_cases > 10)%>% 
+  ggplot(aes(Date, new_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Euro %>% 
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')+
+  theme_minimal()
+```
+
+## Asia
+```{r}
+Asia %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Asia %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Asia %>% 
+  filter(new_cases > mean(new_cases))%>% 
+  ggplot(aes(Date, new_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Asia %>% 
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')+
+  theme_minimal()
+```
+
+## Island Nations
+
+```{r}
+Isl %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Isl %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Isl %>% 
+  filter(new_cases > 10)%>% 
+  ggplot(aes(Date, new_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Isl %>% 
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases0')+
+  theme_minimal()
+```
+
+## Oceania
+
+```{r}
+Ocea %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Ocea %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Ocea %>% 
+  filter(new_cases > 20) %>% 
+  ggplot(aes(Date, new_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Ocea %>% 
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  theme_dark()+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')+
+  theme_minimal()
+```
+
+## North_America
+
+```{r}
+Nt_Ame %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases', x = 'Date', y ='Total Cases')+
+  theme_minimal()
+```
+
+
+```{r}
+Nt_Ame %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title ='Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+#These Countries registered over a 100 new cases 
+#Periods With significant rise in cases of M-Pox
+Nt_Ame %>% 
+  filter(new_cases > 100) %>% 
+  ggplot(aes(Date, new_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title ='Progression of New Cases'  , y= 'New Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+
+```{r}
+Nt_Ame %>% 
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')+
+  theme_minimal()
+```
+
+## South_America
+
+```{r}
+St_Ame %>% 
+  ggplot(mapping = aes(x = Date, y = total_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+St_Ame %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+St_Ame %>% 
+  filter(new_cases > 100) %>% 
+  ggplot(aes(Date, new_cases))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+St_Ame %>% 
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  facet_wrap(~location)+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')+
+  theme_minimal()
+```
+
+## Unspecified
+
+```{r}
+Un_Spe %>% 
+  ggplot(mapping = aes(Date,total_cases))+
+  geom_point()+
+  labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Un_Spe %>% 
+  ggplot(aes(Date, total_deaths))+
+  geom_point()+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Un_Spe %>%
+  filter(new_cases > 1000) %>% 
+  ggplot(aes(Date, new_cases))+
+  geom_point()+
+  labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')+
+  theme_minimal()
+```
+
+
+```{r}
+Un_Spe %>%
+  ggplot(aes(total_cases, total_deaths))+
+  geom_point()+
+  geom_smooth()+
+  labs(title = 'Total Deaths-Total Cases'  , y= 'Total Deaths' , x= 'Total Cases')+
+  theme_minimal()
+```
+
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
