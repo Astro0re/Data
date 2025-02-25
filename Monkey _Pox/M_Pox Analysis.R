@@ -12,6 +12,10 @@ library(Hmisc)
 Dates<- as.Date(M_Pox$date)
 M_Pox <- mutate(M_Pox,Date = Dates)
 
+#Remove Missing data
+M_Pox[is.na(M_Pox)] <- 0
+
+
 #For better data exploration the data set has been Grouped into locations of the world(Continents)
 Afri <- M_Pox%>%
   filter(location %in% c("Africa", "Benin","Cameroon","Central African Republic",
@@ -163,23 +167,25 @@ ggplot(M_Stat, aes(Death_Rates, Total_Death))+
 
 #General Regional Data Set Visualization.
 #Africa
-Afri %>% 
+Afri %>%
+  filter(total_cases > mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
-  geom_point()+
+  geom_point(size = 1)+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')+
   theme_minimal()
 
 Afri %>% 
+  filter(total_deaths > mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
-  geom_point()+
+  geom_point(size = 1)+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
   theme_minimal()
 
 
 Afri %>%
-  filter(new_cases > 100) %>% 
+  filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -188,6 +194,7 @@ Afri %>%
 
 
 Afri %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point( size = 1)+
   facet_wrap(~location)+
@@ -196,7 +203,8 @@ Afri %>%
 
 
 # Europe
-Euro %>% 
+Euro %>%
+  filter(total_cases > mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -205,6 +213,7 @@ Euro %>%
 
 
 Euro %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -213,7 +222,7 @@ Euro %>%
 
 
 Euro %>% 
-  filter(new_cases > 10)%>% 
+  filter(new_cases > mean(new_cases))%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -222,6 +231,7 @@ Euro %>%
 
 
 Euro %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -232,6 +242,8 @@ Euro %>%
 
 #Asia
 Asia %>% 
+  filter(total_cases > mean(total_cases)) %>% 
+  filter(total_cases> mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -240,6 +252,7 @@ Asia %>%
 
 
 Asia %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -257,6 +270,7 @@ Asia %>%
 
 
 Asia %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -267,6 +281,7 @@ Asia %>%
 
 #Island Nations
 Isl %>% 
+  filter(total_cases>mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -274,7 +289,8 @@ Isl %>%
   theme_minimal()
 
 
-Isl %>% 
+Isl %>%
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -283,7 +299,7 @@ Isl %>%
 
 
 Isl %>% 
-  filter(new_cases > 10)%>% 
+  filter(new_cases > mean(new_cases))%>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -291,7 +307,8 @@ Isl %>%
   theme_minimal()
 
 
-Isl %>% 
+Isl %>%
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -301,7 +318,8 @@ Isl %>%
 
 
 #Oceania
-Ocea %>% 
+Ocea %>%
+  filter(total_cases>mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -310,6 +328,7 @@ Ocea %>%
 
 
 Ocea %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -318,7 +337,7 @@ Ocea %>%
 
 
 Ocea %>% 
-  filter(new_cases > 20) %>% 
+  filter(new_cases > Mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -327,6 +346,7 @@ Ocea %>%
 
 
 Ocea %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -338,6 +358,7 @@ Ocea %>%
 
 #North_America
 Nt_Ame %>% 
+  filter(total_cases>mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -345,6 +366,7 @@ Nt_Ame %>%
   theme_minimal()
 
 Nt_Ame %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -354,7 +376,7 @@ Nt_Ame %>%
 #These Countries registered over a 100 new cases 
 #Periods With significant rise in cases of M-Pox
 Nt_Ame %>% 
-  filter(new_cases > 100) %>% 
+  filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -363,6 +385,7 @@ Nt_Ame %>%
 
 
 Nt_Ame %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -372,6 +395,7 @@ Nt_Ame %>%
 
 #South_America
 St_Ame %>% 
+  filter(total_cases>mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -380,6 +404,7 @@ St_Ame %>%
 
 
 St_Ame %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -388,7 +413,7 @@ St_Ame %>%
 
 
 St_Ame %>% 
-  filter(new_cases > 100) %>% 
+  filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   facet_wrap(~location)+
@@ -397,6 +422,7 @@ St_Ame %>%
 
 
 St_Ame %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   facet_wrap(~location)+
@@ -406,6 +432,7 @@ St_Ame %>%
 
 #Unspecified
 Un_Spe %>% 
+  filter(total_cases>mean(total_cases)) %>% 
   ggplot(mapping = aes(Date,total_cases))+
   geom_point()+
   labs(title = 'Progression of Total Cases'  , y= 'Total Cases' , x= 'Date')+
@@ -413,6 +440,7 @@ Un_Spe %>%
 
 
 Un_Spe %>% 
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
   labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
@@ -420,7 +448,7 @@ Un_Spe %>%
 
 
 Un_Spe %>%
-  filter(new_cases > 1000) %>% 
+  filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_point()+
   labs(title = 'Progression of New Cases'  , y= 'New Cases' , x= 'Date')+
@@ -428,6 +456,7 @@ Un_Spe %>%
 
 
 Un_Spe %>%
+  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(total_cases, total_deaths))+
   geom_point()+
   geom_smooth()+
@@ -441,5 +470,5 @@ Un_Spe %>%
 #class  
 Un_Spe %>%
   ggplot(aes(Date, total_deaths))+
-  geom_bin_2d(col= Total_Cases)
+  geom_bin_2d()
 
