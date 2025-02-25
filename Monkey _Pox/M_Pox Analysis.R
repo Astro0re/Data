@@ -415,7 +415,7 @@ Un_Spe %>%
 Un_Spe %>% 
   ggplot(aes(Date, total_deaths))+
   geom_point()+
-  labs(title = 'Date-Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
+  labs(title = 'Progression of Total Deaths'  , y= 'Total Deaths' , x= 'Date')+
   theme_minimal()
 
 
