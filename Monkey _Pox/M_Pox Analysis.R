@@ -290,7 +290,6 @@ Isl %>%
 
 
 Isl %>%
-  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_line()+
   facet_wrap(~location)+
@@ -328,7 +327,6 @@ Ocea %>%
 
 
 Ocea %>% 
-  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_line()+
   facet_wrap(~location)+
@@ -337,7 +335,7 @@ Ocea %>%
 
 
 Ocea %>% 
-  filter(new_cases > Mean(new_cases)) %>% 
+  filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_line()+
   facet_wrap(~location)+
@@ -373,8 +371,6 @@ Nt_Ame %>%
   labs(title ='Progression of Total Deaths in North America'  , y= 'Total Deaths' , x= 'Date')+
   theme_minimal()
 
-#These Countries registered over a 100 new cases 
-#Periods With significant rise in cases of M-Pox
 Nt_Ame %>% 
   filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+

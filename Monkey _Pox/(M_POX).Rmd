@@ -1,7 +1,7 @@
 ---
 title: "M_Pox Analysis"
 author: "Fesobi Oreofeoluwa"
-date: "2025-02-21"
+date: "2025-02-27"
 output: html_document
 ---
 
@@ -13,9 +13,7 @@ library(Hmisc)
 
 ## M_Pox Data Analysis
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+This is an analysis carried out on an M-Pox Data-set from <htpps://catalog.ourworldindata.org>:
 
 # Data Set-up
 
@@ -214,7 +212,6 @@ ggplot(M_Stat, aes(Death_Rates, Total_Death))+
 
 ## Africa
 ```{r}
-#Africa
 Afri %>%
   filter(total_cases > mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
@@ -362,11 +359,10 @@ Isl %>%
 
 ```{r}
 Isl %>%
-  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_line()+
   facet_wrap(~location)+
-  labs(title = 'Progression of Total Deaths in Island Nations'  , y= 'Total Deaths' , x= 'Date')+
+  labs(title = 'Progression of Total Deaths in Island Nations'  , y= 'Total   Deaths' , x= 'Date')+
   theme_minimal()
 ```
 
@@ -407,7 +403,6 @@ Ocea %>%
 
 ```{r}
 Ocea %>% 
-  filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
   geom_line()+
   facet_wrap(~location)+
@@ -418,7 +413,7 @@ Ocea %>%
 
 ```{r}
 Ocea %>% 
-  filter(new_cases > Mean(new_cases)) %>% 
+  filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_line()+
   facet_wrap(~location)+
