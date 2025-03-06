@@ -227,7 +227,9 @@ Euro %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of New Cases in Europe'  , y= 'New Cases' , x= 'Date')+
-  theme_minimal()
+  theme_minimal()+
+  coord_cartesian(xlim = , ylim = c(0,1000))
+
 
 
 Euro %>% 
@@ -387,7 +389,7 @@ Nt_Ame %>%
   facet_wrap(~location)+
   labs(title = 'Total Deaths-Total Cases in North America'  , y= 'Total Deaths' , x= 'Total Cases')+
   theme_minimal()
-
+  
 
 #South_America
 St_Ame %>% 
@@ -396,7 +398,8 @@ St_Ame %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Cases in South America'  , y= 'Total Cases' , x= 'Date')+
-  theme_minimal()
+  theme_minimal()+
+  coord_cartesian(xlim = , ylim = c(0,15000))
 
 
 St_Ame %>% 
