@@ -54,5 +54,7 @@ CREATE TABLE External_Factors_Info (
 );
 
 -- @block
-INSERT DATA INTO TABLE Heart_Attacks, Health_Info, Lifestyle_Info, External_Factors_Info
-FROM '/Data/Heart Attacks in Russia/heart_attack_russia_youth_vs_adult for sql.csv'
+SELECT * FROM Heart_Attacks;
+SELECT * FROM Health_Info;
+SELECT * FROM Lifestyle_Info;
+SELECT * FROM External_Factors_Info;
