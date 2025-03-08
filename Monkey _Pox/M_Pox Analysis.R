@@ -59,19 +59,17 @@ Isl <- M_Pox%>%
 Un_Spe <- M_Pox%>%
   filter(location %in% c("World"))
 
-#Death rate is Total Cases/Total Death 
-Death_R <-mutate(M_Pox,death_rate = M_Pox$total_deaths/M_Pox$total_cases*100)
-Afri<- mutate(Afri,death_rate = Afri$total_deaths/Afri$total_cases*100)
-Asia<- mutate(Asia,death_rate = Asia$total_deaths/Asia$total_cases*100)
-Euro<- mutate(Euro,death_rate = Euro$total_deaths/Euro$total_cases*100)
-Isl<- mutate(Isl,death_rate = Isl$total_deaths/Isl$total_cases*100)
-Nt_Ame<- mutate(Nt_Ame,death_rate = Nt_Ame$total_deaths/Nt_Ame$total_cases*100)
-Ocea<- mutate(Ocea,death_rate = Ocea$total_deaths/Ocea$total_cases*100)
-St_Ame<- mutate(St_Ame,death_rate = St_Ame$total_deaths/St_Ame$total_cases*100)
-Un_Spe<- mutate(Un_Spe,death_rate = Un_Spe$total_deaths/Un_Spe$total_cases*100)
+#Average Death rate
+Afri_dr <- mean(Afri$death_rate, na.rm = TRUE)
+Asia_dr <- mean(Asia$death_rate, na.rm = TRUE)
+Euro_dr <- mean(Euro$death_rate, na.rm = TRUE)
+Isl_dr <- mean(Isl$death_rate, na.rm = TRUE)
+Nt_Ame_dr <- mean(Nt_Ame$death_rate, na.rm = TRUE)
+Ocea_dr <- mean(Ocea$death_rate, na.rm = TRUE)
+St_Ame_dr <- mean(St_Ame$death_rate, na.rm = TRUE)
+Un_Spe_dr <- mean(Un_Spe$death_rate, na.rm = TRUE)
 
-MPox_Death_Rate <- Death_R
-
+Death_Rates <- c(Afri_dr,Asia_dr,Euro_dr,Isl_dr,Nt_Ame_dr,Ocea_dr,St_Ame_dr,Un_Spe_dr)
 #Average Case reported, Death Rate, New cases, Suspected cases in each region
 
 #Average Total Cases 
@@ -105,17 +103,20 @@ Total_Death <- c(Afri_td,Asia_td,Euro_td,Isl_td,Nt_Ame_td,Ocea_td,St_Ame_td,Un_S
 
 #Large number of death recorded in North America, South America and Africa 
 
-#Average Death rate
-Afri_dr <- mean(Afri$death_rate, na.rm = TRUE)
-Asia_dr <- mean(Asia$death_rate, na.rm = TRUE)
-Euro_dr <- mean(Euro$death_rate, na.rm = TRUE)
-Isl_dr <- mean(Isl$death_rate, na.rm = TRUE)
-Nt_Ame_dr <- mean(Nt_Ame$death_rate, na.rm = TRUE)
-Ocea_dr <- mean(Ocea$death_rate, na.rm = TRUE)
-St_Ame_dr <- mean(St_Ame$death_rate, na.rm = TRUE)
-Un_Spe_dr <- mean(Un_Spe$death_rate, na.rm = TRUE)
+#Death rate is Total Cases/Total Death 
+Death_R <-mutate(M_Pox,death_rate = M_Pox$total_deaths/M_Pox$total_cases*100)
+Afri<- mutate(Afri,death_rate = Afri$total_deaths/Afri$total_cases*100)
+Asia<- mutate(Asia,death_rate = Asia$total_deaths/Asia$total_cases*100)
+Euro<- mutate(Euro,death_rate = Euro$total_deaths/Euro$total_cases*100)
+Isl<- mutate(Isl,death_rate = Isl$total_deaths/Isl$total_cases*100)
+Nt_Ame<- mutate(Nt_Ame,death_rate = Nt_Ame$total_deaths/Nt_Ame$total_cases*100)
+Ocea<- mutate(Ocea,death_rate = Ocea$total_deaths/Ocea$total_cases*100)
+St_Ame<- mutate(St_Ame,death_rate = St_Ame$total_deaths/St_Ame$total_cases*100)
+Un_Spe<- mutate(Un_Spe,death_rate = Un_Spe$total_deaths/Un_Spe$total_cases*100)
 
-Death_Rates <- c(Afri_dr,Asia_dr,Euro_dr,Isl_dr,Nt_Ame_dr,Ocea_dr,St_Ame_dr,Un_Spe_dr)
+MPox_Death_Rate <- Death_R
+
+
 
 #AFRICA WHEN COMPARED TO EUROPE HAS LESS TOTAL CASES BUT A HIGHER DEATH RATE 
 #(ACCORDING TO THIS DATASET)
@@ -147,57 +148,56 @@ M_Stat$Regions <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Spe"
 #Data Visualization
 
 #Complied Statistics Visualization
-ggplot(M_Stat, aes(Regions,Total_Death, color = Regions))+
+ggplot(M_Stat, aes(Regions,Total_Death))+
   geom_col()+
-  theme_minimal()+
+  theme_bw()+
   labs(title = 'Average Total Death', x = 'Regions', y = 'Total Deaths')+
-  coord_cartesian(xlim = , ylim = c(0,50))
+  coord_cartesian(xlim = , ylim = c(0,40))
   
 
 
-ggplot(M_Stat, aes(Regions,Total_Cases, color = Regions))+
+ggplot(M_Stat, aes(Regions,Total_Cases))+
   geom_col()+
-  theme_minimal()+
+  theme_bw()+
   labs(title = 'Average Total Cases', x = 'Regions', y = 'Total Cases')+
-  coord_cartesian(xlim = , ylim = c(0,7000))
+  coord_cartesian(xlim = , ylim = c(0,9000))
   
 
 
-ggplot(M_Stat, aes(Regions,Death_Rates, color = Regions))+
-  geom_point(size = 4, )+
-  theme_minimal()+
-  labs(title = 'Death Rates', x = 'Region', y = 'Death Rate')
+ggplot(M_Stat, aes(Regions, Death_Rates, colour = Regions))+
+  geom_point(size = 4)+
+  theme_bw()+
+  labs(title = 'Death Rates', x = 'Regions', y = 'Death Rates')
 
 
-facet_wrap(~location)+
-
-
-#General Regional Data Set Visualization.
+#Ggeom_point()#General Regional Data Set Visualization.
 #Africa
 Afri %>%
   filter(total_cases > mean(total_cases)) %>% 
-  ggplot(mapping = aes(x = Date, y = total_cases, color = location))+
+  ggplot(mapping = aes(x = Date, y = total_cases))+
   geom_line(size = 1)+
+  facet_wrap(~location)+
   labs(title = 'Progression of Total Cases in Africa'  , y= 'Total Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 Afri %>% 
   filter(total_deaths > mean(total_deaths)) %>% 
-  ggplot(aes(Date, total_deaths, color = location))+
+  ggplot(aes(Date, total_deaths))+
   geom_line(size = 1)+
+  facet_wrap(~location)+
   labs(title = 'Progression of Total Deaths in Africa'  , y= 'Total Deaths' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
 Afri %>%
-  filter(new_cases > 25) %>% 
+  filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of New Cases in Africa'  , y= 'New Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -207,7 +207,7 @@ Afri %>%
   geom_line( size = 1)+
   facet_wrap(~location)+
   labs(title = 'Total Deaths-Total Cases in Africa'  , y= 'Total Deaths' , x= 'Total Cases')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -218,7 +218,7 @@ Euro %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Cases in Europe'  , y= 'Total Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -228,7 +228,7 @@ Euro %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Deaths in Europe'  , y= 'Total Deaths' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -238,7 +238,7 @@ Euro %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of New Cases in Europe'  , y= 'New Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   coord_cartesian(xlim = , ylim = c(0,1000))+
   theme(panel.spacing = unit(1, "cm"))
 
@@ -250,7 +250,7 @@ Euro %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Total Deaths-Total Cases in Europe'  , y= 'Total Deaths' , x= 'Total Cases')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -263,7 +263,7 @@ Asia %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Cases in Asia'  , y= 'Total Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -273,7 +273,7 @@ Asia %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Deaths in Asia'  , y= 'Total Deaths' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -283,7 +283,7 @@ Asia %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of New Cases in Asia'  , y= 'New Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -293,7 +293,7 @@ Asia %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Total Deaths-Total Cases in Asia'  , y= 'Total Deaths' , x= 'Total Cases')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -305,7 +305,7 @@ Isl %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Cases in Island Nations'  , y= 'Total Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -314,7 +314,7 @@ Isl %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Deaths in Island Nations'  , y= 'Total Deaths' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -324,7 +324,7 @@ Isl %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of New Cases in Island Nations'  , y= 'New Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -334,7 +334,7 @@ Isl %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Total Deaths-Total Cases in Island Nations'  , y= 'Total Deaths' , x= 'Total Cases0')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -346,7 +346,7 @@ Ocea %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Cases in Oceania'  , y= 'Total Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -355,7 +355,7 @@ Ocea %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Deaths in Oceania'  , y= 'Total Deaths' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -365,7 +365,7 @@ Ocea %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of New Cases in Oceania'  , y= 'New Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -376,7 +376,7 @@ Ocea %>%
   facet_wrap(~location)+
   theme_dark()+
   labs(title = 'Total Deaths-Total Cases in Oceania'  , y= 'Total Deaths' , x= 'Total Cases')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -388,7 +388,7 @@ Nt_Ame %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Cases in North America', x = 'Date', y ='Total Cases')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 Nt_Ame %>% 
@@ -397,7 +397,7 @@ Nt_Ame %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title ='Progression of Total Deaths in North America'  , y= 'Total Deaths' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 Nt_Ame %>% 
@@ -406,7 +406,7 @@ Nt_Ame %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title ='Progression of New Cases in North America'  , y= 'New Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -416,7 +416,7 @@ Nt_Ame %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Total Deaths-Total Cases in North America'  , y= 'Total Deaths' , x= 'Total Cases')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
   
 
@@ -427,7 +427,7 @@ St_Ame %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Cases in South America'  , y= 'Total Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   coord_cartesian(xlim = , ylim = c(0,15000))+
   theme(panel.spacing = unit(1, "cm"))
 
@@ -438,7 +438,7 @@ St_Ame %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of Total Deaths in South America'  , y= 'Total Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -448,7 +448,7 @@ St_Ame %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Progression of New Cases in South America'  , y= 'New Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -458,7 +458,7 @@ St_Ame %>%
   geom_line()+
   facet_wrap(~location)+
   labs(title = 'Total Deaths-Total Cases in South America'  , y= 'Total Deaths' , x= 'Total Cases')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -468,7 +468,7 @@ Un_Spe %>%
   ggplot(mapping = aes(Date,total_cases))+
   geom_line()+
   labs(title = 'Progression of Total Cases in Unspecified Regions'  , y= 'Total Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -477,7 +477,7 @@ Un_Spe %>%
   ggplot(aes(Date, total_deaths))+
   geom_line()+
   labs(title = 'Progression of Total Deaths in Unspecified Regions'  , y= 'Total Deaths' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -486,7 +486,7 @@ Un_Spe %>%
   ggplot(aes(Date, new_cases))+
   geom_line()+
   labs(title = 'Progression of New Cases in Unspecified Regions'  , y= 'New Cases' , x= 'Date')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
@@ -496,7 +496,7 @@ Un_Spe %>%
   geom_line()+
   geom_line()+
   labs(title = 'Total Deaths-Total Cases in Unspecified Regions'  , y= 'Total Deaths' , x= 'Total Cases')+
-  theme_minimal()+
+  theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
 
