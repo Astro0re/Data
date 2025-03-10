@@ -213,7 +213,8 @@ Afri %>%
   labs(title = 'Total Deaths-Total Cases in Africa'  , y= 'Total Deaths' , x= 'Total Cases')+
   theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
-
+#Summary 
+#The Democratic Republic of Congo can be identified as the most badly affected Country in the African Region.
 
 # Europe
 Euro %>%
@@ -256,7 +257,8 @@ Euro %>%
   labs(title = 'Total Deaths-Total Cases in Europe'  , y= 'Total Deaths' , x= 'Total Cases')+
   theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
-
+# Summary 
+#Different Countries where affected including; Spain, Belgium , United Kingdom and so on, with no single country taking a massive brunt of the Disease.
 
 
 #Asia
@@ -300,7 +302,8 @@ Asia %>%
   theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
-
+# Summary 
+#China appears to be the most infected Country with the largest total cases, but seeming to have learnt from the Covid-19 Pandemic, this appears to have been managed properly.
 
 #Island Nations
 Isl %>% 
@@ -341,6 +344,8 @@ Isl %>%
   theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
+# Summary 
+#The Island Countries despite being infected, recorded no death.
 
 
 #Oceania
@@ -383,6 +388,8 @@ Ocea %>%
   theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
+# Summary 
+#Similar to the Island Nations, there was a surge in recorded cases but no death was recorded.
 
 
 #North_America
@@ -422,7 +429,9 @@ Nt_Ame %>%
   labs(title = 'Total Deaths-Total Cases in North America'  , y= 'Total Deaths' , x= 'Total Cases')+
   theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
-  
+
+# Summary 
+#The United States look to be most affected Country in the North American Region. 
 
 #South_America
 St_Ame %>% 
@@ -465,6 +474,8 @@ St_Ame %>%
   theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
+# Summary 
+#Brazil recorded the most amount of cases, but Peru recorded the most amount of death.
 
 #Unspecified
 Un_Spe %>% 
@@ -503,12 +514,15 @@ Un_Spe %>%
   theme_bw()+
   theme(panel.spacing = unit(1, "cm"))
 
+# Summary 
+#Highest amount of cases, deaths among all the regions.
 
-# Findings
-# Despite being the regions with the least amount  Total
-#
-#
-#
+# Findings 
+# North-America vs Africa 
+#According to the graph of the grouped Statistics, excluding the unspecified region, there was a larger count of Average Total Death in the North American Region but this was not the region with the highest degree of Death rates, that would be Africa, this suggest that there may have been lack of proper facilities to handle cases of M-pox in that region leading to such a high Fatality rate in that region.
+
+# Unspecified Region 
+#The lack of proper data for the location causes a lot of hindrances when trying to understand this data as it has the largest recorded Average total number of cases and as well as Average total Deaths, this group however has one of the smallest Average Death Rate count indicating that despite the large number the cases, these cases where properly managed and extreme cases of death was prevented.
 
 #visualization Test
 #class  
