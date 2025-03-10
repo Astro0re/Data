@@ -11,11 +11,11 @@ library(tidyverse)
 library(Hmisc)
 ```
 
-## M_Pox Data Analysis
+# M_Pox Data Analysis
 
 This is an analysis carried out on an M-Pox Data-set from <htpps://catalog.ourworldindata.org>:
 
-# Data Set-up
+## Data Set-up
 
 ```{r}
 M_Pox <- read.csv("C:/Users/USER/Downloads/monkeypox.csv")
@@ -31,7 +31,7 @@ Missing data is removed.
 M_Pox[is.na(M_Pox)] <- 0
 ```
 
-# Data Filtering
+### Data Filtering
 For better data exploration the data set has been Grouped into locations of the world(Continents)
 
 ```{r}
@@ -128,14 +128,14 @@ Data that provides key information such as: Average Case reported, Death Rate, N
 
 ```{r}
 # Average Total Cases
-Afri_TC <- mean(Afri$total_cases,na.rm = TRUE)
-Asia_TC <- mean(Asia$total_cases,na.rm = TRUE)
-Euro_TC <- mean(Euro$total_cases,na.rm = TRUE)
-Isl_TC <- mean(Isl$total_cases,na.rm = TRUE)
-Nt_Ame_TC <- mean(Nt_Ame$total_cases,na.rm = TRUE)
-Ocea_TC <- mean(Ocea$total_cases,na.rm = TRUE)
-St_Ame_TC <- mean(St_Ame$total_cases,na.rm = TRUE)
-Un_Spe_TC <- mean(Un_Spe$total_cases,na.rm = TRUE)
+Afri_TC <- mean(Afri$total_cases)
+Asia_TC <- mean(Asia$total_cases)
+Euro_TC <- mean(Euro$total_cases)
+Isl_TC <- mean(Isl$total_cases)
+Nt_Ame_TC <- mean(Nt_Ame$total_cases)
+Ocea_TC <- mean(Ocea$total_cases)
+St_Ame_TC <- mean(St_Ame$total_cases)
+Un_Spe_TC <- mean(Un_Spe$total_cases)
 Total_Cases <- c(Afri_TC,Euro_TC,Asia_TC,Isl_TC,Ocea_TC,Nt_Ame_TC,St_Ame_TC,Un_Spe_TC)
 
 ```
@@ -143,14 +143,14 @@ Total_Cases <- c(Afri_TC,Euro_TC,Asia_TC,Isl_TC,Ocea_TC,Nt_Ame_TC,St_Ame_TC,Un_S
  
 ```{r}
 # Average Total Death
-Afri_td <- mean(Afri$total_deaths, na.rm = TRUE)
-Asia_td <- mean(Asia$total_deaths, na.rm = TRUE)
-Euro_td <- mean(Euro$total_deaths, na.rm = TRUE)
-Isl_td <- mean(Isl$total_deaths, na.rm = TRUE)
-Nt_Ame_td <- mean(Nt_Ame$total_deaths, na.rm = TRUE)
-Ocea_td <- mean(Ocea$total_deaths, na.rm = TRUE)
-St_Ame_td <- mean(St_Ame$total_deaths, na.rm = TRUE)
-Un_Spe_td <- mean(Un_Spe$total_deaths, na.rm = TRUE)
+Afri_td <- mean(Afri$total_deaths )
+Asia_td <- mean(Asia$total_deaths )
+Euro_td <- mean(Euro$total_deaths )
+Isl_td <- mean(Isl$total_deaths )
+Nt_Ame_td <- mean(Nt_Ame$total_deaths )
+Ocea_td <- mean(Ocea$total_deaths )
+St_Ame_td <- mean(St_Ame$total_deaths )
+Un_Spe_td <- mean(Un_Spe$total_deaths )
 Total_Death <- c(Afri_td,Asia_td,Euro_td,Isl_td,Nt_Ame_td,Ocea_td,St_Ame_td,Un_Spe_td)
 
 ```
@@ -158,14 +158,14 @@ Total_Death <- c(Afri_td,Asia_td,Euro_td,Isl_td,Nt_Ame_td,Ocea_td,St_Ame_td,Un_S
 
 ```{r}
 # Average Suspected cases(Undocumented)
-Afri_sc <- mean(Afri$suspected_cases_cumulative, na.rm = TRUE)
-Asia_sc <- mean(Asia$suspected_cases_cumulative, na.rm = TRUE)
-Euro_sc <- mean(Euro$suspected_cases_cumulative, na.rm = TRUE)
-Isl_sc <- mean(Isl$suspected_cases_cumulative, na.rm = TRUE)
-Nt_Ame_sc <- mean(Nt_Ame$suspected_cases_cumulative, na.rm = TRUE)
-Ocea_sc <- mean(Ocea$suspected_cases_cumulative, na.rm = TRUE)
-St_Ame_sc <- mean(St_Ame$suspected_cases_cumulative, na.rm = TRUE)
-Un_Spe_sc <- mean(Un_Spe$suspected_cases_cumulative, na.rm = TRUE)
+Afri_sc <- mean(Afri$suspected_cases_cumulative )
+Asia_sc <- mean(Asia$suspected_cases_cumulative )
+Euro_sc <- mean(Euro$suspected_cases_cumulative )
+Isl_sc <- mean(Isl$suspected_cases_cumulative )
+Nt_Ame_sc <- mean(Nt_Ame$suspected_cases_cumulative )
+Ocea_sc <- mean(Ocea$suspected_cases_cumulative )
+St_Ame_sc <- mean(St_Ame$suspected_cases_cumulative )
+Un_Spe_sc <- mean(Un_Spe$suspected_cases_cumulative )
 
 Suspected_Cases <- c(Afri_sc,Asia_sc,Euro_sc,Isl_sc,Nt_Ame_sc,Ocea_sc,St_Ame_sc,Un_Spe_sc)
 
@@ -174,14 +174,14 @@ Suspected_Cases <- c(Afri_sc,Asia_sc,Euro_sc,Isl_sc,Nt_Ame_sc,Ocea_sc,St_Ame_sc,
 
 ```{r}
 # Average Death rate
-Afri_dr <- mean(Afri$death_rate, na.rm = TRUE)
-Asia_dr <- mean(Asia$death_rate, na.rm = TRUE)
-Euro_dr <- mean(Euro$death_rate, na.rm = TRUE)
-Isl_dr <- mean(Isl$death_rate, na.rm = TRUE)
-Nt_Ame_dr <- mean(Nt_Ame$death_rate, na.rm = TRUE)
-Ocea_dr <- mean(Ocea$death_rate, na.rm = TRUE)
-St_Ame_dr <- mean(St_Ame$death_rate, na.rm = TRUE)
-Un_Spe_dr <- mean(Un_Spe$death_rate, na.rm = TRUE)
+Afri_dr <- mean(Afri$death_rate, na.rm = TRUE )
+Asia_dr <- mean(Asia$death_rate, na.rm = TRUE )
+Euro_dr <- mean(Euro$death_rate, na.rm = TRUE )
+Isl_dr <- mean(Isl$death_rate, na.rm = TRUE )
+Nt_Ame_dr <- mean(Nt_Ame$death_rate, na.rm = TRUE )
+Ocea_dr <- mean(Ocea$death_rate, na.rm = TRUE )
+St_Ame_dr <- mean(St_Ame$death_rate, na.rm = TRUE )
+Un_Spe_dr <- mean(Un_Spe$death_rate, na.rm = TRUE )
 
 Death_Rates <- c(Afri_dr,Asia_dr,Euro_dr,Isl_dr,Nt_Ame_dr,Ocea_dr,St_Ame_dr,Un_Spe_dr)
 ```
@@ -192,6 +192,7 @@ Death_Rates <- c(Afri_dr,Asia_dr,Euro_dr,Isl_dr,Nt_Ame_dr,Ocea_dr,St_Ame_dr,Un_S
 M_Stat<- cbind(Death_Rates,Suspected_Cases,Total_Cases,Total_Death)
 M_Stat<- data.frame(M_Stat)
 M_Stat$Regions <- c("Afri","Asia","Euro","Isl","Nt_Ame","Ocea","St_Ame","Un_Spe")
+M_Stat
 ```
 
 
@@ -207,7 +208,7 @@ ggplot(M_Stat, aes(Regions,Total_Death))+
   coord_cartesian(xlim = , ylim = c(0,40))
 ```
 
-```{r}
+```{r, echo=FALSE}
 ggplot(M_Stat, aes(Regions,Total_Cases))+
   geom_col()+
   theme_bw()+
@@ -215,7 +216,7 @@ ggplot(M_Stat, aes(Regions,Total_Cases))+
   coord_cartesian(xlim = , ylim = c(0,9000))
 ```
 
-```{r}
+```{r, echo=FALSE}
 ggplot(M_Stat, aes(Regions, Death_Rates, colour = Regions))+
   geom_point(size = 4)+
   theme_bw()+
@@ -223,7 +224,7 @@ ggplot(M_Stat, aes(Regions, Death_Rates, colour = Regions))+
 ```
 
 ### Africa
-```{r}
+```{r, echo=FALSE}
 Afri %>%
   filter(total_cases > mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
@@ -235,7 +236,7 @@ Afri %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Afri %>% 
   filter(total_deaths > mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
@@ -248,7 +249,7 @@ Afri %>%
 
 
 
-```{r}
+```{r, echo=FALSE}
 Afri %>%
   filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
@@ -260,7 +261,7 @@ Afri %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Afri %>% 
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -271,8 +272,11 @@ Afri %>%
   theme(panel.spacing = unit(1, "cm"))
 ```
 
+#### Summary 
+The Democratic Republic of Congo can be identified as the most badly affected Country in the African Region.
+
 ### Europe
-```{r}
+```{r, echo=FALSE}
 Euro %>%
   filter(total_cases > mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
@@ -284,7 +288,7 @@ Euro %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Euro %>% 
   filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
@@ -296,7 +300,7 @@ Euro %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Euro %>% 
   filter(new_cases > mean(new_cases))%>% 
   ggplot(aes(Date, new_cases))+
@@ -308,7 +312,7 @@ Euro %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Euro %>% 
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -319,8 +323,11 @@ Euro %>%
   theme(panel.spacing = unit(1, "cm"))
 ```
 
+#### Summary 
+Different Countries where affected including; Spain, Belgium , United Kingdom and so on, with no single country taking a massive brunt of the Disease.
+
 ### Asia
-```{r}
+```{r, echo=FALSE}
 Asia %>% 
   filter(total_cases > mean(total_cases)) %>% 
   filter(total_cases> mean(total_cases)) %>% 
@@ -333,7 +340,7 @@ Asia %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Asia %>% 
   filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
@@ -345,7 +352,7 @@ Asia %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Asia %>% 
   filter(new_cases > mean(new_cases))%>% 
   ggplot(aes(Date, new_cases))+
@@ -357,7 +364,7 @@ Asia %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Asia %>% 
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -368,9 +375,12 @@ Asia %>%
   theme(panel.spacing = unit(1, "cm"))
 ```
 
+#### Summary 
+China appears to be the most infected Country with the largest total cases, but seeming to have learnt from the Covid-19 Pandemic, this appears to have been managed properly.
+
 ### Island Nations
 
-```{r}
+```{r, echo=FALSE}
 Isl %>% 
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
@@ -382,7 +392,7 @@ Isl %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Isl %>%
   ggplot(aes(Date, total_deaths))+
   geom_line()+
@@ -393,7 +403,7 @@ Isl %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Isl %>% 
   filter(new_cases > mean(new_cases))%>% 
   ggplot(aes(Date, new_cases))+
@@ -405,7 +415,7 @@ Isl %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Isl %>%
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -416,9 +426,12 @@ Isl %>%
   theme(panel.spacing = unit(1, "cm"))
 ```
 
+#### Summary 
+The Island Countries despite being infected, recorded no death.
+
 ### Oceania
 
-```{r}
+```{r, echo=FALSE}
 Ocea %>%
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
@@ -430,7 +443,7 @@ Ocea %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Ocea %>% 
   ggplot(aes(Date, total_deaths))+
   geom_line()+
@@ -441,7 +454,7 @@ Ocea %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Ocea %>% 
   filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
@@ -453,7 +466,7 @@ Ocea %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Ocea %>% 
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -465,9 +478,12 @@ Ocea %>%
   theme(panel.spacing = unit(1, "cm"))
 ```
 
+#### Summary 
+Similar to the Island Nations, there was a surge in recorded cases but no death was recorded.
+
 ### North_America
 
-```{r}
+```{r, echo=FALSE}
 Nt_Ame %>% 
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
@@ -479,7 +495,7 @@ Nt_Ame %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Nt_Ame %>% 
   filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
@@ -491,7 +507,7 @@ Nt_Ame %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Nt_Ame %>% 
   filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
@@ -504,7 +520,7 @@ Nt_Ame %>%
 
 
 
-```{r}
+```{r, echo=FALSE}
 Nt_Ame %>% 
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -515,9 +531,12 @@ Nt_Ame %>%
   theme(panel.spacing = unit(1, "cm"))
 ```
 
+#### Summary 
+The United States look to be most affected Country in the North American Region.
+
 ### South_America
 
-```{r}
+```{r, echo=FALSE}
 St_Ame %>% 
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(mapping = aes(x = Date, y = total_cases))+
@@ -529,7 +548,7 @@ St_Ame %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 St_Ame %>% 
   filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
@@ -541,7 +560,7 @@ St_Ame %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 St_Ame %>% 
   filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
@@ -553,7 +572,7 @@ St_Ame %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 St_Ame %>% 
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -564,9 +583,12 @@ St_Ame %>%
   theme(panel.spacing = unit(1, "cm"))
 ```
 
+#### Summary 
+Brazil recorded the most amount of cases, but Peru recorded the most amount of death.
+
 ### Unspecified Region
 
-```{r}
+```{r, echo=FALSE}
 Un_Spe %>% 
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(mapping = aes(Date,total_cases))+
@@ -577,7 +599,7 @@ Un_Spe %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Un_Spe %>% 
   filter(total_deaths>mean(total_deaths)) %>% 
   ggplot(aes(Date, total_deaths))+
@@ -588,7 +610,7 @@ Un_Spe %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Un_Spe %>%
   filter(new_cases > mean(new_cases)) %>% 
   ggplot(aes(Date, new_cases))+
@@ -599,7 +621,7 @@ Un_Spe %>%
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 Un_Spe %>%
   filter(total_cases>mean(total_cases)) %>% 
   ggplot(aes(total_cases, total_deaths))+
@@ -610,6 +632,18 @@ Un_Spe %>%
   theme(panel.spacing = unit(1, "cm"))
 ```
 
+#### Summary 
+Highest amount of cases, deaths among all the regions.
+
+## Findings 
+### North-America vs Africa 
+According to the graph of the grouped Statistics, excluding the unspecified region, there was a larger count of Average Total Death in the North American Region but this was not the region with the highest degree of Death rates, that would be Africa, this suggest that there may have been lack of proper facilities to handle cases of M-pox in that region leading to such a high Fatality rate in that region.
+
+### Unspecified Region 
+The lack of proper data for the location causes a lot of hindrances when trying to understand this data as it has the largest recorded Average total number of cases and as well as Average total Deaths, this group however has one of the smallest Average Death Rate count indicating that despite the large number the cases, these cases where properly managed and extreme cases of death was prevented.
+
+## Git-Hub Repository 
+https://github.com/Astro0re/Data/tree/main/Monkey%20_Pox
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

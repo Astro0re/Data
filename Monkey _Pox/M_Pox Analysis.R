@@ -59,17 +59,22 @@ Isl <- M_Pox%>%
 Un_Spe <- M_Pox%>%
   filter(location %in% c("World"))
 
-#Average Death rate
-Afri_dr <- mean(Afri$death_rate, na.rm = TRUE)
-Asia_dr <- mean(Asia$death_rate, na.rm = TRUE)
-Euro_dr <- mean(Euro$death_rate, na.rm = TRUE)
-Isl_dr <- mean(Isl$death_rate, na.rm = TRUE)
-Nt_Ame_dr <- mean(Nt_Ame$death_rate, na.rm = TRUE)
-Ocea_dr <- mean(Ocea$death_rate, na.rm = TRUE)
-St_Ame_dr <- mean(St_Ame$death_rate, na.rm = TRUE)
-Un_Spe_dr <- mean(Un_Spe$death_rate, na.rm = TRUE)
 
-Death_Rates <- c(Afri_dr,Asia_dr,Euro_dr,Isl_dr,Nt_Ame_dr,Ocea_dr,St_Ame_dr,Un_Spe_dr)
+#Death rate is Total Cases/Total Death 
+Death_R <-mutate(M_Pox,death_rate = M_Pox$total_deaths/M_Pox$total_cases*100)
+Afri<- mutate(Afri,death_rate = Afri$total_deaths/Afri$total_cases*100)
+Asia<- mutate(Asia,death_rate = Asia$total_deaths/Asia$total_cases*100)
+Euro<- mutate(Euro,death_rate = Euro$total_deaths/Euro$total_cases*100)
+Isl<- mutate(Isl,death_rate = Isl$total_deaths/Isl$total_cases*100)
+Nt_Ame<- mutate(Nt_Ame,death_rate = Nt_Ame$total_deaths/Nt_Ame$total_cases*100)
+Ocea<- mutate(Ocea,death_rate = Ocea$total_deaths/Ocea$total_cases*100)
+St_Ame<- mutate(St_Ame,death_rate = St_Ame$total_deaths/St_Ame$total_cases*100)
+Un_Spe<- mutate(Un_Spe,death_rate = Un_Spe$total_deaths/Un_Spe$total_cases*100)
+
+MPox_Death_Rate <- Death_R
+
+
+
 #Average Case reported, Death Rate, New cases, Suspected cases in each region
 
 #Average Total Cases 
@@ -103,19 +108,6 @@ Total_Death <- c(Afri_td,Asia_td,Euro_td,Isl_td,Nt_Ame_td,Ocea_td,St_Ame_td,Un_S
 
 #Large number of death recorded in North America, South America and Africa 
 
-#Death rate is Total Cases/Total Death 
-Death_R <-mutate(M_Pox,death_rate = M_Pox$total_deaths/M_Pox$total_cases*100)
-Afri<- mutate(Afri,death_rate = Afri$total_deaths/Afri$total_cases*100)
-Asia<- mutate(Asia,death_rate = Asia$total_deaths/Asia$total_cases*100)
-Euro<- mutate(Euro,death_rate = Euro$total_deaths/Euro$total_cases*100)
-Isl<- mutate(Isl,death_rate = Isl$total_deaths/Isl$total_cases*100)
-Nt_Ame<- mutate(Nt_Ame,death_rate = Nt_Ame$total_deaths/Nt_Ame$total_cases*100)
-Ocea<- mutate(Ocea,death_rate = Ocea$total_deaths/Ocea$total_cases*100)
-St_Ame<- mutate(St_Ame,death_rate = St_Ame$total_deaths/St_Ame$total_cases*100)
-Un_Spe<- mutate(Un_Spe,death_rate = Un_Spe$total_deaths/Un_Spe$total_cases*100)
-
-MPox_Death_Rate <- Death_R
-
 
 
 #AFRICA WHEN COMPARED TO EUROPE HAS LESS TOTAL CASES BUT A HIGHER DEATH RATE 
@@ -135,6 +127,18 @@ Un_Spe_sc <- mean(Un_Spe$suspected_cases_cumulative, na.rm = TRUE)
 Suspected_Cases <- c(Afri_sc,Asia_sc,Euro_sc,Isl_sc,Nt_Ame_sc,Ocea_sc,St_Ame_sc,Un_Spe_sc)
 
 #Africa has the largest amount of suspected cases, reported in the data set
+
+#Average Death rate
+Afri_dr <- mean(Afri$death_rate, na.rm = TRUE)
+Asia_dr <- mean(Asia$death_rate, na.rm = TRUE)
+Euro_dr <- mean(Euro$death_rate, na.rm = TRUE)
+Isl_dr <- mean(Isl$death_rate, na.rm = TRUE)
+Nt_Ame_dr <- mean(Nt_Ame$death_rate, na.rm = TRUE)
+Ocea_dr <- mean(Ocea$death_rate, na.rm = TRUE)
+St_Ame_dr <- mean(St_Ame$death_rate, na.rm = TRUE)
+Un_Spe_dr <- mean(Un_Spe$death_rate, na.rm = TRUE)
+
+Death_Rates <- c(Afri_dr,Asia_dr,Euro_dr,Isl_dr,Nt_Ame_dr,Ocea_dr,St_Ame_dr,Un_Spe_dr)
 
 M_Stat<- cbind(Death_Rates,Suspected_Cases,Total_Cases,Total_Death)
 M_Stat<- data.frame(M_Stat)
@@ -170,7 +174,7 @@ ggplot(M_Stat, aes(Regions, Death_Rates, colour = Regions))+
   labs(title = 'Death Rates', x = 'Regions', y = 'Death Rates')
 
 
-#Ggeom_point()#General Regional Data Set Visualization.
+#General Regional Data Set Visualization.
 #Africa
 Afri %>%
   filter(total_cases > mean(total_cases)) %>% 
@@ -500,7 +504,11 @@ Un_Spe %>%
   theme(panel.spacing = unit(1, "cm"))
 
 
-
+# Findings
+# Despite being the regions with the least amount  Total
+#
+#
+#
 
 #visualization Test
 #class  
