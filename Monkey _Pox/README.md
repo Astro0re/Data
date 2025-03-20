@@ -3,5 +3,8 @@
 Data Source:
 htpps://catalog.ourworldindata.org
 
-### View report:
-https://astro0re.github.io/Fesobi-Oreofe/VIS/-M_POX-.html
+Method:
+This data was analyzed using R with visualization done using the same programming language.
+
+View report:
+[Report](https://astro0re.github.io/Fesobi-Oreofe/VIS/-M_POX-.html)
