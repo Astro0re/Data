@@ -1,4 +1,4 @@
-#Load Data gotten from https://catalog.ourworldindata.org
+#Load M_Pox Data-set gotten from https://catalog.ourworldindata.org
 M_Pox <- read.csv("C:/Users/USER/Downloads/monkeypox.csv")
 
 #Convert nan to 0
@@ -526,10 +526,10 @@ Un_Spe %>%
 
 #visualization Test
 #class  
-Un_Spe %>%
-  ggplot(aes(Date, total_deaths))+
-  geom_bin_2d()
+#Un_Spe %>%
+ # ggplot(aes(Date, total_deaths))+
+ # geom_bin_2d()
 
-Un_Spe %>%
-  ggplot(aes(Date, total_deaths))+
-  geom_line()
+#Un_Spe %>%
+ # ggplot(aes(Date, total_deaths))+
+ # geom_line()
