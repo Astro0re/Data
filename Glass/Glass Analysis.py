@@ -1,3 +1,3 @@
 import pandas as pd
-import numpy as nu
+import numpy as np
 import matplotlib as mat
