@@ -18,6 +18,8 @@ Smoke_stat <- lung_c %>%
   summarise(Lung_Cancer = table(lung_c$Lung_Cancer_Stage))
 print(Smoke_stat)
   
+lung_c %>% ggplot(aes(Smoking_Status, 1))+
+  geom_col()
 
 # Secondhand_Smoke
 table(lung_c$Secondhand_Smoke_Exposure)
@@ -27,6 +29,14 @@ Smoke_stat <- lung_c %>%
   summarise(Lung_Cancer = table(lung_c$Lung_Cancer_Stage))
 print(Smoke_stat)
 
+
 # Smoke stats never should relate to years_smoking and cigarettes_per_day ??
 
 table(lung_c$Occupation_Exposure)
+
+lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure, 1))+
+  geom_col()+
+  facet_wrap(~lung_c$Lung_Cancer_Stage)
+
+lung_c %>% ggplot(null,null)+
+  geom
