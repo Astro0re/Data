@@ -29,4 +29,4 @@ print(Smoke_stat)
 
 # Smoke stats never should relate to years_smoking and cigarettes_per_day ??
 
-view(lung_c$Smoking_Status)
+table(lung_c$Occupation_Exposure)
