@@ -38,5 +38,5 @@ lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure, 1))+
   geom_col()+
   facet_wrap(~lung_c$Lung_Cancer_Stage)
 
-lung_c %>% ggplot(null,null)+
-  geom
+lung_c %>% ggplot(aes(Gender,0.1))+
+  geom_col()
