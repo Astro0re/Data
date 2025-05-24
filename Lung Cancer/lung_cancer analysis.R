@@ -4,7 +4,7 @@ library(ggplot2)
 
 lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
 
-describe(lung)
+describe(lung_c)
 
 head(lung_c)
 
@@ -17,6 +17,7 @@ Smoke_stat <- lung_c %>%
   group_by(Smoking_Status) %>% 
   summarise(Lung_Cancer = table(lung_c$Lung_Cancer_Stage))
 print(Smoke_stat)
+
   
 lung_c %>% ggplot(aes(Smoking_Status, 1))+
   geom_col()
@@ -29,6 +30,9 @@ Smoke_stat <- lung_c %>%
   summarise(Lung_Cancer = table(lung_c$Lung_Cancer_Stage))
 print(Smoke_stat)
 
+lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure, 1))+
+  geom_col()+
+  facet_wrap(~lung_c$Lung_Cancer_Stage)
 
 # Smoke stats never should relate to years_smoking and cigarettes_per_day ??
 
@@ -40,3 +44,4 @@ lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure, 1))+
 
 lung_c %>% ggplot(aes(Gender,0.1))+
   geom_col()
+
