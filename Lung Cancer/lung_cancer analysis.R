@@ -13,10 +13,13 @@ table(lung_c$Smoking_Status)
 
 
 # Data Viz
-
+#Gender 
 lung_c %>% ggplot(aes(Gender,0.1))+
   geom_col()
 #Run T/AB testing on gender
+lung_c %>% ggplot(aes(Gender, 1))+
+  geom_col()+
+  facet_wrap(~lung_c$Lung_Cancer_Stage)
 
 # Smoking status  
 # Smoke stats never should relate(display 0) to years_smoking and cigarettes_per_day ??
@@ -39,7 +42,8 @@ lung_c %>% filter(Lung_Cancer_Stage != 'None') %>%
 
 table(lung_c$Occupation_Exposure)
 
-lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure, 1))+
+#Family History 
+lung_c %>% ggplot(aes(Family_History, 1))+
   geom_col()+
   facet_wrap(~lung_c$Lung_Cancer_Stage)
 
