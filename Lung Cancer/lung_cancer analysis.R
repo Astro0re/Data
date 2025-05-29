@@ -8,6 +8,9 @@ describe(lung_c)
 
 head(lung_c)
 
+# Finding possible caussative factors of lung cancer 
+# Finding correlative factors
+
 # Smocking_Status
 table(lung_c$Smoking_Status)
 
