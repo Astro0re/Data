@@ -11,6 +11,22 @@ head(lung_c)
 # Finding possible caussative factors of lung cancer 
 # Finding correlative factors
 
+#Variables 
+lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
+
+lung_c$infect_dummy <- as.integer(lung_c$infect_dummy)
+
+lung_c %>% ggplot(aes(infect_dummy))+
+  geom_bar()
+
+lung_c %>% filter(infect_dummy == "TRUE") %>% 
+  ggplot(aes(Access_to_Healthcare))+
+  geom_bar()
+
+lung_c %>% ggplot(aes(Diagnosis_Year, infect_dummy))+
+  geom_point()+
+  geom_line()
+
 # Smocking_Status
 table(lung_c$Smoking_Status)
 
@@ -46,6 +62,6 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
 table(lung_c$Occupation_Exposure)
 
 #Family History
-lung_c %>% ggplot(aes(Family_History, 1)) +
+lung_c %>% ggplot(aes(Family_History, 1))+
   geom_col() +
   facet_wrap(~lung_c$Lung_Cancer_Stage)
