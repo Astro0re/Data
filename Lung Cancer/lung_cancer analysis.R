@@ -8,10 +8,11 @@ describe(lung_c)
 
 head(lung_c)
 
-# Finding possible caussative factors of lung cancer 
+# Finding possible causative factors of lung cancer 
 # Finding correlative factors
 
 #Variables 
+# Patients infected with lung cancer of any stage
 lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
 
 lung_c$infect_dummy <- as.integer(lung_c$infect_dummy)
@@ -20,14 +21,41 @@ lung_c %>% ggplot(aes(infect_dummy))+
   geom_bar()
 
 lung_c %>% filter(infect_dummy == "TRUE") %>% 
-  ggplot(aes(Access_to_Healthcare))+
+  ggplot(aes(Gender))+
   geom_bar()
 
-lung_c %>% ggplot(aes(Diagnosis_Year, infect_dummy))+
+lung_c %>% filter(infect_dummy == "TRUE") %>% 
+  ggplot(aes(Occupation_Exposure))+
+  geom_bar()
+
+lung_c %>% filter(infect_dummy == "TRUE") %>%
+  ggplot(aes(Diagnosis_Year, infect_dummy))+
   geom_point()+
   geom_line()
 
-# Smocking_Status
+lung_c %>% filter(infect_dummy == "TRUE") %>%
+  ggplot(aes(Diagnosis_Year))+
+  geom_bar()
+
+
+lung_c %>% filter(infect_dummy == "TRUE") %>%
+  ggplot(aes(Survival_Status))+
+  geom_bar()
+
+# Not Infected
+lung_c %>% filter(infect_dummy == "FALSE") %>%
+  ggplot(aes(Survival_Status))+
+  geom_bar()
+
+# Lived more than 10 years after diagnosis 
+lung_c$longevity <- (2025 - lung_c$Diagnosis_Year) > 9
+
+lung_c %>%  filter(infect_dummy == "TRUE") %>%
+  ggplot(aes(longevity))+
+  geom_bar()
+
+
+# # # Smocking_Status
 table(lung_c$Smoking_Status)
 
 
