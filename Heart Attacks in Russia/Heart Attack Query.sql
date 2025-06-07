@@ -1,3 +1,33 @@
+# Load Data 
+select * from `heart_attack_russia_data 1`;
+
+select * from `heart_attack_russia_data 2`;
+
+# Combine Both Data Sets
+select * 
+from `heart_attack_russia_data 1` as d1
+join `heart_attack_russia_data 2` as d2
+	on d1.ID = d2.ID 
+;
+
+# Data Exploration 
+select Heart_Attack, avg(Age), avg(Heart_Rate), max(Blood_Pressure), count(Heart_Attack), avg(Stress_Level)
+from `heart_attack_russia_data 1`
+group by Heart_Attack
+;
+
+select Heart_Attack, avg(Age), avg(Heart_Rate), max(Blood_Pressure), count(Heart_Attack), avg(Stress_Level)
+from `heart_attack_russia_data 1`
+group by Heart_Attack
+having Heart_Attack = 'TRUE'
+;
+
+select Age, count(Age), avg(Heart_Rate), max(Blood_Pressure), max(Heart_Attack), avg(Stress_Level)
+from `heart_attack_russia_data 1`
+group by Age
+
+;
+
 select * from `heart_attack_russia_data 1`
 where Age > 30 and Heart_Rate > 70;
 
