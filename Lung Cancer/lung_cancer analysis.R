@@ -15,13 +15,7 @@ head(lung_c)
 # Patients infected with lung cancer of any stage
 lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
 
-lung_c$infect_dummy <- as.integer(lung_c$infect_dummy)
-
 lung_c %>% ggplot(aes(infect_dummy))+
-  geom_bar()
-
-lung_c %>% filter(infect_dummy == "TRUE") %>% 
-  ggplot(aes(Gender))+
   geom_bar()
 
 lung_c %>% filter(infect_dummy == "TRUE") %>% 
@@ -55,14 +49,18 @@ lung_c %>%  filter(infect_dummy == "TRUE") %>%
   geom_bar()
 
 
-# # # Smocking_Status
+# Smocking_Status
 table(lung_c$Smoking_Status)
-
+lung_c %>% filter(infect_dummy == "TRUE") %>%
+  ggplot(aes(Smoking_Status))+
+  geom_bar()
 
 # Data Viz
 #Gender
-lung_c %>% ggplot(aes(Gender, 0.1)) +
-  geom_col()
+lung_c %>% filter(infect_dummy == "TRUE") %>% 
+  ggplot(aes(Gender))+
+  geom_bar()
+
 #Run T/AB testing on gender
 lung_c %>% ggplot(aes(Gender, 1)) +
   geom_col() +
@@ -83,13 +81,12 @@ lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure, 1)) +
 
 #Occupational exposure
 lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
-  ggplot(aes(Occupation_Exposure, 1)) +
-  geom_col() +
-  facet_wrap(~lung_c$Lung_Cancer_Stage)
+  ggplot(aes(Occupation_Exposure)) +
+  geom_bar()
 
 table(lung_c$Occupation_Exposure)
 
 #Family History
-lung_c %>% ggplot(aes(Family_History, 1))+
-  geom_col() +
-  facet_wrap(~lung_c$Lung_Cancer_Stage)
+lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
+  ggplot(aes(Family_History, 1, colour = Lung_Cancer_Stage))+
+  geom_col()
