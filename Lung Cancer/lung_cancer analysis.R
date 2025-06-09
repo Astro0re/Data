@@ -8,12 +8,18 @@ describe(lung_c)
 
 head(lung_c)
 
+
 # Finding possible causative factors of lung cancer 
 # Finding correlative factors
+male <- subset(lung_c, lung_c$Gender== 'Male')
+female <- subset(lung_c, lung_c$Gender== 'Female')
+
+t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95)
 
 #Variables 
 # Patients infected with lung cancer of any stage
 lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
+lung_c$infect_dummy <- as.integer(lung_c$infect_dummy)
 
 lung_c %>% ggplot(aes(infect_dummy))+
   geom_bar()
