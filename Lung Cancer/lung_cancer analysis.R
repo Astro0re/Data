@@ -16,6 +16,8 @@ female <- subset(lung_c, lung_c$Gender== 'Female')
 
 t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95)
 
+t.test(male$Age, female$Age, conf.level = 0.95)
+
 #Variables 
 # Patients infected with lung cancer of any stage
 lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
