@@ -5,8 +5,7 @@ library(ggplot2)
 lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
 
 describe(lung_c)
-
-head(lung_c)
+summarise(lung_c)
 
 
 # Finding possible causative factors of lung cancer 
@@ -14,9 +13,9 @@ head(lung_c)
 male <- subset(lung_c, lung_c$Gender== 'Male')
 female <- subset(lung_c, lung_c$Gender== 'Female')
 
-t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95)
+t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
 
-t.test(male$Age, female$Age, conf.level = 0.95)
+t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
 
 #Variables 
 # Patients infected with lung cancer of any stage
