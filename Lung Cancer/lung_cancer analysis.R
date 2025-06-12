@@ -97,3 +97,5 @@ table(lung_c$Occupation_Exposure)
 lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
   ggplot(aes(Family_History, 1, colour = Lung_Cancer_Stage))+
   geom_col()
+
+#Not a lot of significant causative factors 
