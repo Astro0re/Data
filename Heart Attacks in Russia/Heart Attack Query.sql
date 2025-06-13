@@ -69,13 +69,19 @@ where Heart_Attack = 'TRUE'
 group by Exercise_Level;
 
 # Diet in relation to heart disease in general
-# No significance noticed
 select Diet , count(ID)
 from `heart_attack_russia_data 2`
 where Heart_Disease_History = 'TRUE'
 group by Diet;
 
 # Effects using age parameter
+select Age , count(ID)
+from `heart_attack_russia_data 1`
+where Heart_Attack = 'TRUE'
+group by Age
+order by count(ID) DESC;
+
+# Effects using gender parameter
 select Age , count(ID)
 from `heart_attack_russia_data 1`
 where Heart_Attack = 'TRUE'
