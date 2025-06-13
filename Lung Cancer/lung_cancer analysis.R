@@ -13,14 +13,9 @@ summarise(lung_c)
 male <- subset(lung_c, lung_c$Gender== 'Male')
 female <- subset(lung_c, lung_c$Gender== 'Female')
 
-t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
-
-t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
-
 #Variables 
 # Patients infected with lung cancer of any stage
 lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
-lung_c$infect_dummy <- as.integer(lung_c$infect_dummy)
 
 lung_c %>% ggplot(aes(infect_dummy))+
   geom_bar()
@@ -28,11 +23,6 @@ lung_c %>% ggplot(aes(infect_dummy))+
 lung_c %>% filter(infect_dummy == "TRUE") %>% 
   ggplot(aes(Occupation_Exposure))+
   geom_bar()
-
-lung_c %>% filter(infect_dummy == "TRUE") %>%
-  ggplot(aes(Diagnosis_Year, infect_dummy))+
-  geom_point()+
-  geom_line()
 
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(Diagnosis_Year))+
@@ -99,3 +89,13 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
   geom_col()
 
 #Not a lot of significant causative factors 
+
+lung_c$infect_dummy <- as.integer(lung_c$infect_dummy)
+
+#t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
+
+t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
+
+lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
+  geom_col()
+ 
