@@ -20,68 +20,82 @@ female <- subset(lung_c, lung_c$Gender== 'Female')
 lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
 
 lung_c %>% ggplot(aes(infect_dummy))+
-  geom_bar()
+  geom_bar()+
+  labs(title = ''  , y= '' , x= '')
 
 lung_c %>% filter(infect_dummy == "TRUE") %>% 
   ggplot(aes(Occupation_Exposure))+
-  geom_bar()
+  geom_bar()+
+  labs(title = ''  , y= '' , x= '')
 
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(Diagnosis_Year))+
-  geom_bar()
+  geom_bar()+
+  labs(title = ''  , y= '' , x= '')
 
 
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(Survival_Status))+
-  geom_bar()
+  geom_bar()+
+  labs(title = ''  , y= '' , x= '')
 
 # Not Infected
 lung_c %>% filter(infect_dummy == "FALSE") %>%
   ggplot(aes(Survival_Status))+
-  geom_bar()
+  geom_bar()+
+  labs(title = ''  , y= '' , x= '')
 
 # Lived more than 10 years after diagnosis 
 lung_c$longevity <- (2025 - lung_c$Diagnosis_Year) > 9
 
 lung_c %>%  filter(infect_dummy == "TRUE") %>%
   ggplot(aes(longevity))+
-  geom_bar()
+  geom_bar()+
+  labs(title = ''  , y= '' , x= '')
 
 
 # Smocking_Status
 table(lung_c$Smoking_Status)
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(Smoking_Status))+
-  geom_bar()
+  geom_bar()+
+  labs(title = ''  , y= '' , x= '')
 
 # Data Viz
 #Gender
 lung_c %>% filter(infect_dummy == "TRUE") %>% 
   ggplot(aes(Gender))+
-  geom_bar()
+  geom_bar()+
+  labs(title = ''  , y= '' , x= '')
 
 #Run T/AB testing on gender
 lung_c %>% ggplot(aes(Gender, 1)) +
   geom_col() +
-  facet_wrap(~lung_c$Lung_Cancer_Stage)
+  facet_wrap(~lung_c$Lung_Cancer_Stage)+
+  labs(title = ''  , y= '' , x= '')
 
 # Smoking status
 # Smoke stats never should relate(display 0) to years_smoking and cigarettes_per_day ??
 lung_c %>% ggplot(aes(Smoking_Status, 1)) +
-  geom_col()
+  geom_col()+
+  labs(title = ''  , y= '' , x= '')
+
 
 # Secondhand_Smoke
 table(lung_c$Secondhand_Smoke_Exposure)
 
 lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure, 1)) +
   geom_col() +
-  facet_wrap(~lung_c$Lung_Cancer_Stage)
+  facet_wrap(~lung_c$Lung_Cancer_Stage)+
+  labs(title = ''  , y= '' , x= '')
+
 #This Graph shows that second hand smoke exposure does not directly relate to lung cancer
 
 #Occupational exposure
 lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
   ggplot(aes(Occupation_Exposure)) +
-  geom_bar()
+  geom_bar()+
+  labs(title = ''  , y= '' , x= '')
 
 table(lung_c$Occupation_Exposure)
 
