@@ -102,7 +102,8 @@ table(lung_c$Occupation_Exposure)
 #Family History
 lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
   ggplot(aes(Family_History, 1, colour = Lung_Cancer_Stage))+
-  geom_col()
+  geom_col()+
+  labs(title = ''  , y= '' , x= '')
 
 #Not a lot of significant causative factors 
 
@@ -113,5 +114,6 @@ lung_c$infect_dummy <- as.integer(lung_c$infect_dummy)
 t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
 
 lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
-  geom_col()
+  geom_col()+
+  labs(title = ''  , y= '' , x= '')
  
