@@ -45,8 +45,16 @@ lung_c %>% filter(infect_dummy == "FALSE") %>%
   geom_bar()+
   labs(title = ''  , y= '' , x= '')
 
+lung_c %>% filter(infect_dummy == "FALSE") %>%
+  ggplot(aes(BMI))+
+  geom_bar()
+lung_c %>% filter(infect_dummy == "TRUE") %>%
+  ggplot(aes(BMI))+
+  geom_bar()
+
 # Lived more than 10 years after diagnosis 
-lung_c$longevity <- (2025 - lung_c$Diagnosis_Year) > 9
+lung_c$longevity <-  (2025 - lung_c$Diagnosis_Year) > 10 & lung_c$Survival_Status == "Alive"
+
 
 lung_c %>%  filter(infect_dummy == "TRUE") %>%
   ggplot(aes(longevity))+
@@ -116,4 +124,7 @@ t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
 lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
   geom_col()+
   labs(title = ''  , y= '' , x= '')
+
+#Death rate
+sum(lung_c$Survival_Status == "Deceased") / length(lung_c$Survival_Status)
  
