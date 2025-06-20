@@ -62,7 +62,6 @@ where Stress_Level > 5 and Heart_Rate > 70
 group by Heart_Attack;
 
 # Low Exercise more likely to lead to heart attack ?
-# Not really significant
 select Exercise_Level , count(ID)
 from `heart_attack_russia_data 1`
 where Heart_Attack = 'TRUE'
@@ -82,8 +81,23 @@ group by Age
 order by count(ID) DESC;
 
 # Effects using gender parameter
-select Age , count(ID)
+select Gender , count(ID)
 from `heart_attack_russia_data 1`
 where Heart_Attack = 'TRUE'
-group by Age
+group by Gender
 order by count(ID) DESC;
+
+select * 
+from `heart_attack_russia_data 1` as d1
+join `heart_attack_russia_data 2` as d2
+	on d1.ID = d2.ID 
+where Urban_Rural = 'Urban' and Heart_Attack = 'TRUE'
+;
+
+select Region, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness), avg(Daily_Water_Intake),avg(Daily_Water_Intake)  
+from `heart_attack_russia_data 1` as d1
+join `heart_attack_russia_data 2` as d2
+	on d1.ID = d2.ID 
+where Urban_Rural = 'Urban' and Heart_Attack = 'TRUE'
+group by Region
+;
