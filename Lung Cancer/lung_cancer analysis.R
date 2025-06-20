@@ -9,57 +9,58 @@ lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_C
 describe(lung_c)
 summarise(lung_c)
 
+#Variables 
+# Patients infected with lung cancer of any stage
+lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
 
 # Finding possible causative factors of lung cancer 
 # Finding correlative factors
 male <- subset(lung_c, lung_c$Gender== 'Male')
 female <- subset(lung_c, lung_c$Gender== 'Female')
 
-#Variables 
-# Patients infected with lung cancer of any stage
-lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
 
 lung_c %>% ggplot(aes(infect_dummy))+
   geom_bar()+
-  labs(title = ''  , y= '' , x= '')
+  labs(title = 'INFECTION STATUS'  , y= 'COUNT' , x= 'INFECTION STATUS')
 
 lung_c %>% filter(infect_dummy == "TRUE") %>% 
   ggplot(aes(Occupation_Exposure))+
   geom_bar()+
-  labs(title = ''  , y= '' , x= '')
+  labs(title = 'OCCUPATIONAL EXPOSURE(INFECTED)'  , y= 'COUNT' , x= 'EXPOSURE')
 
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(Diagnosis_Year))+
   geom_bar()+
-  labs(title = ''  , y= '' , x= '')
+  labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
 
 
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(Survival_Status))+
   geom_bar()+
-  labs(title = ''  , y= '' , x= '')
+  labs(title = 'SURVIVAL STATS(INFECTED)'  , y= 'COUNT' , x= 'SURVIVAL STATUS')
 
 # Not Infected
 lung_c %>% filter(infect_dummy == "FALSE") %>%
   ggplot(aes(Survival_Status))+
   geom_bar()+
-  labs(title = ''  , y= '' , x= '')
+  labs(title = 'SURVIVAL STATS(NOT INFECTED)'  , y= 'COUNT' , x= 'SURVIVAL STATUS')
 
 lung_c %>% filter(infect_dummy == "FALSE") %>%
   ggplot(aes(BMI))+
   geom_bar()
+
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(BMI))+
   geom_bar()
 
 # Lived more than 10 years after diagnosis 
-lung_c$longevity <-  (2025 - lung_c$Diagnosis_Year) > 10 & lung_c$Survival_Status == "Alive"
+lung_c$longevity <-  (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE"
 
 
 lung_c %>%  filter(infect_dummy == "TRUE") %>%
   ggplot(aes(longevity))+
   geom_bar()+
-  labs(title = ''  , y= '' , x= '')
+  labs(title = 'LONGEVITY(ALIVE FOR OVER TEN YEARS FOLLOWING INFECTION)'  , y= 'COUNT' , x= 'LONGEVITY')
 
 
 # Smocking_Status
@@ -115,11 +116,12 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
 
 #Not a lot of significant causative factors 
 
-lung_c$infect_dummy <- as.integer(lung_c$infect_dummy)
+ lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
+   t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
 
 #t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
 
-t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
+
 
 lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
   geom_col()+
