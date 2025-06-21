@@ -68,7 +68,7 @@ table(lung_c$Smoking_Status)
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(Smoking_Status))+
   geom_bar()+
-  labs(title = ''  , y= '' , x= '')
+  labs(title = 'SMOKING STATUS'  , y= 'COUNT' , x= 'SMOKING STATUS')
 
 # Data Viz
 #Gender
@@ -119,9 +119,8 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
  lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
    t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
 
-#t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
-
-
+ lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
+   t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
 
 lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
   geom_col()+
