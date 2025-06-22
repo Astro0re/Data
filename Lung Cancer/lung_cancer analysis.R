@@ -127,5 +127,5 @@ lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
   labs(title = 'INFECTION RATE THROUGH THE YEARS'  , y= 'INFECTED COUNT' , x= 'YEARS')
 
 #Death rate
-sum(lung_c$Survival_Status == "Deceased") / length(lung_c$Survival_Status)
+lung_DeathR <- sum(lung_c$Survival_Status == "Deceased") / length(lung_c$Survival_Status)
  
