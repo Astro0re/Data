@@ -102,8 +102,8 @@ where Urban_Rural = 'Urban' and Heart_Attack = 'TRUE'
 group by Region
 ;
 
-select Heart_Attack, avg(Blood_Pressure),avg(Heart_Rate), avg(Stress_Level), avg(Health_Awareness), avg(Daily_Water_Intake),avg(Daily_Water_Intake),
- avg(Mental_Health)
+select Heart_Attack, avg(Blood_Pressure),avg(Heart_Rate), avg(Stress_Level), avg(Health_Awareness), avg(Daily_Water_Intake),
+avg(Daily_Water_Intake),avg(Mental_Health), avg(Cholesterol)
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
