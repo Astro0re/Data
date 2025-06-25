@@ -54,8 +54,8 @@ lung_c %>% filter(infect_dummy == "TRUE") %>%
   geom_bar()
 
 # Lived more than 10 years after diagnosis 
-lung_c$longevity <-  (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE"
-
+lung_c$longevity <- (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE"
+longev <- subset(lung_c, (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE" )
 
 lung_c %>%  filter(infect_dummy == "TRUE") %>%
   ggplot(aes(longevity))+
@@ -116,10 +116,10 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
 
 #Not a lot of significant causative factors 
 
- lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
+lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
    t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
 
- lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
+lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
    t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
 
 lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
@@ -128,3 +128,9 @@ lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
 
 #Death rate
 lung_DeathR <- sum(lung_c$Survival_Status == "Deceased") / length(lung_c$Survival_Status)
+
+lung_c %>% 
+  ggplot(aes(Diagnosis_Year))+
+  geom_bar()+
+  facet_wrap(~Survival_Status)+
+  labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
