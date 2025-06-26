@@ -1,6 +1,5 @@
 # Load Data 
 select * from `heart_attack_russia_data 1`;
-
 select * from `heart_attack_russia_data 2`;
 
 # Combine Both Data Sets
@@ -94,19 +93,20 @@ join `heart_attack_russia_data 2` as d2
 where Urban_Rural = 'Urban' and Heart_Attack = 'TRUE'
 ;
 
-select Region, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness), avg(Daily_Water_Intake),avg(Daily_Water_Intake)  
+# Statistics basesed on parameters where a Heart Attack was recorded
+select Region, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
-where Heart_Attack = 'TRUE'
 group by Region
 ;
 
-select Diabetes, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness), avg(Daily_Water_Intake),avg(Daily_Water_Intake)  
+select Diabetes, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
-where Heart_Attack = 'TRUE'
 group by Diabetes
 ;
 
@@ -119,34 +119,58 @@ where Urban_Rural = 'Urban'
 group by Heart_Attack
 ;
 
-select Alcohol_Consumption, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness), avg(Daily_Water_Intake),avg(Daily_Water_Intake)  
+select Alcohol_Consumption, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
-where Heart_Attack = 'TRUE'
 group by Alcohol_Consumption
 ;
 
-select Heart_Disease_History, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness), avg(Daily_Water_Intake),avg(Daily_Water_Intake)  
+select Heart_Disease_History, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
-where Heart_Attack = 'TRUE'
 group by Heart_Disease_History
 ;
 
-select Occupation, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness), avg(Daily_Water_Intake),avg(Daily_Water_Intake)  
+select Occupation, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness), avg(Daily_Water_Intake),
+avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
-where Heart_Attack = 'TRUE'
 group by Occupation
 ;
 
-select Marital_Status, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness), avg(Daily_Water_Intake),avg(Daily_Water_Intake)  
+select Marital_Status, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
-where Heart_Attack = 'TRUE'
 group by Marital_Status
+;
+
+select Family_History, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')
+from `heart_attack_russia_data 1` as d1
+join `heart_attack_russia_data 2` as d2
+	on d1.ID = d2.ID 
+group by Family_History
+;
+
+select Exercise_Level, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness), avg(Daily_Water_Intake),
+avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
+from `heart_attack_russia_data 1` as d1
+join `heart_attack_russia_data 2` as d2
+	on d1.ID = d2.ID 
+group by Exercise_Level
+;
+
+select Medication, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History), avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')
+from `heart_attack_russia_data 1` as d1
+join `heart_attack_russia_data 2` as d2
+	on d1.ID = d2.ID 
+group by Medication
 ;
