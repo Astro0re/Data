@@ -23,21 +23,21 @@ lung_c %>% ggplot(aes(infect_dummy))+
   geom_bar()+
   labs(title = 'INFECTION STATUS'  , y= 'COUNT' , x= 'INFECTION STATUS')
 
-lung_c %>% filter(infect_dummy == "TRUE") %>% 
-  ggplot(aes(Occupation_Exposure))+
+lung_c %>% 
+  ggplot(aes(Occupation_Exposure, fill = infect_dummy))+
   geom_bar()+
   labs(title = 'OCCUPATIONAL EXPOSURE(INFECTED)'  , y= 'COUNT' , x= 'EXPOSURE')
 
-lung_c %>% filter(infect_dummy == "TRUE") %>%
-  ggplot(aes(Diagnosis_Year))+
+lung_c %>% 
+  ggplot(aes(Diagnosis_Year, fill = infect_dummy))+
   geom_bar()+
   labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
 
 
-lung_c %>% filter(infect_dummy == "TRUE") %>%
-  ggplot(aes(Survival_Status))+
+lung_c %>% 
+  ggplot(aes(Survival_Status, fill = infect_dummy))+
   geom_bar()+
-  labs(title = 'SURVIVAL STATS(INFECTED)'  , y= 'COUNT' , x= 'SURVIVAL STATUS')
+  labs(title = 'SURVIVAL STATS'  , y= 'COUNT' , x= 'SURVIVAL STATUS')
 
 # Not Infected
 lung_c %>% filter(infect_dummy == "FALSE") %>%
@@ -47,7 +47,8 @@ lung_c %>% filter(infect_dummy == "FALSE") %>%
 
 lung_c %>% filter(infect_dummy == "FALSE") %>%
   ggplot(aes(BMI))+
-  geom_bar()
+  geom_bar()+
+  labs(title = "Average BMI(Not infected)")
 
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(BMI))+
@@ -65,8 +66,8 @@ lung_c %>%  filter(infect_dummy == "TRUE") %>%
 
 # Smocking_Status
 table(lung_c$Smoking_Status)
-lung_c %>% filter(infect_dummy == "TRUE") %>%
-  ggplot(aes(Smoking_Status))+
+lung_c %>% 
+  ggplot(aes(Smoking_Status, fill = infect_dummy))+
   geom_bar()+
   labs(title = 'SMOKING STATUS'  , y= 'COUNT' , x= 'SMOKING STATUS')
 
