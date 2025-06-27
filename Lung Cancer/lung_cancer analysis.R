@@ -18,7 +18,6 @@ lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
 male <- subset(lung_c, lung_c$Gender== 'Male')
 female <- subset(lung_c, lung_c$Gender== 'Female')
 
-
 lung_c %>% ggplot(aes(infect_dummy))+
   geom_bar()+
   labs(title = 'INFECTION STATUS'  , y= 'COUNT' , x= 'INFECTION STATUS')
@@ -32,7 +31,6 @@ lung_c %>%
   ggplot(aes(Diagnosis_Year, fill = infect_dummy))+
   geom_bar()+
   labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
-
 
 lung_c %>% 
   ggplot(aes(Survival_Status, fill = infect_dummy))+
@@ -64,12 +62,7 @@ lung_c %>%  filter(infect_dummy == "TRUE") %>%
   labs(title = 'LONGEVITY(ALIVE FOR OVER TEN YEARS FOLLOWING INFECTION)'  , y= 'COUNT' , x= 'LONGEVITY')
 
 
-# Smocking_Status
-table(lung_c$Smoking_Status)
-lung_c %>% 
-  ggplot(aes(Smoking_Status, fill = infect_dummy))+
-  geom_bar()+
-  labs(title = 'SMOKING STATUS'  , y= 'COUNT' , x= 'SMOKING STATUS')
+
 
 # Data Viz
 #Gender
@@ -90,6 +83,12 @@ lung_c %>% ggplot(aes(Smoking_Status)) +
   geom_bar()+
   labs(title = 'SMOKING STATUS'  , y= 'COUNT' , x= 'STATUS')
 
+# Smocking_Status
+table(lung_c$Smoking_Status)
+lung_c %>% 
+  ggplot(aes(Smoking_Status, fill = infect_dummy))+
+  geom_bar()+
+  labs(title = 'SMOKING STATUS'  , y= 'COUNT' , x= 'SMOKING STATUS')
 
 # Secondhand_Smoke
 table(lung_c$Secondhand_Smoke_Exposure)
