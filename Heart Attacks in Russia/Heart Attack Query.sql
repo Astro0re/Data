@@ -174,3 +174,11 @@ join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Medication
 ;
+
+select Angina, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')
+from `heart_attack_russia_data 1` as d1
+join `heart_attack_russia_data 2` as d2
+	on d1.ID = d2.ID 
+group by Angina
+;
