@@ -6,8 +6,8 @@ library(ggplot2)
 #Load data and explore data 
 lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
 
-describe(lung_c)
 summarise(lung_c)
+View(describe(lung_c)) 
 
 #Variables 
 # Patients infected with lung cancer of any stage
@@ -134,3 +134,9 @@ lung_c %>%
   geom_bar()+
   facet_wrap(~Survival_Status)+
   labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
+
+# Region 
+lung_c %>% filter(infect_dummy == "TRUE") %>% 
+  ggplot(aes(Region))+
+  geom_bar()+
+  labs(title = "Infection Count by Region(Infected)")
