@@ -140,3 +140,21 @@ lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(Region))+
   geom_bar()+
   labs(title = "Infection Count by Region(Infected)")
+
+lung_c %>%
+  ggplot(aes(Diet_Quality))+
+  geom_bar()+
+  facet_wrap(~Region)+
+  labs(title = "Diet_Quality by Region(Infected)")
+
+lung_c %>%
+  ggplot(aes(Smoking_Status))+
+  geom_bar()+
+  facet_wrap(~Region)+
+  labs(title = "Smoking Status by Region(Infected)")
+
+lung_c %>%
+  ggplot(aes(Family_History))+
+  geom_bar()+
+  facet_wrap(~Region)+
+  labs(title = "Family History by Region(Infected)")
