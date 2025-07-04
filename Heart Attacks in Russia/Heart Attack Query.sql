@@ -1,6 +1,9 @@
 # Load Data 
 select * from `heart_attack_russia_data 1`;
-select * from `heart_attack_russia_data 2`;
+SELECT 
+    *
+FROM
+    `heart_attack_russia_data 2`;
 
 # Combine Both Data Sets
 select * 
@@ -61,9 +64,8 @@ where Stress_Level > 5 and Heart_Rate > 70
 group by Heart_Attack;
 
 # Low Exercise more likely to lead to heart attack ?
-select Exercise_Level , count(ID)
+select Exercise_Level , count(Heart_Attack ="FALSE"), count(Heart_Attack ="TRUE")
 from `heart_attack_russia_data 1`
-where Heart_Attack = 'TRUE'
 group by Exercise_Level;
 
 # Diet in relation to heart disease in general
@@ -206,3 +208,5 @@ join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Obesity
 ;
+
+## Select count(Heart_Attack = 'TRUE') not returning the right result
