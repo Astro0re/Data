@@ -54,6 +54,7 @@ lung_c %>% filter(infect_dummy == "TRUE") %>%
 
 # Lived more than 10 years after diagnosis 
 lung_c$longevity <- (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE"
+lung_c$longevity["NA"] <- lung_c$infect_dummy == "FALSE"
 longev <- subset(lung_c, (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE" )
 
 lung_c %>%  filter(infect_dummy == "TRUE") %>%
@@ -158,3 +159,19 @@ lung_c %>%
   geom_bar()+
   facet_wrap(~Region)+
   labs(title = "Family History by Region(Infected)")
+
+lung_c %>%
+  ggplot(aes(Occupation_Exposure))+
+  geom_bar()+
+  facet_wrap(~Region)+
+  labs(title = "Occupation Exposure by Region(Infected)")
+
+lung_c %>%
+  ggplot(aes(Genetic_Markers_Positive))+
+  geom_bar()+
+  facet_wrap(~Region)+
+  labs(title = "Genetic Markers by Region(Infected)")
+
+#Genetic Markers x Family History
+
+#Chronic Lung Disease x Lung Cancer
