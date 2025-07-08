@@ -173,5 +173,17 @@ lung_c %>%
   labs(title = "Genetic Markers by Region(Infected)")
 
 #Genetic Markers x Family History
+lung_c %>%
+  ggplot(aes(Genetic_Markers_Positive , fill = Family_History))+
+  geom_bar()+
+  labs(title = "")
 
-#Chronic Lung Disease x Lung Cancer
+lung_c %>%
+  ggplot(aes(Family_History , fill = Genetic_Markers_Positive))+
+  geom_bar()+
+  labs(title = "")
+#geom_bar()#Chronic Lung Disease x Lung Cancer
+lung_c %>%
+  ggplot(aes(Chronic_Lung_Disease, fill = Lung_Cancer_Stage))+
+  geom_bar()+
+  labs(title = "")
