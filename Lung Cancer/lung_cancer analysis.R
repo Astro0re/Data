@@ -15,6 +15,8 @@ lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
 
 # Finding possible causative factors of lung cancer 
 # Finding correlative factors
+
+#Gender
 male <- subset(lung_c, lung_c$Gender== 'Male')
 female <- subset(lung_c, lung_c$Gender== 'Female')
 
@@ -53,8 +55,6 @@ lung_c %>% filter(infect_dummy == "TRUE") %>%
   geom_bar()
 
 # Lived more than 10 years after diagnosis 
-lung_c$longevity <- (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE"
-lung_c$longevity["NA"] <- lung_c$infect_dummy == "FALSE"
 longev <- subset(lung_c, (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE" )
 
 lung_c %>%  filter(infect_dummy == "TRUE") %>%
@@ -63,18 +63,17 @@ lung_c %>%  filter(infect_dummy == "TRUE") %>%
   labs(title = 'LONGEVITY(ALIVE FOR OVER TEN YEARS FOLLOWING INFECTION)'  , y= 'COUNT' , x= 'LONGEVITY')
 
 
-
-
 # Data Viz
 #Gender
-lung_c %>% filter(infect_dummy == "TRUE") %>% 
-  ggplot(aes(Gender))+
+lung_c %>%
+  ggplot(aes(Gender, fill = infect_dummy))+
   geom_bar()+
-  labs(title = 'GENDER(INFECTED)'  , y= 'COUNT' , x= 'GENDER')
+  labs(title = 'GENDER'  , y= 'COUNT' , x= 'GENDER')
 
 #Run T/AB testing on gender
-lung_c %>% ggplot(aes(Gender, 1)) +
-  geom_col() +
+lung_c %>% filter(lung_c$Lung_Cancer_Stage != "None") %>% 
+  ggplot(aes(Gender)) +
+  geom_bar() +
   facet_wrap(~lung_c$Lung_Cancer_Stage)+
   labs(title = 'GENDER'  , y= 'COUNT' , x= 'GENDER')
 
