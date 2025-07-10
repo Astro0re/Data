@@ -96,16 +96,18 @@ where Urban_Rural = 'Urban' and Heart_Attack = 'TRUE'
 ;
 
 # Statistics basesed on parameters where a Heart Attack was recorded
-select Region, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
+select Region, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Region
 ;
 
-select Diabetes, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
+select Diabetes, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false  
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
@@ -121,64 +123,72 @@ where Urban_Rural = 'Urban'
 group by Heart_Attack
 ;
 
-select Alcohol_Consumption, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
+select Alcohol_Consumption, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Alcohol_Consumption
 ;
 
-select Heart_Disease_History, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
+select Heart_Disease_History, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Heart_Disease_History
 ;
 
-select Occupation, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness), avg(Daily_Water_Intake),
-avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
+select Occupation, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness), avg(Daily_Water_Intake),
+avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Occupation
 ;
 
-select Marital_Status, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
+select Marital_Status, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Marital_Status
 ;
 
-select Family_History, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')
+select Family_History, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Family_History
 ;
 
-select Exercise_Level, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness), avg(Daily_Water_Intake),
-avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')  
+select Exercise_Level, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness), avg(Daily_Water_Intake),
+avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Exercise_Level
 ;
 
-select Medication, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')
+select Medication, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Medication
 ;
 
-select Angina, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')
+select Angina, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
@@ -186,23 +196,28 @@ group by Angina
 ;
 
 select Smoking, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Smoking
 ;
 
-select Income_Level, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')
+select Income_Level, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true,
+ avg(Health_Awareness),avg(Daily_Water_Intake),avg(Daily_Water_Intake),
+ SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Income_Level
 ;
 
-select Obesity, avg(Blood_Pressure),avg(Heart_Rate), count(Family_History = 'TRUE'), avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), count(Heart_Attack = 'TRUE'),  count(Heart_Attack = 'FALSE')
+select Obesity,avg(Blood_Pressure), count(Family_History),avg(Heart_Rate),
+ SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true, avg(Health_Awareness),
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+    SUM(CASE WHEN d1.Heart_Attack = 'FALSE' THEN 1 ELSE 0 END) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
