@@ -1,0 +1,72 @@
+---
+title: "Lung Cancer Analysis"
+author: "Fesobi Oreofeoluwa"
+date: "2025-07-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Introduction
+#Methodology
+##Load Packages
+```{r}
+library(tidyverse)
+library(Hmisc)
+library(ggplot2)
+```
+##Load data and explore data 
+```{r}
+lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
+
+summarise(lung_c)
+View(describe(lung_c)) 
+```
+##Variables 
+###Patients infected with lung cancer of any stage
+```{r}
+lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
+```
+###Gender
+```{r}
+male <- subset(lung_c, lung_c$Gender== 'Male')
+female <- subset(lung_c, lung_c$Gender== 'Female')
+```
+###Longevity 
+```{r}
+longev <- subset(lung_c, (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE" )
+
+```
+
+##Statistical Testing
+```{r}
+lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
+   t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
+```
+
+
+```{r}
+lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
+   t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
+```
+
+##Plots
+
+###Gender Stats:
+```{r pressure, echo=FALSE}
+lung_c %>% filter(infect_dummy == "TRUE") %>% 
+  ggplot(aes(Gender))+
+  geom_bar()+
+  labs(title = 'GENDER(INFECTED)'  , y= 'COUNT' , x= 'GENDER')
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>% filter(infect_dummy == "TRUE") %>% 
+  ggplot(aes(Gender))+
+  geom_bar()+
+  labs(title = 'GENDER(INFECTED)'  , y= 'COUNT' , x= 'GENDER')
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+#Conclusions
