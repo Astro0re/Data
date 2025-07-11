@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 #Introduction
+Yapps
 #Methodology
 ##Load Packages
 ```{r}
@@ -27,6 +28,8 @@ View(describe(lung_c))
 ###Patients infected with lung cancer of any stage
 ```{r}
 lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
+
+lung_DeathR <- sum(lung_c$Survival_Status == "Deceased") / length(lung_c$Survival_Status)
 ```
 ###Gender
 ```{r}
@@ -67,6 +70,154 @@ lung_c %>% filter(infect_dummy == "TRUE") %>%
   geom_bar()+
   labs(title = 'GENDER(INFECTED)'  , y= 'COUNT' , x= 'GENDER')
 ```
+
+
+```{r pressure, echo=FALSE}
+lung_c %>% 
+  ggplot(aes(Occupation_Exposure, fill = infect_dummy))+
+  geom_bar()+
+  labs(title = 'OCCUPATIONAL EXPOSURE(INFECTED)'  , y= 'COUNT' , x= 'EXPOSURE')
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>% 
+  ggplot(aes(Diagnosis_Year, fill = infect_dummy))+
+  geom_bar()+
+  labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>% 
+  ggplot(aes(Survival_Status, fill = infect_dummy))+
+  geom_bar()+
+  labs(title = 'SURVIVAL STATS'  , y= 'COUNT' , x= 'SURVIVAL STATUS')
+```
+
+### Not Infected
+```{r pressure, echo=FALSE}
+lung_c %>% filter(infect_dummy == "FALSE") %>%
+  ggplot(aes(Survival_Status))+
+  geom_bar()+
+  labs(title = 'SURVIVAL STATS(NOT INFECTED)'  , y= 'COUNT' , x= 'SURVIVAL STATUS')
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>% filter(infect_dummy == "FALSE") %>%
+  ggplot(aes(BMI))+
+  geom_bar()+
+  labs(title = "Average BMI(Not infected)")
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>% filter(infect_dummy == "TRUE") %>%
+  ggplot(aes(BMI))+
+  geom_bar()
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>%  filter(infect_dummy == "TRUE") %>%
+  ggplot(aes(longevity))+
+  geom_bar()+
+  labs(title = 'LONGEVITY(ALIVE FOR OVER TEN YEARS FOLLOWING INFECTION)'  , y= 'COUNT' , x= 'LONGEVITY')
+```
+
+
+### Smocking_Status
+```{r pressure, echo=FALSE}
+lung_c %>% 
+  ggplot(aes(Smoking_Status, fill = infect_dummy))+
+  geom_bar()+
+  labs(title = 'SMOKING STATUS'  , y= 'COUNT' , x= 'SMOKING STATUS')
+```
+
+### Secondhand_Smoke
+```{r pressure, echo=FALSE}
+lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure)) +
+  geom_bar() +
+  facet_wrap(~lung_c$Lung_Cancer_Stage)+
+  labs(title = 'SECOND HAND EXPOSURE'  , y= 'COUNT' , x= 'SMOKE EXPOSURE')
+```
+
+###Occupational exposure
+```{r pressure, echo=FALSE}
+lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
+  ggplot(aes(Occupation_Exposure)) +
+  geom_bar()+
+  labs(title = 'EXPOSURE(INFECTED)'  , y= 'COUNT' , x= 'FACTORS')
+```
+
+###Family History
+```{r pressure, echo=FALSE}
+lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
+  ggplot(aes(Family_History, fill = Lung_Cancer_Stage))+
+  geom_bar()+
+  labs(title = 'FAMILY HISTORY(INFECTED)'  , y= 'cOUNT' , x= 'HISTORY')
+```
+
+
+```{r pressure, echo=FALSE}
+lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
+  geom_col()+
+  labs(title = 'INFECTION RATE THROUGH THE YEARS'  , y= 'INFECTED COUNT' , x= 'YEARS')
+```
+
+###Death rate
+```{r pressure, echo=FALSE}
+lung_c %>% 
+  ggplot(aes(Diagnosis_Year))+
+  geom_bar()+
+  facet_wrap(~Survival_Status)+
+  labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
+```
+
+###Region 
+```{r pressure, echo=FALSE}
+lung_c %>% filter(infect_dummy == "TRUE") %>% 
+  ggplot(aes(Region))+
+  geom_bar()+
+  labs(title = "Infection Count by Region(Infected)")
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>%
+  ggplot(aes(Diet_Quality))+
+  geom_bar()+
+  facet_wrap(~Region)+
+  labs(title = "Diet_Quality by Region(Infected)")
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>%
+  ggplot(aes(Smoking_Status))+
+  geom_bar()+
+  facet_wrap(~Region)+
+  labs(title = "Smoking Status by Region(Infected)")
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>%
+  ggplot(aes(Family_History))+
+  geom_bar()+
+  facet_wrap(~Region)+
+  labs(title = "Family History by Region(Infected)")
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>%
+  ggplot(aes(Occupation_Exposure))+
+  geom_bar()+
+  facet_wrap(~Region)+
+  labs(title = "Occupation Exposure by Region(Infected)")
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>%
+  ggplot(aes(Genetic_Markers_Positive))+
+  geom_bar()+
+  facet_wrap(~Region)+
+  labs(title = "Genetic Markers by Region(Infected)")
+```
+
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 #Conclusions
