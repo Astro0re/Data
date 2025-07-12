@@ -9,9 +9,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 #Introduction
-Yapps
+With what seems to ever increasing factors that are detrimental to health, we always on the look out for caustive effects on such factors.
 #Methodology
-##Load Packages
+##Data Preping
+Install Packages to be used in the analysis
 ```{r}
 library(tidyverse)
 library(Hmisc)
