@@ -9,8 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 #Introduction
-With what seems to ever increasing factors that are detrimental to health, we always on the look out for caustive effects on such factors.
+With what seems to ever increasing factors that are detrimental to health, we always on the look out for causative effects on such factors.
 #Methodology
+Using R language to run statistical test and plot factors to try to discover any causative factors from this data-set.
 ##Data Preping
 Install Packages to be used in the analysis
 ```{r}
@@ -19,6 +20,7 @@ library(Hmisc)
 library(ggplot2)
 ```
 ##Load data and explore data 
+Data gotten from KAGGLE learn
 ```{r}
 lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
 
