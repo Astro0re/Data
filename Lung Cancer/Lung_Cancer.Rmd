@@ -73,20 +73,14 @@ lung_c %>% filter(infect_dummy == "TRUE") %>%
   labs(title = 'GENDER(INFECTED)'  , y= 'COUNT' , x= 'GENDER')
 ```
 
-```{r pressure, echo=FALSE}
-lung_c %>% 
-  ggplot(aes(Occupation_Exposure, fill = infect_dummy))+
-  geom_bar()+
-  labs(title = 'OCCUPATIONAL EXPOSURE(INFECTED)'  , y= 'COUNT' , x= 'EXPOSURE')
-```
-
+### Yearly Report
 ```{r pressure, echo=FALSE}
 lung_c %>% 
   ggplot(aes(Diagnosis_Year, fill = infect_dummy))+
   geom_bar()+
   labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
 ```
-
+### Survival
 ```{r pressure, echo=FALSE}
 lung_c %>% 
   ggplot(aes(Survival_Status, fill = infect_dummy))+
@@ -101,7 +95,7 @@ lung_c %>% filter(infect_dummy == "FALSE") %>%
   geom_bar()+
   labs(title = 'SURVIVAL STATS(NOT INFECTED)'  , y= 'COUNT' , x= 'SURVIVAL STATUS')
 ```
-
+###BMI
 ```{r pressure, echo=FALSE}
 lung_c %>% filter(infect_dummy == "FALSE") %>%
   ggplot(aes(BMI))+
@@ -112,9 +106,10 @@ lung_c %>% filter(infect_dummy == "FALSE") %>%
 ```{r pressure, echo=FALSE}
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(BMI))+
-  geom_bar()
+  geom_bar()+
+  labs(title = "Average BMI(Infected)")
 ```
-
+###Longevity
 ```{r pressure, echo=FALSE}
 lung_c %>%  filter(infect_dummy == "TRUE") %>%
   ggplot(aes(longevity))+
@@ -155,7 +150,7 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
   labs(title = 'FAMILY HISTORY(INFECTED)'  , y= 'cOUNT' , x= 'HISTORY')
 ```
 
-
+### Diagnosis Year
 ```{r pressure, echo=FALSE}
 lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
   geom_col()+

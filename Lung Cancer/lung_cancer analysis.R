@@ -24,10 +24,6 @@ lung_c %>% ggplot(aes(infect_dummy))+
   geom_bar()+
   labs(title = 'INFECTION STATUS'  , y= 'COUNT' , x= 'INFECTION STATUS')
 
-lung_c %>% 
-  ggplot(aes(Occupation_Exposure, fill = infect_dummy))+
-  geom_bar()+
-  labs(title = 'OCCUPATIONAL EXPOSURE(INFECTED)'  , y= 'COUNT' , x= 'EXPOSURE')
 
 lung_c %>% 
   ggplot(aes(Diagnosis_Year, fill = infect_dummy))+
@@ -52,7 +48,8 @@ lung_c %>% filter(infect_dummy == "FALSE") %>%
 
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(BMI))+
-  geom_bar()
+  geom_bar()+
+  labs(title = "Average BMI(Infected)")
 
 # Lived more than 10 years after diagnosis 
 longev <- subset(lung_c, (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE" )
