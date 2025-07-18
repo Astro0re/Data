@@ -116,9 +116,9 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
 lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
    t.test(male$Age, female$Age, conf.level = 0.95, alternative = "two.sided")
 
-lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
+lung_c %>%
+  lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
    t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
-
 lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
   geom_col()+
   labs(title = 'INFECTION RATE THROUGH THE YEARS'  , y= 'INFECTED COUNT' , x= 'YEARS')
@@ -178,7 +178,8 @@ lung_c %>%
   ggplot(aes(Family_History , fill = Genetic_Markers_Positive))+
   geom_bar()+
   labs(title = "")
-#geom_bar()#Chronic Lung Disease x Lung Cancer
+
+#Chronic Lung Disease x Lung Cancer
 lung_c %>%
   ggplot(aes(Chronic_Lung_Disease, fill = Lung_Cancer_Stage))+
   geom_bar()+
