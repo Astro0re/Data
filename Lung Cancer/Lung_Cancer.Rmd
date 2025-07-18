@@ -42,18 +42,19 @@ Separated by Gender
 male <- subset(lung_c, lung_c$Gender== 'Male')
 female <- subset(lung_c, lung_c$Gender== 'Female')
 ```
+
+##Statistical Testing
+T-test between gender
+```{r}
+lung_c$infect_dummy <- as.integer(lung_c$infect_dummy)
+t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
+```
+
 ###Longevity
 Those infected with lung cancer (of any stage) but have lived for over 10 years following diagnosis.
 ```{r}
 longev <- subset(lung_c, (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE" )
 
-```
-
-##Statistical Testing
-T-test between gender
-```{r}
-lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
-   t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
 ```
 
 ##Plots
