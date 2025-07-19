@@ -215,6 +215,5 @@ lung_c %>%
   labs(title = "Genetic Markers by Region(Infected)")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-#Conclusions
+## Conclusion 
+This reporrt shows a lot a factors associated with lung cancer
