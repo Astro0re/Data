@@ -216,4 +216,4 @@ lung_c %>%
 ```
 
 ## Conclusion 
-This reporrt shows a lot a factors associated with lung cancer
+This report shows a lot a factors associated with lung cancer however there seems to be little causative factors among them.
