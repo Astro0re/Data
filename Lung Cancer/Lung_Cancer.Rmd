@@ -1,7 +1,7 @@
 ---
 title: "Lung Cancer Analysis"
 author: "Fesobi Oreofeoluwa"
-date: "2025-...-..."
+date: "July-2025"
 output: html_document
 ---
 
@@ -68,10 +68,17 @@ lung_c %>% filter(infect_dummy == "TRUE") %>%
 ```
 
 ```{r pressure, echo=FALSE}
-lung_c %>% filter(infect_dummy == "TRUE") %>% 
+lung_c %>%
   ggplot(aes(Gender))+
   geom_bar()+
-  labs(title = 'GENDER(INFECTED)'  , y= 'COUNT' , x= 'GENDER')
+  labs(title = 'GENDER'  , y= 'COUNT' , x= 'GENDER')
+```
+
+```{r pressure, echo=FALSE}
+lung_c %>%
+  ggplot(aes(Gender, fill= Occupation_Exposure))+
+  geom_bar()+
+  labs(title = 'GENDER-EXPOSURE'  , y= 'COUNT' , x= 'GENDER')
 ```
 
 ### Yearly Report
