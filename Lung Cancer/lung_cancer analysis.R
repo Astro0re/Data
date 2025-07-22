@@ -67,6 +67,11 @@ lung_c %>%
   geom_bar()+
   labs(title = 'GENDER'  , y= 'COUNT' , x= 'GENDER')
 
+lung_c %>%
+  ggplot(aes(Gender, fill= Occupation_Exposure))+
+  geom_bar()+
+  labs(title = 'GENDER-EXPOSURE'  , y= 'COUNT' , x= 'GENDER')
+
 #Run T/AB testing on gender
 lung_c %>% filter(lung_c$Lung_Cancer_Stage != "None") %>% 
   ggplot(aes(Gender)) +
