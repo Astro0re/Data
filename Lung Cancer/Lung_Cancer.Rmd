@@ -17,13 +17,12 @@ Install Packages to be used in the analysis
 ```{r}
 library(tidyverse)
 library(Hmisc)
-library(ggplot2)
 ```
 ##Load data and explore data 
 Data gotten from KAGGLE learn [Source][https://www.kaggle.com/datasets/khwaishsaxena/lung-cancer-dataset]
+lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
 ```{r}
 lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
-
 summarise(lung_c)
 View(describe(lung_c)) 
 ```
@@ -60,21 +59,21 @@ longev <- subset(lung_c, (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival
 ##Plots
 
 ###Gender Stats:
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% filter(infect_dummy == "TRUE") %>% 
   ggplot(aes(Gender))+
   geom_bar()+
   labs(title = 'GENDER(INFECTED)'  , y= 'COUNT' , x= 'GENDER')
 ```
 
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>%
   ggplot(aes(Gender))+
   geom_bar()+
   labs(title = 'GENDER'  , y= 'COUNT' , x= 'GENDER')
 ```
 
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>%
   ggplot(aes(Gender, fill= Occupation_Exposure))+
   geom_bar()+
@@ -82,14 +81,14 @@ lung_c %>%
 ```
 
 ### Yearly Report
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% 
   ggplot(aes(Diagnosis_Year, fill = infect_dummy))+
   geom_bar()+
   labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
 ```
 ### Survival
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% 
   ggplot(aes(Survival_Status, fill = infect_dummy))+
   geom_bar()+
@@ -97,28 +96,28 @@ lung_c %>%
 ```
 
 ### Not Infected
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% filter(infect_dummy == "FALSE") %>%
   ggplot(aes(Survival_Status))+
   geom_bar()+
   labs(title = 'SURVIVAL STATS(NOT INFECTED)'  , y= 'COUNT' , x= 'SURVIVAL STATUS')
 ```
 ###BMI
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% filter(infect_dummy == "FALSE") %>%
   ggplot(aes(BMI))+
   geom_bar()+
   labs(title = "Average BMI(Not infected)")
 ```
 
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% filter(infect_dummy == "TRUE") %>%
   ggplot(aes(BMI))+
   geom_bar()+
   labs(title = "Average BMI(Infected)")
 ```
 ###Longevity
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>%  filter(infect_dummy == "TRUE") %>%
   ggplot(aes(longevity))+
   geom_bar()+
@@ -127,7 +126,7 @@ lung_c %>%  filter(infect_dummy == "TRUE") %>%
 
 
 ### Smocking_Status
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% 
   ggplot(aes(Smoking_Status, fill = infect_dummy))+
   geom_bar()+
@@ -135,7 +134,7 @@ lung_c %>%
 ```
 
 ### Secondhand_Smoke
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure)) +
   geom_bar() +
   facet_wrap(~lung_c$Lung_Cancer_Stage)+
@@ -143,7 +142,7 @@ lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure)) +
 ```
 
 ###Occupational exposure
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
   ggplot(aes(Occupation_Exposure)) +
   geom_bar()+
@@ -151,7 +150,7 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
 ```
 
 ###Family History
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
   ggplot(aes(Family_History, fill = Lung_Cancer_Stage))+
   geom_bar()+
@@ -159,14 +158,14 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
 ```
 
 ### Diagnosis Year
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
   geom_col()+
   labs(title = 'INFECTION RATE THROUGH THE YEARS'  , y= 'INFECTED COUNT' , x= 'YEARS')
 ```
 
 ###Death rate
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% 
   ggplot(aes(Diagnosis_Year))+
   geom_bar()+
@@ -175,14 +174,14 @@ lung_c %>%
 ```
 
 ###Region 
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>% filter(infect_dummy == "TRUE") %>% 
   ggplot(aes(Region))+
   geom_bar()+
   labs(title = "Infection Count by Region(Infected)")
 ```
 
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>%
   ggplot(aes(Diet_Quality))+
   geom_bar()+
@@ -190,7 +189,7 @@ lung_c %>%
   labs(title = "Diet_Quality by Region(Infected)")
 ```
 
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>%
   ggplot(aes(Smoking_Status))+
   geom_bar()+
@@ -198,7 +197,7 @@ lung_c %>%
   labs(title = "Smoking Status by Region(Infected)")
 ```
 
-```{r pressure, echo=FALSE}
+```{r  , echo=FALSE}
 lung_c %>%
   ggplot(aes(Family_History))+
   geom_bar()+
@@ -206,7 +205,7 @@ lung_c %>%
   labs(title = "Family History by Region(Infected)")
 ```
 
-```{r pressure, echo=FALSE}
+```{r , echo=FALSE}
 lung_c %>%
   ggplot(aes(Occupation_Exposure))+
   geom_bar()+
@@ -214,7 +213,7 @@ lung_c %>%
   labs(title = "Occupation Exposure by Region(Infected)")
 ```
 
-```{r pressure, echo=FALSE}
+```{r , echo=FALSE}
 lung_c %>%
   ggplot(aes(Genetic_Markers_Positive))+
   geom_bar()+
