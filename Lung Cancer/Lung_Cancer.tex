@@ -1,0 +1,675 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Lung Cancer Analysis},
+  pdfauthor={Fesobi Oreofeoluwa},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Lung Cancer Analysis}
+\author{Fesobi Oreofeoluwa}
+\date{July-2025}
+
+\begin{document}
+\maketitle
+
+\subsection{Introduction}\label{introduction}
+
+With what seems to ever increasing factors that are detrimental to
+health, we always on the look out for causative effects on such factors.
+
+\section{Methodology}\label{methodology}
+
+Using R language to run statistical test and plot factors to try to
+discover any causative factors from this data-set.
+
+\subsection{Data Preping}\label{data-preping}
+
+Install Packages to be used in the analysis Using Packages such as
+Tidyverse and Hmisc
+
+\#\#Load data and explore data Data gotten from KAGGLE learn
+{[}Source{]}{[}\url{https://www.kaggle.com/datasets/khwaishsaxena/lung-cancer-dataset}{]}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lung\_c }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/USER/Documents/Git\_Hub Data/Data/Lung Cancer/Lung\_Cancer\_Trends\_Realistic.csv"}\NormalTok{)}
+\FunctionTok{describe}\NormalTok{(lung\_c)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## lung_c 
+## 
+##  24  Variables      3000  Observations
+## --------------------------------------------------------------------------------
+## Patient_ID 
+##        n  missing distinct 
+##     3000        0     3000 
+## 
+## lowest : P100000 P100001 P100002 P100003 P100004
+## highest: P102995 P102996 P102997 P102998 P102999
+## --------------------------------------------------------------------------------
+## Age 
+##        n  missing distinct     Info     Mean  pMedian      Gmd      .05 
+##     3000        0       65        1    56.65     56.5    21.64       28 
+##      .10      .25      .50      .75      .90      .95 
+##       31       41       57       73       83       86 
+## 
+## lowest : 25 26 27 28 29, highest: 85 86 87 88 89
+## --------------------------------------------------------------------------------
+## Gender 
+##        n  missing distinct 
+##     3000        0        2 
+##                         
+## Value      Female   Male
+## Frequency    1494   1506
+## Proportion  0.498  0.502
+## --------------------------------------------------------------------------------
+## Smoking_Status 
+##        n  missing distinct 
+##     3000        0        3 
+##                                   
+## Value      Current  Former   Never
+## Frequency     1153     935     912
+## Proportion   0.384   0.312   0.304
+## --------------------------------------------------------------------------------
+## Years_Smoking 
+##        n  missing distinct     Info     Mean  pMedian      Gmd      .05 
+##     3000        0       50        1    24.23       24     16.5        2 
+##      .10      .25      .50      .75      .90      .95 
+##        5       12       24       36       44       47 
+## 
+## lowest :  0  1  2  3  4, highest: 45 46 47 48 49
+## --------------------------------------------------------------------------------
+## Cigarettes_Per_Day 
+##        n  missing distinct     Info     Mean  pMedian      Gmd      .05 
+##     3000        0       40    0.999    19.62     19.5    13.19        2 
+##      .10      .25      .50      .75      .90      .95 
+##        4       10       19       29       36       38 
+## 
+## lowest :  0  1  2  3  4, highest: 35 36 37 38 39
+## --------------------------------------------------------------------------------
+## Secondhand_Smoke_Exposure 
+##        n  missing distinct 
+##     3000        0        3 
+##                                
+## Value        High    Low Medium
+## Frequency     991    991   1018
+## Proportion  0.330  0.330  0.339
+## --------------------------------------------------------------------------------
+## Occupation_Exposure 
+##        n  missing distinct 
+##     3000        0        4 
+##                                                               
+## Value          Asbestos Diesel Fumes         None       Silica
+## Frequency           740          753          744          763
+## Proportion        0.247        0.251        0.248        0.254
+## --------------------------------------------------------------------------------
+## Air_Pollution_Level 
+##        n  missing distinct 
+##     3000        0        3 
+##                                      
+## Value          High      Low Moderate
+## Frequency       990      972     1038
+## Proportion    0.330    0.324    0.346
+## --------------------------------------------------------------------------------
+## Family_History 
+##        n  missing distinct 
+##     3000        0        2 
+##                     
+## Value        No  Yes
+## Frequency  1500 1500
+## Proportion  0.5  0.5
+## --------------------------------------------------------------------------------
+## Genetic_Markers_Positive 
+##        n  missing distinct 
+##     3000        0        2 
+##                       
+## Value         No   Yes
+## Frequency   2718   282
+## Proportion 0.906 0.094
+## --------------------------------------------------------------------------------
+## BMI 
+##        n  missing distinct     Info     Mean  pMedian      Gmd      .05 
+##     3000        0      265        1    24.97    24.95    5.587     16.6 
+##      .10      .25      .50      .75      .90      .95 
+##     18.7     21.6     24.8     28.3     31.2     33.2 
+## 
+## lowest : 2.6  7.9  9.2  9.3  10.7, highest: 40.3 40.7 41.3 41.9 45.7
+## --------------------------------------------------------------------------------
+## Physical_Activity_Level 
+##        n  missing distinct 
+##     3000        0        3 
+##                                      
+## Value          High      Low Moderate
+## Frequency      1027      991      982
+## Proportion    0.342    0.330    0.327
+## --------------------------------------------------------------------------------
+## Alcohol_Consumption 
+##        n  missing distinct 
+##     3000        0        3 
+##                                      
+## Value          High Moderate     None
+## Frequency       996     1029      975
+## Proportion    0.332    0.343    0.325
+## --------------------------------------------------------------------------------
+## Diet_Quality 
+##        n  missing distinct 
+##     3000        0        3 
+##                                   
+## Value      Average    Good    Poor
+## Frequency     1045     992     963
+## Proportion   0.348   0.331   0.321
+## --------------------------------------------------------------------------------
+## Region 
+##        n  missing distinct 
+##     3000        0        4 
+##                                   
+## Value       East North South  West
+## Frequency    740   741   751   768
+## Proportion 0.247 0.247 0.250 0.256
+## --------------------------------------------------------------------------------
+## Income_Level 
+##        n  missing distinct 
+##     3000        0        3 
+##                                
+## Value        High    Low Middle
+## Frequency    1001    953   1046
+## Proportion  0.334  0.318  0.349
+## --------------------------------------------------------------------------------
+## Education_Level 
+##        n  missing distinct 
+##     3000        0        3 
+##                                         
+## Value        Primary Secondary  Tertiary
+## Frequency        988      1016       996
+## Proportion     0.329     0.339     0.332
+## --------------------------------------------------------------------------------
+## Access_to_Healthcare 
+##        n  missing distinct 
+##     3000        0        3 
+##                                   
+## Value      Average    Good    Poor
+## Frequency     1005     968    1027
+## Proportion   0.335   0.323   0.342
+## --------------------------------------------------------------------------------
+## Screening_Frequency 
+##        n  missing distinct 
+##     3000        0        3 
+##                                                  
+## Value             Never Occasionally    Regularly
+## Frequency           977          983         1040
+## Proportion        0.326        0.328        0.347
+## --------------------------------------------------------------------------------
+## Chronic_Lung_Disease 
+##        n  missing distinct 
+##     3000        0        2 
+##                       
+## Value         No   Yes
+## Frequency   2404   596
+## Proportion 0.801 0.199
+## --------------------------------------------------------------------------------
+## Lung_Cancer_Stage 
+##        n  missing distinct 
+##     3000        0        5 
+##                                                             
+## Value           None   Stage I  Stage II Stage III  Stage IV
+## Frequency       2402       155       146       150       147
+## Proportion     0.801     0.052     0.049     0.050     0.049
+## --------------------------------------------------------------------------------
+## Diagnosis_Year 
+##        n  missing distinct     Info     Mean  pMedian      Gmd      .05 
+##     3000        0       25    0.998     2012     2012    8.364     2001 
+##      .10      .25      .50      .75      .90      .95 
+##     2002     2006     2012     2018     2022     2023 
+## 
+## lowest : 2000 2001 2002 2003 2004, highest: 2020 2021 2022 2023 2024
+## --------------------------------------------------------------------------------
+## Survival_Status 
+##        n  missing distinct 
+##     3000        0        2 
+##                             
+## Value         Alive Deceased
+## Frequency      2534      466
+## Proportion    0.845    0.155
+## --------------------------------------------------------------------------------
+\end{verbatim}
+
+\subsection{Variables}\label{variables}
+
+Grouping this data set by certain variables allows us to look closer at
+possible underlying factors.
+
+\subsubsection{Infected}\label{infected}
+
+Patients with lung cancer (of any stage)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lung\_c}\SpecialCharTok{$}\NormalTok{infect\_dummy }\OtherTok{\textless{}{-}}\NormalTok{ lung\_c}\SpecialCharTok{$}\NormalTok{Lung\_Cancer\_Stage }\SpecialCharTok{!=} \StringTok{"None"}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(lung\_c))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Patient_ID Age Gender Smoking_Status Years_Smoking Cigarettes_Per_Day
+## 1    P100000  76 Female          Never             6                 37
+## 2    P100001  39   Male          Never            30                 39
+## 3    P100002  85   Male         Former            47                 14
+## 4    P100003  45 Female        Current            45                 32
+## 5    P100004  48 Female          Never            46                 26
+## 6    P100005  27   Male        Current            13                 28
+##   Secondhand_Smoke_Exposure Occupation_Exposure Air_Pollution_Level
+## 1                       Low        Diesel Fumes                 Low
+## 2                       Low              Silica                 Low
+## 3                      High            Asbestos                 Low
+## 4                    Medium              Silica                High
+## 5                    Medium              Silica                 Low
+## 6                       Low              Silica                High
+##   Family_History Genetic_Markers_Positive  BMI Physical_Activity_Level
+## 1            Yes                       No 24.6                Moderate
+## 2            Yes                       No 17.5                Moderate
+## 3            Yes                      Yes 33.6                    High
+## 4             No                       No 23.2                Moderate
+## 5             No                      Yes 22.9                    High
+## 6             No                      Yes 24.6                     Low
+##   Alcohol_Consumption Diet_Quality Region Income_Level Education_Level
+## 1            Moderate         Poor   West       Middle        Tertiary
+## 2            Moderate      Average  North       Middle         Primary
+## 3                High         Good  South         High        Tertiary
+## 4            Moderate         Good   West          Low       Secondary
+## 5                High         Good  North          Low        Tertiary
+## 6            Moderate         Poor   East       Middle        Tertiary
+##   Access_to_Healthcare Screening_Frequency Chronic_Lung_Disease
+## 1                 Good           Regularly                   No
+## 2                 Poor        Occasionally                  Yes
+## 3              Average           Regularly                   No
+## 4              Average               Never                  Yes
+## 5              Average           Regularly                   No
+## 6              Average           Regularly                   No
+##   Lung_Cancer_Stage Diagnosis_Year Survival_Status infect_dummy
+## 1          Stage II           2008           Alive         TRUE
+## 2              None           2002           Alive        FALSE
+## 3          Stage II           2007        Deceased         TRUE
+## 4              None           2011           Alive        FALSE
+## 5              None           2016           Alive        FALSE
+## 6              None           2013           Alive        FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lung\_DeathR }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(lung\_c}\SpecialCharTok{$}\NormalTok{Survival\_Status }\SpecialCharTok{==} \StringTok{"Deceased"}\NormalTok{) }\SpecialCharTok{/} \FunctionTok{length}\NormalTok{(lung\_c}\SpecialCharTok{$}\NormalTok{Survival\_Status)}
+\FunctionTok{print}\NormalTok{(lung\_DeathR)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1553333
+\end{verbatim}
+
+\subsubsection{Gender}\label{gender}
+
+Separated by Gender
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{male }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(lung\_c, lung\_c}\SpecialCharTok{$}\NormalTok{Gender}\SpecialCharTok{==} \StringTok{\textquotesingle{}Male\textquotesingle{}}\NormalTok{)}
+\NormalTok{female }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(lung\_c, lung\_c}\SpecialCharTok{$}\NormalTok{Gender}\SpecialCharTok{==} \StringTok{\textquotesingle{}Female\textquotesingle{}}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(male))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Patient_ID Age Gender Smoking_Status Years_Smoking Cigarettes_Per_Day
+## 2     P100001  39   Male          Never            30                 39
+## 3     P100002  85   Male         Former            47                 14
+## 6     P100005  27   Male        Current            13                 28
+## 11    P100010  62   Male          Never            16                  5
+## 13    P100012  88   Male         Former             5                  5
+## 14    P100013  84   Male          Never            42                  3
+##    Secondhand_Smoke_Exposure Occupation_Exposure Air_Pollution_Level
+## 2                        Low              Silica                 Low
+## 3                       High            Asbestos                 Low
+## 6                        Low              Silica                High
+## 11                       Low            Asbestos                High
+## 13                    Medium              Silica                 Low
+## 14                    Medium            Asbestos                 Low
+##    Family_History Genetic_Markers_Positive  BMI Physical_Activity_Level
+## 2             Yes                       No 17.5                Moderate
+## 3             Yes                      Yes 33.6                    High
+## 6              No                      Yes 24.6                     Low
+## 11            Yes                       No 23.4                    High
+## 13            Yes                       No 29.7                    High
+## 14            Yes                       No 33.1                    High
+##    Alcohol_Consumption Diet_Quality Region Income_Level Education_Level
+## 2             Moderate      Average  North       Middle         Primary
+## 3                 High         Good  South         High        Tertiary
+## 6             Moderate         Poor   East       Middle        Tertiary
+## 11                High         Good  North       Middle        Tertiary
+## 13                None         Good   East          Low       Secondary
+## 14            Moderate      Average  North         High        Tertiary
+##    Access_to_Healthcare Screening_Frequency Chronic_Lung_Disease
+## 2                  Poor        Occasionally                  Yes
+## 3               Average           Regularly                   No
+## 6               Average           Regularly                   No
+## 11                 Good               Never                   No
+## 13                 Poor        Occasionally                   No
+## 14              Average           Regularly                   No
+##    Lung_Cancer_Stage Diagnosis_Year Survival_Status infect_dummy
+## 2               None           2002           Alive        FALSE
+## 3           Stage II           2007        Deceased         TRUE
+## 6               None           2013           Alive        FALSE
+## 11              None           2012           Alive        FALSE
+## 13          Stage IV           2012        Deceased         TRUE
+## 14          Stage IV           2011           Alive         TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(female))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Patient_ID Age Gender Smoking_Status Years_Smoking Cigarettes_Per_Day
+## 1    P100000  76 Female          Never             6                 37
+## 4    P100003  45 Female        Current            45                 32
+## 5    P100004  48 Female          Never            46                 26
+## 7    P100006  46 Female        Current            27                 36
+## 8    P100007  77 Female          Never            42                  4
+## 9    P100008  26 Female          Never            15                 28
+##   Secondhand_Smoke_Exposure Occupation_Exposure Air_Pollution_Level
+## 1                       Low        Diesel Fumes                 Low
+## 4                    Medium              Silica                High
+## 5                    Medium              Silica                 Low
+## 7                       Low            Asbestos                High
+## 8                       Low                None                 Low
+## 9                    Medium              Silica                 Low
+##   Family_History Genetic_Markers_Positive  BMI Physical_Activity_Level
+## 1            Yes                       No 24.6                Moderate
+## 4             No                       No 23.2                Moderate
+## 5             No                      Yes 22.9                    High
+## 7            Yes                       No 23.7                     Low
+## 8            Yes                       No 16.3                Moderate
+## 9             No                       No 27.9                     Low
+##   Alcohol_Consumption Diet_Quality Region Income_Level Education_Level
+## 1            Moderate         Poor   West       Middle        Tertiary
+## 4            Moderate         Good   West          Low       Secondary
+## 5                High         Good  North          Low        Tertiary
+## 7                High         Good   West       Middle         Primary
+## 8                High         Poor   East         High         Primary
+## 9                None         Poor  South       Middle        Tertiary
+##   Access_to_Healthcare Screening_Frequency Chronic_Lung_Disease
+## 1                 Good           Regularly                   No
+## 4              Average               Never                  Yes
+## 5              Average           Regularly                   No
+## 7                 Good        Occasionally                  Yes
+## 8                 Good           Regularly                   No
+## 9                 Poor               Never                   No
+##   Lung_Cancer_Stage Diagnosis_Year Survival_Status infect_dummy
+## 1          Stage II           2008           Alive         TRUE
+## 4              None           2011           Alive        FALSE
+## 5              None           2016           Alive        FALSE
+## 7          Stage II           2015        Deceased         TRUE
+## 8         Stage III           2018           Alive         TRUE
+## 9              None           2003           Alive        FALSE
+\end{verbatim}
+
+\paragraph{Statistical Testing}\label{statistical-testing}
+
+T-test between gender
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lung\_c}\SpecialCharTok{$}\NormalTok{infect\_dummy }\OtherTok{\textless{}{-}} \FunctionTok{as.integer}\NormalTok{(lung\_c}\SpecialCharTok{$}\NormalTok{infect\_dummy)}
+\FunctionTok{t.test}\NormalTok{(male}\SpecialCharTok{$}\NormalTok{infect\_dummy, female}\SpecialCharTok{$}\NormalTok{infect\_dummy, }\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  male$infect_dummy and female$infect_dummy
+## t = 0.25622, df = 2998, p-value = 0.7978
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.02487273  0.03235018
+## sample estimates:
+## mean of x mean of y 
+## 0.2011952 0.1974565
+\end{verbatim}
+
+\subsubsection{Longevity}\label{longevity}
+
+Those infected with lung cancer (of any stage) but have lived for over
+10 years following diagnosis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{longev }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(lung\_c, (}\DecValTok{2025} \SpecialCharTok{{-}}\NormalTok{ lung\_c}\SpecialCharTok{$}\NormalTok{Diagnosis\_Year) }\SpecialCharTok{\textgreater{}=} \DecValTok{10}  \SpecialCharTok{\&}\NormalTok{ lung\_c}\SpecialCharTok{$}\NormalTok{Survival\_Status }\SpecialCharTok{==} \StringTok{"Alive"} \SpecialCharTok{\&}\NormalTok{  lung\_c}\SpecialCharTok{$}\NormalTok{infect\_dummy }\SpecialCharTok{==} \StringTok{"TRUE"}\NormalTok{ )}
+\FunctionTok{describe}\NormalTok{(longev)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## longev 
+## 
+##  25  Variables      0  Observations
+## --------------------------------------------------------------------------------
+## 
+## Variables with all observations missing:
+## 
+##  [1] Patient_ID                Age                      
+##  [3] Gender                    Smoking_Status           
+##  [5] Years_Smoking             Cigarettes_Per_Day       
+##  [7] Secondhand_Smoke_Exposure Occupation_Exposure      
+##  [9] Air_Pollution_Level       Family_History           
+## [11] Genetic_Markers_Positive  BMI                      
+## [13] Physical_Activity_Level   Alcohol_Consumption      
+## [15] Diet_Quality              Region                   
+## [17] Income_Level              Education_Level          
+## [19] Access_to_Healthcare      Screening_Frequency      
+## [21] Chronic_Lung_Disease      Lung_Cancer_Stage        
+## [23] Diagnosis_Year            Survival_Status          
+## [25] infect_dummy
+\end{verbatim}
+
+\subsection{Plots}\label{plots}
+
+Ploting variables to get a better visual understanding on details
+
+\subsubsection{Gender Stats:}\label{gender-stats}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\subsubsection{Yearly Report}\label{yearly-report}
+
+\begin{verbatim}
+## Warning: The following aesthetics were dropped during statistical transformation: fill.
+## i This can happen when ggplot fails to infer the correct grouping structure in
+##   the data.
+## i Did you forget to specify a `group` aesthetic or to convert a numerical
+##   variable into a factor?
+\end{verbatim}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-10-1.pdf}
+\#\#\# Survival
+
+\begin{verbatim}
+## Warning: The following aesthetics were dropped during statistical transformation: fill.
+## i This can happen when ggplot fails to infer the correct grouping structure in
+##   the data.
+## i Did you forget to specify a `group` aesthetic or to convert a numerical
+##   variable into a factor?
+\end{verbatim}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\subsubsection{Not Infected}\label{not-infected}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-12-1.pdf}
+\#\#\# BMI
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-14-1.pdf}
+\#\#\# Longevity
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+\subsubsection{Smocking\_Status}\label{smocking_status}
+
+\begin{verbatim}
+## Warning: The following aesthetics were dropped during statistical transformation: fill.
+## i This can happen when ggplot fails to infer the correct grouping structure in
+##   the data.
+## i Did you forget to specify a `group` aesthetic or to convert a numerical
+##   variable into a factor?
+\end{verbatim}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\subsubsection{Secondhand\_Smoke}\label{secondhand_smoke}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\subsubsection{Occupational exposure}\label{occupational-exposure}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\subsubsection{Family History}\label{family-history}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+\subsubsection{Diagnosis Year}\label{diagnosis-year}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-20-1.pdf}
+
+\subsubsection{Death rate}\label{death-rate}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-21-1.pdf}
+
+\subsubsection{Region}\label{region}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-26-1.pdf}
+
+\includegraphics{Lung_Cancer_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\subsection{Conclusion}\label{conclusion}
+
+This report shows a lot a factors associated with lung cancer however
+there seems to be little causative factors among them.
+
+\end{document}
