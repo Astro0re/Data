@@ -2,11 +2,10 @@
 library(tidyverse)
 library(Hmisc)
 
+
 #Load data and explore data 
 lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
-
-summarise(lung_c)
-View(describe(lung_c)) 
+describe(lung_c)
 
 #Variables 
 # Patients infected with lung cancer of any stage
@@ -53,8 +52,8 @@ lung_c %>% filter(infect_dummy == "TRUE") %>%
 # Lived more than 10 years after diagnosis 
 longev <- subset(lung_c, (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE" )
 
-lung_c %>%  filter(infect_dummy == "TRUE") %>%
-  ggplot(aes(longevity))+
+longev %>%  filter(infect_dummy == "TRUE") %>%
+  ggplot(aes(Gender))+
   geom_bar()+
   labs(title = 'LONGEVITY(ALIVE FOR OVER TEN YEARS FOLLOWING INFECTION)'  , y= 'COUNT' , x= 'LONGEVITY')
 
@@ -94,9 +93,9 @@ lung_c %>%
 # Secondhand_Smoke
 table(lung_c$Secondhand_Smoke_Exposure)
 
-lung_c %>% ggplot(aes(Secondhand_Smoke_Exposure)) +
-  geom_bar() +
-  facet_wrap(~lung_c$Lung_Cancer_Stage)+
+lung_c %>% filter(Lung_Cancer_Stage !="None") %>% 
+  ggplot(aes(Secondhand_Smoke_Exposure, fill = Lung_Cancer_Stage)) +
+  geom_bar()+
   labs(title = 'SECOND HAND EXPOSURE'  , y= 'COUNT' , x= 'SMOKE EXPOSURE')
 
 #This Graph shows that second hand smoke exposure does not directly relate to lung cancer
