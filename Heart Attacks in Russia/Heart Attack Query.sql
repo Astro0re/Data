@@ -222,3 +222,9 @@ join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Obesity
 ;
+
+select family_history, sum(case when d1.family history ='TRUE'), sum(case when d1.family history ='FALSE')
+from `heart_attack_russia_data 1` as d1
+join `heart_attack_russia_data 2` as d2
+	on d1.ID = d2.ID 
+group by family_history
