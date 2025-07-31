@@ -10,7 +10,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 toc = TRUE
-theme: united
 library(tidyverse)
 library(Hmisc)
 ```
@@ -27,9 +26,10 @@ Using Packages such as Tidyverse and Hmisc
 
 ##Load data and explore data 
 Data gotten from KAGGLE learn [Source][https://www.kaggle.com/datasets/khwaishsaxena/lung-cancer-dataset]
-```{r, }
+```{r, knitr::kable()}
 lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
 describe(lung_c)
+summary(lung_c)
 ```
 ## Variables 
 Grouping this data set by certain variables allows us to look closer at possible underlying factors.

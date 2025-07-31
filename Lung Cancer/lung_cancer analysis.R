@@ -6,6 +6,7 @@ library(Hmisc)
 #Load data and explore data 
 lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
 describe(lung_c)
+summary(lung_c)
 
 #Variables 
 # Patients infected with lung cancer of any stage
