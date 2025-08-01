@@ -25,8 +25,9 @@ lung_c %>% ggplot(aes(infect_dummy))+
 
 
 lung_c %>% 
-  ggplot(aes(Diagnosis_Year, fill = infect_dummy))+
+  ggplot(aes(Diagnosis_Year))+
   geom_bar()+
+  facet_wrap(~infect_dummy)+
   labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
 
 lung_c %>% 
