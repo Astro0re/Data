@@ -5,7 +5,6 @@ date: "July-2025"
 output:
   html_document: default
   pdf_document: default
-  toc = TRUE
 ---
 
 ```{r setup, include=FALSE}
@@ -26,9 +25,8 @@ Using Packages such as Tidyverse and Hmisc
 
 ##Load data and explore data 
 Data gotten from KAGGLE learn [Source][https://www.kaggle.com/datasets/khwaishsaxena/lung-cancer-dataset]
-```{r, knitr::kable()}
-#lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
-describe(lung_c)
+```{r, collapse=TRUE}
+lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
 summary(lung_c)
 ```
 ## Variables 
@@ -36,23 +34,23 @@ Grouping this data set by certain variables allows us to look closer at possible
 
 ### Infected 
 Patients with lung cancer (of any stage) 
-```{r, knitr::kable()}
+```{r,collapse=TRUE}
 lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
-print(head(lung_c))
+head(lung_c)
 ```
 
 ```{r}
 lung_DeathR <- sum(lung_c$Survival_Status == "Deceased") / length(lung_c$Survival_Status)
-print(lung_DeathR)
+lung_DeathR
 ```
 
 ### Gender
 Separated by Gender
-```{r,knitr::kable()}
+```{r,collapse=TRUE}
 male <- subset(lung_c, lung_c$Gender== 'Male')
 female <- subset(lung_c, lung_c$Gender== 'Female')
-print(head(male))
-print(head(female))
+head(male)
+head(female)
 ```
 
 #### Statistical Testing
@@ -66,16 +64,16 @@ t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = 
 Those infected with lung cancer (of any stage) but have lived for over 10 years following diagnosis.
 ```{r, knitr::kable()}
 longev <- subset(lung_c, (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE" )
-print(head(longev))
+head(longev)
 
 ```
 
 ## Plots
-Ploting variables to get a better visual understanding on details
+Data visualization of variables to get a better visual understanding on details
 
 ### Gender Stats:
 
-```{r  , echo=FALSE, warning=FALSE, error=FALSE}
+```{r  ,echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>%
   ggplot(aes(Gender, fill= infect_dummy))+
   geom_bar()+
