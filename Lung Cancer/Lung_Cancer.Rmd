@@ -14,30 +14,38 @@ library(Hmisc)
 ```
 
 ## Introduction
+
 With what seems to ever increasing factors that are detrimental to health, we always on the look out for causative effects on such factors.
 
 # Methodology
+
 Using R language to run statistical test and plot factors to try to discover any causative factors from this data-set.
 
-## Data Preping
-Install Packages to be used in the analysis
-Using Packages such as Tidyverse and Hmisc
+## Data Preparing
 
-##Load data and explore data 
-Data gotten from KAGGLE learn [Source][https://www.kaggle.com/datasets/khwaishsaxena/lung-cancer-dataset]
+Install Packages to be used in the analysis Using Packages such as Tidyverse and Hmisc
+
+Load and explore data set gotten from KAGGLE learn [Source][<https://www.kaggle.com/datasets/khwaishsaxena/lung-cancer-dataset>]
+
 ```{r, collapse=TRUE}
 lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
 summary(lung_c)
 ```
-## Variables 
-Grouping this data set by certain variables allows us to look closer at possible underlying factors.
 
-### Infected 
-Patients with lung cancer (of any stage) 
+## Variables
+
+Grouping/marking this data set by certain variables allows us to look closer at possible underlying factors. For this data set we will be looking at three groupings; Gender, Infection status and longevity.
+
+### Infected
+
+This new column identifies patients with lung cancer (of any stage), allowing us to visualize the data in reference to if they are affected or not.
+
 ```{r,collapse=TRUE}
 lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
 head(lung_c)
 ```
+
+#### Death Rate
 
 ```{r}
 lung_DeathR <- sum(lung_c$Survival_Status == "Deceased") / length(lung_c$Survival_Status)
@@ -45,7 +53,9 @@ lung_DeathR
 ```
 
 ### Gender
+
 Separated by Gender
+
 ```{r,collapse=TRUE}
 male <- subset(lung_c, lung_c$Gender== 'Male')
 female <- subset(lung_c, lung_c$Gender== 'Female')
@@ -54,14 +64,18 @@ head(female)
 ```
 
 #### Statistical Testing
+
 T-test between gender
+
 ```{r, collapse=TRUE}
 lung_c$infect_dummy <- as.integer(lung_c$infect_dummy)
 t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
 ```
 
 ### Longevity
+
 Those infected with lung cancer (of any stage) but have lived for over 10 years following diagnosis.
+
 ```{r, knitr::kable()}
 longev <- subset(lung_c, (2025 - lung_c$Diagnosis_Year) >= 10  & lung_c$Survival_Status == "Alive" &  lung_c$infect_dummy == "TRUE" )
 head(longev)
@@ -69,6 +83,7 @@ head(longev)
 ```
 
 ## Plots
+
 Data visualization of variables to get a better visual understanding on details
 
 ### Gender Stats:
@@ -88,13 +103,16 @@ lung_c %>%
 ```
 
 ### Yearly Report
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>%  filter(infect_dummy == 1) %>% 
   ggplot(aes(Diagnosis_Year))+
   geom_bar()+
   labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
 ```
+
 ### Survival
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>% 
   ggplot(aes(Survival_Status, fill = infect_dummy))+
@@ -103,13 +121,16 @@ lung_c %>%
 ```
 
 ### Not Infected
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>% filter(infect_dummy == 0) %>%
   ggplot(aes(Survival_Status))+
   geom_bar()+
   labs(title = 'SURVIVAL STATS(NOT INFECTED)'  , y= 'COUNT' , x= 'SURVIVAL STATUS')
 ```
+
 ### BMI
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>% filter(infect_dummy == 0) %>%
   ggplot(aes(BMI))+
@@ -123,7 +144,9 @@ lung_c %>% filter(infect_dummy == 1) %>%
   geom_bar()+
   labs(title = "Average BMI(Infected)")
 ```
+
 ### Longevity
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 longev %>% 
   ggplot(aes(Gender))+
@@ -131,8 +154,8 @@ longev %>%
   labs(title = 'LONGEVITY AMONG GENDERS'  , y= 'COUNT' , x= 'LONGEVITY')
 ```
 
-
 ### Smocking_Status
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>% 
   ggplot(aes(Smoking_Status, fill = infect_dummy))+
@@ -141,6 +164,7 @@ lung_c %>%
 ```
 
 ### Secondhand_Smoke
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>% filter(Lung_Cancer_Stage !="None") %>% 
   ggplot(aes(Secondhand_Smoke_Exposure, fill = Lung_Cancer_Stage)) +
@@ -149,6 +173,7 @@ lung_c %>% filter(Lung_Cancer_Stage !="None") %>%
 ```
 
 ### Occupational exposure
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
   ggplot(aes(Occupation_Exposure)) +
@@ -157,6 +182,7 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
 ```
 
 ### Family History
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
   ggplot(aes(Family_History, fill = Lung_Cancer_Stage))+
@@ -165,6 +191,7 @@ lung_c %>% filter(Lung_Cancer_Stage != "None") %>%
 ```
 
 ### Death rate
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>% filter(infect_dummy == 1) %>% 
   ggplot(aes(Diagnosis_Year))+
@@ -173,7 +200,8 @@ lung_c %>% filter(infect_dummy == 1) %>%
   labs(title = 'INFECTED STATUS OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
 ```
 
-### Region 
+### Region
+
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>% filter(infect_dummy == 1) %>% 
   ggplot(aes(Region))+
@@ -221,5 +249,6 @@ lung_c %>%
   labs(title = "Genetic Markers by Region(Infected)")
 ```
 
-## Conclusion 
+## Conclusion
+
 This report shows a lot a factors associated with lung cancer however there seems to be little causative factors among them.
