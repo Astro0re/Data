@@ -13,11 +13,9 @@ library(tidyverse)
 library(Hmisc)
 ```
 
-## Introduction
+# Introduction 
 
 With what seems to ever increasing factors that are detrimental to health, we always on the look out for causative effects on such factors.
-
-# Methodology
 
 Using R language to run statistical test and plot factors to try to discover any causative factors from this data-set.
 
@@ -25,14 +23,14 @@ Using R language to run statistical test and plot factors to try to discover any
 
 Install Packages to be used in the analysis Using Packages such as Tidyverse and Hmisc
 
-Load and explore data set gotten from KAGGLE learn [Source][<https://www.kaggle.com/datasets/khwaishsaxena/lung-cancer-dataset>]
+Load and explore data set gotten from KAGGLE learn:[<https://www.kaggle.com/datasets/khwaishsaxena/lung-cancer-dataset>]
 
 ```{r, collapse=TRUE}
 lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_Cancer_Trends_Realistic.csv")
 summary(lung_c)
 ```
 
-## Variables
+# Variables
 
 Grouping/marking this data set by certain variables allows us to look closer at possible underlying factors. For this data set we will be looking at three groupings; Gender, Infection status and longevity.
 
@@ -82,7 +80,7 @@ head(longev)
 
 ```
 
-## Plots
+# Plots
 
 Data visualization of variables to get a better visual understanding on details
 
@@ -117,7 +115,7 @@ lung_c %>%  filter(infect_dummy == 1) %>%
 lung_c %>% 
   ggplot(aes(Survival_Status, fill = infect_dummy))+
   geom_bar()+
-  labs(title = 'SURVIVAL STATS'  , y= 'COUNT' , x= 'SURVIVAL STATUS')
+  labs(title = 'SURVIVAL STATS'  , y= 'COUNT' , x= 'STATUS')
 ```
 
 ### Not Infected
@@ -249,6 +247,6 @@ lung_c %>%
   labs(title = "Genetic Markers by Region(Infected)")
 ```
 
-## Conclusion
+# Conclusion
 
 This report shows a lot a factors associated with lung cancer however there seems to be little causative factors among them.
