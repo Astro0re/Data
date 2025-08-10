@@ -13,9 +13,13 @@ library(tidyverse)
 library(Hmisc)
 ```
 
-# Introduction 
+# Introduction
 
-With what seems to ever increasing factors that are detrimental to health, we always on the look out for causative effects on such factors.
+With what seems to ever increasing factors that are detrimental to general health, we as medical practitioners are always on the look out for causative factors, common to most patients that may hold the key to preventive treatment plans that can be developed.
+
+![](234c66d1244f4936282b8ecc81cc6b2054153882-5000x3750.jpg)
+
+This data set holds data of a variety of patients including some who have been diagnosed with Lung cancer, this data set contains variable related to personal life factors of each patient.
 
 Using R language to run statistical test and plot factors to try to discover any causative factors from this data-set.
 
