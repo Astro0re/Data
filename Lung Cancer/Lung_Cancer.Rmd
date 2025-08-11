@@ -49,10 +49,14 @@ head(lung_c)
 
 #### Death Rate
 
+From this data set we can get the death rate of those infected with lung cancer of any stage.
+
 ```{r}
-lung_DeathR <- sum(lung_c$Survival_Status == "Deceased") / length(lung_c$Survival_Status)
+lung_DeathR <- (sum(lung_c$Survival_Status == "Deceased") / length(lung_c$Survival_Status)) * 100
 lung_DeathR
 ```
+
+With a death rate of 15%, this shows that Lung cancer is not fatal, this may be due to modern testing and treatment plans that have made identifying and managing this illness effective.
 
 ### Gender
 
