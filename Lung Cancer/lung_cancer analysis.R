@@ -8,6 +8,15 @@ lung_c <- read.csv("C:/Users/USER/Documents/Git_Hub Data/Data/Lung Cancer/Lung_C
 describe(lung_c)
 summary(lung_c)
 
+#Data Cleaning 
+lung_c$Cigarettes_Per_year <- lung_c$Cigarettes_Per_Day * 365
+lung_c$total_Cigarettes <- lung_c$Cigarettes_Per_year * lung_c$Years_Smoking
+ 
+# Data set logic fixed 
+# Where those that are noted to have never smoked where still assigned years smoking and cigarettes per day values 
+lung_c$Years_Smoking[ lung_c$Smoking_Status == "Never" ] <- 0
+lung_c$Cigarettes_Per_Day [ lung_c$Smoking_Status == "Never" ] <- 0
+
 #Variables 
 # Patients infected with lung cancer of any stage
 lung_c$infect_dummy <- lung_c$Lung_Cancer_Stage != "None"
