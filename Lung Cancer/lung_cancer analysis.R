@@ -194,7 +194,7 @@ lung_c %>%
   labs(title = "")
 
 #Chronic Lung Disease x Lung Cancer
-lung_c %>%
-  ggplot(aes(Chronic_Lung_Disease, fill = Lung_Cancer_Stage))+
+lung_c %>% filter(Lung_Cancer_Stage != "NA") %>% 
+  ggplot(aes(Lung_Cancer_Stage, fill =Chronic_Lung_Disease))+
   geom_bar()+
   labs(title = "")
