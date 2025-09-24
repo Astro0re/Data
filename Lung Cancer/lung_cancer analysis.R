@@ -35,7 +35,7 @@ lung_c %>% ggplot(aes(infect_dummy))+
 
 lung_c %>% 
   ggplot(aes(Diagnosis_Year))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~infect_dummy)+
   labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
 
@@ -133,8 +133,9 @@ lung_c %>% lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>%
 lung_c %>%
   lung_c$infect_dummy <- as.integer(lung_c$infect_dummy) %>% 
    t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = "two.sided")
+   
 lung_c %>%ggplot(aes(Diagnosis_Year, infect_dummy))+
-  geom_col()+
+  geom_col(na.rm = TRUE)+
   labs(title = 'INFECTION RATE THROUGH THE YEARS'  , y= 'INFECTED COUNT' , x= 'YEARS')
 
 #Death rate
@@ -142,59 +143,59 @@ lung_DeathR <- sum(lung_c$Survival_Status == "Deceased") / length(lung_c$Surviva
 
 lung_c %>% 
   ggplot(aes(Diagnosis_Year))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Survival_Status)+
   labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
 
 # Region 
 lung_c %>% filter(infect_dummy == "TRUE") %>% 
   ggplot(aes(Region))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   labs(title = "Infection Count by Region(Infected)")
 
 lung_c %>%
   ggplot(aes(Diet_Quality))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Region)+
   labs(title = "Diet_Quality by Region(Infected)")
 
 lung_c %>%
   ggplot(aes(Smoking_Status))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Region)+
   labs(title = "Smoking Status by Region(Infected)")
 
 lung_c %>%
   ggplot(aes(Family_History))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Region)+
   labs(title = "Family History by Region(Infected)")
 
 lung_c %>%
   ggplot(aes(Occupation_Exposure))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Region)+
   labs(title = "Occupation Exposure by Region(Infected)")
 
 lung_c %>%
   ggplot(aes(Genetic_Markers_Positive))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Region)+
   labs(title = "Genetic Markers by Region(Infected)")
 
 #Genetic Markers x Family History
 lung_c %>%
   ggplot(aes(Genetic_Markers_Positive , fill = Family_History))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   labs(title = "")
 
 lung_c %>%
   ggplot(aes(Family_History , fill = Genetic_Markers_Positive))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   labs(title = "")
 
 #Chronic Lung Disease x Lung Cancer
 lung_c %>% filter(Lung_Cancer_Stage != "NA") %>% 
   ggplot(aes(Lung_Cancer_Stage, fill =Chronic_Lung_Disease))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   labs(title = "")
