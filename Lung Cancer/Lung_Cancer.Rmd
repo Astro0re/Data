@@ -97,14 +97,14 @@ Data visualization of variables to get a better visual understanding on details
 ```{r  ,echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>%
   ggplot(aes(Gender, fill= infect_dummy))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   labs(title = 'GENDER'  , y= 'COUNT' , x= 'GENDER')
 ```
 
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>%
   ggplot(aes(Gender, fill= Occupation_Exposure))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   labs(title = 'GENDER-EXPOSURE'  , y= 'COUNT' , x= 'GENDER')
 ```
 
@@ -113,7 +113,7 @@ lung_c %>%
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>%  filter(infect_dummy == 1) %>% 
   ggplot(aes(Diagnosis_Year))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   labs(title = 'INFECTION RATE OVER THE YEARS'  , y= 'COUNT' , x= 'YEAR')
 ```
 
@@ -122,7 +122,7 @@ lung_c %>%  filter(infect_dummy == 1) %>%
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>% 
   ggplot(aes(Survival_Status, fill = infect_dummy))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   labs(title = 'SURVIVAL STATS'  , y= 'COUNT' , x= 'STATUS')
 ```
 
@@ -156,7 +156,7 @@ lung_c %>% filter(infect_dummy == 1) %>%
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 longev %>% 
   ggplot(aes(Gender))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   labs(title = 'LONGEVITY AMONG GENDERS'  , y= 'COUNT' , x= 'LONGEVITY')
 ```
 
@@ -218,7 +218,7 @@ lung_c %>% filter(infect_dummy == 1) %>%
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>%
   ggplot(aes(Diet_Quality))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Region)+
   labs(title = "Diet_Quality by Region(Infected)")
 ```
@@ -226,7 +226,7 @@ lung_c %>%
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>%
   ggplot(aes(Smoking_Status))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Region)+
   labs(title = "Smoking Status by Region(Infected)")
 ```
@@ -234,15 +234,15 @@ lung_c %>%
 ```{r  , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>%
   ggplot(aes(Family_History))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Region)+
   labs(title = "Family History by Region(Infected)")
 ```
 
 ```{r , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>%
-  ggplot(aes(Occupation_Exposure))+
-  geom_bar()+
+  ggplot(aes(Occupation_Exposure))+ 
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Region)+
   labs(title = "Occupation Exposure by Region(Infected)")
 ```
@@ -250,7 +250,7 @@ lung_c %>%
 ```{r , echo=FALSE, warning=FALSE, error=FALSE}
 lung_c %>%
   ggplot(aes(Genetic_Markers_Positive))+
-  geom_bar()+
+  geom_bar(na.rm = TRUE)+
   facet_wrap(~Region)+
   labs(title = "Genetic Markers by Region(Infected)")
 ```
