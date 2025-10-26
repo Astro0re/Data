@@ -41,7 +41,7 @@ M_Pox[is.na(M_Pox)] <- 0
 
 For better data exploration the data set has been Grouped into locations of the world(Continents)
 
-```{r}
+```{r, knitr::kable()}
 Afri <- M_Pox%>%
   filter(location %in% c("Africa", "Benin","Cameroon","Central African Republic",
                          "Congo","Cote d'Ivoire","Democratic Republic of Congo",
@@ -51,7 +51,7 @@ Afri <- M_Pox%>%
 head(Afri)
 ```
 
-```{r}
+```{r, knitr::kable()}
 Euro <- M_Pox%>%
   filter(location %in% c("Europe", "Andorra","Austria","Belgium","Bosnia and Herzegovina",
                          "Bulgaria","Croatia","Cyprus","Czechia","Denmark",'Estonia'
@@ -65,7 +65,7 @@ Euro <- M_Pox%>%
 head(Euro)
 ```
 
-```{r}
+```{r, knitr::kable()}
 Asia <- M_Pox%>%
   filter(location %in% c("Asia", "Bahrain","Cambodia","China",'India','Indonesia',
                          'Iran','Israel','Japan','Jordan','Laos','Lebanon','Malaysia',
@@ -75,13 +75,13 @@ Asia <- M_Pox%>%
 head(Asia)
 ```
 
-```{r}
+```{r, knitr::kable()}
 Ocea <- M_Pox%>%
   filter(location %in% c("Oceania", "Australia",'Guam','New Caledonia','New Zealand'))
 head(Ocea)
 ```
 
-```{r}
+```{r, knitr::kable()}
 
 Nt_Ame <- M_Pox%>%
   filter(location %in% c("North America","Canada","Costa Rica","Cuba",
@@ -91,7 +91,7 @@ Nt_Ame <- M_Pox%>%
 head(Nt_Ame)
 ```
 
-```{r}
+```{r, knitr::kable()}
 St_Ame <- M_Pox%>%
   filter(location %in% c("South America", "Argentina", "Bolivia","Brazil","Chile",
                          "Colombia","Curacao",'Ecuador','Guyana','Paraguay','Peru',
@@ -99,13 +99,13 @@ St_Ame <- M_Pox%>%
 head(St_Ame)
 ```
 
-```{r}
+```{r, knitr::kable()}
 Isl <- M_Pox%>%
   filter(location %in% c("Aruba", "Bahamas","Barbados","Bermuda","Burundi"))
 head(Isl)
 ```
 
-```{r}
+```{r, knitr::kable()}
 Un_Spe <- M_Pox%>%
   filter(location %in% c("World"))
 head(Un_Spe)
@@ -115,7 +115,7 @@ head(Un_Spe)
 
 Death rate for each observation is calculated Formula= Total Death / Total Cases x 100
 
-```{r}
+```{r, knitr::kable()}
 Death_R <-mutate(M_Pox,death_rate = M_Pox$total_deaths/M_Pox$total_cases*100)
 Afri<- mutate(Afri,death_rate = Afri$total_deaths/Afri$total_cases*100)
 Asia<- mutate(Asia,death_rate = Asia$total_deaths/Asia$total_cases*100)
@@ -135,7 +135,7 @@ head(MPox_Death_Rate)
 
 Data that provides key information such as: Average Case reported, Death Rate, New cases, Suspected cases in each region are calculated and grouped into a table
 
-```{r}
+```{r,collapse=TRUE}
 # Average Total Cases
 Afri_TC <- mean(Afri$total_cases)
 Asia_TC <- mean(Asia$total_cases)
@@ -149,7 +149,7 @@ Total_Cases <- c(Afri_TC,Euro_TC,Asia_TC,Isl_TC,Ocea_TC,Nt_Ame_TC,St_Ame_TC,Un_S
 
 ```
 
-```{r}
+```{r, collapse=TRUE}
 # Average Total Death
 Afri_td <- mean(Afri$total_deaths )
 Asia_td <- mean(Asia$total_deaths )
@@ -163,7 +163,7 @@ Total_Death <- c(Afri_td,Asia_td,Euro_td,Isl_td,Nt_Ame_td,Ocea_td,St_Ame_td,Un_S
 
 ```
 
-```{r}
+```{r,collapse=TRUE}
 # Average Suspected cases(Undocumented)
 Afri_sc <- mean(Afri$suspected_cases_cumulative )
 Asia_sc <- mean(Asia$suspected_cases_cumulative )
@@ -178,7 +178,7 @@ Suspected_Cases <- c(Afri_sc,Asia_sc,Euro_sc,Isl_sc,Nt_Ame_sc,Ocea_sc,St_Ame_sc,
 
 ```
 
-```{r}
+```{r, collapse=TRUE}
 # Average Death rate
 Afri_dr <- mean(Afri$death_rate, na.rm = TRUE )
 Asia_dr <- mean(Asia$death_rate, na.rm = TRUE )
@@ -638,6 +638,4 @@ The lack of proper data for the location causes a lot of hindrances when trying 
 
 ## Git-Hub Repository
 
-<https://github.com/Astro0re/Data/tree/main/Monkey%20_Pox>
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+<https://github.com/Astro0re/Data/tree/main/Monkey%20_Pox>.
