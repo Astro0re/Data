@@ -261,8 +261,12 @@ lung_c %>%
 
 # Conclusion
 
+<<<<<<< HEAD
 This report shows a lot a factors associated with lung cancer however there seems to be little causative factors among them suggesting other factors not recorded.
 
 ## Git-Hub Repository
 
 <https://github.com/Astro0re/Data/tree/main/Lung_Cancer>.
+=======
+This report shows a lot a factors associated with lung cancer however there seems to be few clear causative factors among them suggesting other factors not recorded.
+>>>>>>> 60e266fc0dc9235f7f61ffb01f6d6864eda43aba
