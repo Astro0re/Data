@@ -83,7 +83,11 @@ t.test(male$infect_dummy, female$infect_dummy, conf.level = 0.95, alternative = 
 Those infected with lung cancer (of any stage) but have lived for over 10 years following diagnosis.
 
 ```{r, knitr::kable()}
-longev <- subset(lung_c, (2024 - lung_c$Diagnosis_Year) >= 10 &  lung_c$infect_dummy == "TRUE" & lung_c$Survival_Status == "Alive" )
+# Infected but still alive
+survive <- subset(lung_c, lung_c$infect_dummy == 1 & lung_c$Survival_Status == "Alive" )
+
+# Survived 10 years or more after being diagnosed
+longev <- subset(survive, (2024 - survive$Diagnosis_Year) >= 10)
 head(longev)
 
 ```
@@ -258,3 +262,7 @@ lung_c %>%
 # Conclusion
 
 This report shows a lot a factors associated with lung cancer however there seems to be little causative factors among them suggesting other factors not recorded.
+
+## Git-Hub Repository
+
+<https://github.com/Astro0re/Data/tree/main/Lung_Cancer>.
