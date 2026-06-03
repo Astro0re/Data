@@ -10,9 +10,6 @@ join `heart_attack_russia_data 2` as d2
 ;
 
 # Data Exploration 
-SELECT heart_attack
-from `heart_attack_russia_data 1`
-group by DISTINCT heart_attack;
 
 # Heart Attack Stats
 select Heart_Attack, avg(Age), avg(Heart_Rate), max(Blood_Pressure), count(Heart_Attack), avg(Stress_Level)
@@ -97,15 +94,18 @@ where Urban_Rural = 'Urban' and Heart_Attack = 'TRUE'
 ;
 
 # Statistics basesed on parameters where a Heart Attack was recorded
+
+# Error in Code somewhere
 select Region, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true,
 SUM(CASE WHEN Family_History = 'FALSE' THEN 1 ELSE 0 END)as count_family_history_false, avg(Health_Awareness),
- avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS heart_attack_true,
+ avg(Daily_Water_Intake),avg(Daily_Water_Intake), SUM(CASE WHEN d1.Heart_Attack = 'TRUE' THEN 1 ELSE 0 END) AS count_heart_attack_true,
 	LENGTH(heart_attack - heart_attack_ture) AS heart_attack_false
 from `heart_attack_russia_data 1` as d1
 join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Region
 ;
+# Error in code above
 
 select Diabetes, avg(Blood_Pressure),avg(Heart_Rate), SUM(CASE WHEN Family_History = 'TRUE' THEN 1 ELSE 0 END)as count_family_history_true,
 SUM(CASE WHEN Family_History = 'FALSE' THEN 1 ELSE 0 END)as count_family_history_false, avg(Health_Awareness),
@@ -226,9 +226,3 @@ join `heart_attack_russia_data 2` as d2
 	on d1.ID = d2.ID 
 group by Obesity
 ;
-
-select family_history, sum(case when d1.family history ='TRUE'), sum(case when d1.family history ='FALSE')
-from `heart_attack_russia_data 1` as d1
-join `heart_attack_russia_data 2` as d2
-	on d1.ID = d2.ID 
-group by family_history
