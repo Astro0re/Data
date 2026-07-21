@@ -33,4 +33,5 @@ Nighborhood pefrence
 Family size based on bedroon/bathroom
 What year experienced the highest number of houses built
 Factors influencing sale price
+issues to address
 """
