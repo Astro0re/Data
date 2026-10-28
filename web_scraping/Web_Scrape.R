@@ -34,3 +34,21 @@ for(info in data) {
 
 print(data_scrape)
   
+# for html table 
+html_table()
+
+# for multiple pages create a function for scraping of each item 
+
+next_page <- "/"
+page_count <- 1
+
+while(!is.null(next_page) && page_count <=10)
+  current_url <- paste0(url,next_page)
+  message("scraping page ", page_count, " : ", current_url )
+
+  page_scrape <- 0 #scrape_function
+  # rowbind to dataset
+  page_count <- page_count + 1
+  
+  
+# reference vid url : https://www.youtube.com/watch?v=pJp1HrhWZ9E
